@@ -3,6 +3,7 @@ import styles from "./Main.module.scss";
 import GreenButton from "../../UI/GreenButton/GreenButton";
 import MainCards from "./MainCards/MainCards";
 import MainAboutComponent from "./MainAboutComponent/MainAboutComponent";
+import MainAdvestiring from "./MainAdvestiring/MainAdvestiring";
 
 const Main = () => {
   return (
@@ -21,6 +22,7 @@ const Main = () => {
       </div>
       <MainCards />
       <MainAboutComponent />
+      <MainAdvestiring />
     </div>
   );
 };
