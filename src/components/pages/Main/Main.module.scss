@@ -1,0 +1,34 @@
+@use "../../../App.scss" as App;
+@import "../../../App.scss";
+
+.big_wrapper {
+  width: 100%;
+  background-image: url("../../../../public/images/main-images/slide1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 757px;
+}
+.wrapper {
+  @include wrapper-1170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.main_slogan {
+  margin-top: 250px;
+  color: white;
+  font-size: 60px;
+  font-family: App.$QuestrialFont;
+  font-weight: 300;
+}
+.little_slogan {
+  margin-top: 30px;
+  color: white;
+  font-size: 20px;
+  font-family: App.$QuestrialFont;
+  font-weight: 400;
+  margin-bottom: 70px;
+}

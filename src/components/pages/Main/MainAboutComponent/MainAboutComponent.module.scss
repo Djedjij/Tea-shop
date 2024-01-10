@@ -1,0 +1,72 @@
+@use "../../../../App.scss" as App;
+@import "../../../../App.scss";
+
+.aboutCard {
+  @include wrapper-1170px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+}
+.aboutCardHeader {
+  margin-top: 70px;
+  color: App.$greyButtonColor;
+  font-family: App.$OpenSansFont;
+  font-size: 20px;
+}
+.aboutCardDesc {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.aboutCardDesc p {
+  width: 70%;
+  font-size: 30px;
+  font-family: App.$QuestrialFont;
+  letter-spacing: 0.1em;
+  font-weight: 300;
+}
+.aboutCardHistory {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.aboutCardAwards {
+  display: flex;
+  flex-direction: column;
+  background-color: App.$greyButtonColor;
+  position: relative;
+}
+
+.aboutCardAwards h1 {
+  color: white;
+  font-family: App.$QuestrialFont;
+  font-weight: 300;
+  font-size: 44px;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+.aboutCardAwardsButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  width: 60%;
+  margin-left: 50px;
+}
+.awardsText {
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 16px;
+  font-family: App.$OpenSansFont;
+  color: white;
+  line-height: 1.667em;
+  font-weight: 400;
+}
+.awardsImg {
+  width: 100%;
+  height: 45%;
+  position: absolute;
+  bottom: 0;
+}

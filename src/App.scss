@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+$greyButtonColor: #c2b698;
+$greenButtonColor: #bcdf00;
+$blackButtonColor: #232a34;
+$greyBackgroundColor: #efeeed;
+
+$QuestrialFont: "Questrial", sans-serif;
+$OpenSansFont: "Open Sans", sans-serif;
+
+@mixin wrapper-1170px {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

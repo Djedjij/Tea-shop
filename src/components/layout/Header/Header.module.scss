@@ -1,0 +1,71 @@
+@use "../../../App.scss" as App;
+@import "../../../App.scss";
+
+.wrapper {
+  @include wrapper-1170px;
+  top: 0;
+  width: 100%;
+  height: 150px;
+
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo_image {
+  height: max-content;
+}
+.logo_full {
+  margin-left: 10px;
+}
+.logo_text {
+  font-family: open sans condensed, sans-serif;
+  font-weight: 500;
+}
+.logo_slogan {
+  font-family: inherit;
+  font-weight: 300;
+  color: $greyButtonColor;
+}
+
+.navbar {
+  width: 50%;
+}
+.navbar_ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.navbar_a {
+  color: App.$blackButtonColor;
+  text-decoration: none;
+  font-family: App.$QuestrialFont;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  transition: color 0.5s ease;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.navbar_a:hover {
+  color: App.$greyButtonColor;
+}
+.navbar_a:after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: App.$greyButtonColor;
+  transform: scaleY(0);
+  transition: transform 0.5s ease;
+}
+
+.navbar_a:hover:after {
+  transform: scaleY(1);
+}

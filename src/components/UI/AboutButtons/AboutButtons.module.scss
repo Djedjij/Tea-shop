@@ -1,0 +1,38 @@
+@use "../../../App.scss" as App;
+@import "../../../App.scss";
+
+.aboutButton {
+  position: relative;
+  padding: 5px 10px;
+  border: none;
+  color: white;
+  background-color: App.$greyButtonColor;
+  opacity: 0.8;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.aboutButtonActive {
+  position: relative;
+  padding: 5px 10px;
+  border: none;
+  background-color: App.$greenButtonColor;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.aboutButtonActive:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: App.$greenButtonColor transparent transparent transparent;
+}

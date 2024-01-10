@@ -1,0 +1,23 @@
+@use "../../../App.scss" as App;
+
+.greenButton {
+  background-color: App.$greenButtonColor;
+  border: 2px solid App.$greenButtonColor;
+  border-color: App.$greenButtonColor;
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 24px;
+  font-family: App.$OpenSansFont;
+  text-decoration: none;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: App.$blackButtonColor;
+  height: max-content;
+}
+.greenButton:hover {
+  background-color: rgba(0, 0, 0, 0);
+  color: App.$greenButtonColor;
+  border: 2px solid App.$greenButtonColor;
+}

@@ -1,0 +1,28 @@
+@use "../../../App.scss" as App;
+
+.panelButtons {
+  position: fixed;
+  right: 0;
+  top: 50%;
+}
+
+.panelButton {
+  margin-top: 2px;
+  background-color: App.$greyButtonColor;
+  width: 68px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.5s ease;
+}
+.panelButton:hover {
+  width: 80px;
+}
+
+.panelButtonCardImg {
+  margin-right: 5px;
+}
+.panelButtonUserImg {
+  width: 40px;
+}

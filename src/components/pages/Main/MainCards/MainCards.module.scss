@@ -1,0 +1,56 @@
+@use "../../../../App.scss" as App;
+@import "../../../../App.scss";
+
+.mainCardsWrapper {
+  background-color: App.$greyBackgroundColor;
+}
+.mainCards {
+  @include wrapper-1170px;
+  display: flex;
+  justify-content: space-between;
+}
+@mixin mainCard {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 30%;
+  height: 220px;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mainCard1 {
+  background-image: url("../../../../../public/images/main-images/banner1.jpg");
+  @include mainCard;
+}
+.mainCard2 {
+  background-image: url("../../../../../public/images/main-images/banner2.jpg");
+  @include mainCard;
+}
+.mainCard3 {
+  background-image: url("../../../../../public/images/main-images/banner3.jpg");
+  @include mainCard;
+}
+.mainCardBorder {
+  width: 90%;
+  height: 85%;
+  border: 2px solid App.$greyButtonColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease;
+}
+.mainCardBorder:hover {
+  opacity: 0.8;
+}
+.mainCardBorder a {
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  font-family: App.$OpenSansFont;
+  font-size: 22px;
+  font-weight: 600;
+}
