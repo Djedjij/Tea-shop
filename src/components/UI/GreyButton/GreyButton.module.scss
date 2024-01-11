@@ -1,0 +1,26 @@
+@use "../../../App.scss" as App;
+
+.greyButton {
+  border: 2px solid App.$greyButtonColor;
+  border-color: App.$greyButtonColor;
+  padding: 7px;
+  padding-left: 14px;
+  padding-right: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: App.$OpenSansFont;
+  text-decoration: none;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+  color: App.$blackButtonColor;
+  height: max-content;
+  width: max-content;
+  background-color: rgba(0, 0, 0, 0);
+  color: App.$greyButtonColor;
+  letter-spacing: 0.1em;
+}
+.greyButton:hover {
+  background-color: App.$greyButtonColor;
+  border: 2px solid App.$greyButtonColor;
+  color: white;
+}

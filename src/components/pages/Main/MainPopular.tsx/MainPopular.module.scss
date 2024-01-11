@@ -1,0 +1,27 @@
+@use "../../../../App.scss" as App;
+@import "../../../../App.scss";
+
+.wrapper {
+  @include wrapper-1170px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.wrapper h4 {
+  @include brownh4;
+}
+.wrapper h1 {
+  @include blackh1;
+}
+
+.verticalCards {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}

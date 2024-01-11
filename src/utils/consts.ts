@@ -1,3 +1,84 @@
+interface MainPageCategories {
+  name: string;
+  img: string;
+}
+
+interface PopularTea {
+  name: string;
+  img: string;
+  price: number;
+}
+
+interface InstagramImages {
+  name: string;
+  img: string;
+}
+
+export const instagramImages: InstagramImages[] = [
+  {
+    name: "photo1",
+    img: "/images/inst-images/post1.jpg",
+  },
+  {
+    name: "photo2",
+    img: "/images/inst-images/post2.jpg",
+  },
+  {
+    name: "photo3",
+    img: "/images/inst-images/post3.jpg",
+  },
+  {
+    name: "photo4",
+    img: "/images/inst-images/post4.jpg",
+  },
+];
+
+export const popularTea: PopularTea[] = [
+  {
+    name: "Генмайча",
+    img: "/images/main-images/main-categories/green-tea.jpg",
+    price: 9,
+  },
+  {
+    name: "Сун Чжэнь",
+    img: "/images/main-images/main-categories/white-tea.jpg",
+    price: 11,
+  },
+  {
+    name: "Би Ло Чун",
+    img: "images/main-images/main-categories/ylyn-tea.jpg",
+    price: 8,
+  },
+  {
+    name: "Си Ху Лун Цзин",
+    img: "images/main-images/main-categories/pyer-tea.jpg",
+    price: 15,
+  },
+];
+
+export const mainPageCategories: MainPageCategories[] = [
+  {
+    name: "Зеленый",
+    img: "/images/main-images/main-categories/green-tea.jpg",
+  },
+  {
+    name: "Белый",
+    img: "images/main-images/main-categories/white-tea.jpg",
+  },
+  {
+    name: "Улун",
+    img: "images/main-images/main-categories/ylyn-tea.jpg",
+  },
+  {
+    name: "Пуэр",
+    img: "images/main-images/main-categories/pyer-tea.jpg",
+  },
+  {
+    name: "Черный",
+    img: "/images/main-images/main-categories/black-tea.jpg",
+  },
+];
+
 export const menuNavbar = [
   {
     name: "Главная",

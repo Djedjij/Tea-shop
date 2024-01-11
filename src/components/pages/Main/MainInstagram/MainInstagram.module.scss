@@ -1,0 +1,38 @@
+@use "../../../../App.scss" as App;
+@import "../../../../App.scss";
+
+.bigWrapper {
+  width: 100%;
+  background-image: url("../../../../../public/images/main-images/leaves_bg.png");
+  background-size: cover;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper {
+  @include wrapper-1170px;
+  margin-top: 50px;
+  border: 2px solid App.$greyButtonColor;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  width: 100%;
+}
+.wrapper h4 {
+  @include brownh4;
+  margin-top: -22px;
+  background-color: white;
+  padding: 10px;
+}
+.pictures {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.pictures img {
+  max-width: 246px;
+}

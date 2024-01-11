@@ -7,6 +7,7 @@ $greyButtonColor: #c2b698;
 $greenButtonColor: #bcdf00;
 $blackButtonColor: #232a34;
 $greyBackgroundColor: #efeeed;
+$priceColor: #777777;
 
 $QuestrialFont: "Questrial", sans-serif;
 $OpenSansFont: "Open Sans", sans-serif;
@@ -15,4 +16,33 @@ $OpenSansFont: "Open Sans", sans-serif;
   max-width: 1170px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+@mixin brownh4 {
+  color: App.$greyButtonColor;
+  font-family: App.$OpenSansFont;
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  font-weight: 300;
+}
+
+@mixin blackh1 {
+  color: App.$blackButtonColor;
+  font-family: App.$QuestrialFont;
+  font-size: 50px;
+  font-weight: 300;
+  margin-top: 20px;
+}
+
+@mixin nameh3 {
+  color: App.$blackButtonColor;
+  font-family: App.$QuestrialFont;
+  font-size: 28px;
+  font-weight: 300;
+}
+@mixin priceStyle {
+  font-size: 16px;
+  font-family: App.$QuestrialFont;
+  color: App.$priceColor;
+  font-weight: 300;
 }
