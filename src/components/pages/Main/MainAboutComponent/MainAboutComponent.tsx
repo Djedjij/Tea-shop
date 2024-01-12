@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./MainAboutComponent.module.scss";
 import GreenButton from "../../../UI/GreenButton/GreenButton";
 import { historyAndAwards } from "../../../../utils/consts";
 import AboutButtons from "../../../UI/AboutButtons/AboutButtons";
+import { CSSTransition } from "react-transition-group";
 
 const MainAboutComponent: React.FC = () => {
   const [activeButton, setActiveButton] = useState<number | null>(1);
+  const [isDrop, setIsDrop] = useState<boolean>(false);
+  const nodeRef = useRef(null);
 
   const handleButtonClick = (id: number) => {
-    setActiveButton(activeButton === id ? activeButton : id);
+    if (activeButton === id) {
+      setActiveButton(activeButton);
+    } else {
+      setIsDrop(!isDrop);
+      setActiveButton(id);
+    }
   };
 
   return (
@@ -28,6 +36,7 @@ const MainAboutComponent: React.FC = () => {
           <div className={styles.aboutCardAwardsButtons}>
             {historyAndAwards.map((button) => (
               <AboutButtons
+                key={button.year}
                 year={button.year}
                 onClick={() => handleButtonClick(button.id)}
                 className={button.id === activeButton ? false : true}
@@ -36,9 +45,21 @@ const MainAboutComponent: React.FC = () => {
           </div>
           <div>
             {activeButton !== null && (
-              <p className={styles.awardsText}>
-                {historyAndAwards[activeButton - 1].text}
-              </p>
+              <CSSTransition
+                nodeRef={nodeRef}
+                in={!isDrop}
+                timeout={300}
+                classNames={{
+                  enter: styles.awardsTextEnter,
+                  enterActive: styles.awardsTextEnterActive,
+                  exit: styles.awardsTextExit,
+                  exitActive: styles.awardsTextExitActive,
+                }}
+              >
+                <p className={styles.awardsText} ref={nodeRef}>
+                  {historyAndAwards[activeButton - 1].text}
+                </p>
+              </CSSTransition>
             )}
           </div>
           <img

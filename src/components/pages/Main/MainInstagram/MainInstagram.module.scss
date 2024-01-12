@@ -2,6 +2,7 @@
 @import "../../../../App.scss";
 
 .bigWrapper {
+  margin-top: 50px;
   width: 100%;
   background-image: url("../../../../../public/images/main-images/leaves_bg.png");
   background-size: cover;
@@ -35,4 +36,9 @@
 }
 .pictures img {
   max-width: 246px;
+  transition: box-shadow 0.3s ease;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+.pictures img:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }

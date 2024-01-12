@@ -11,7 +11,12 @@ const MainPopular = () => {
       <h1>Популярное сейчас</h1>
       <div className={styles.verticalCards}>
         {popularTea.map((tea) => (
-          <VerticalTeaCard name={tea.name} img={tea.img} price={tea.price} />
+          <VerticalTeaCard
+            key={tea.img}
+            name={tea.name}
+            img={tea.img}
+            price={tea.price}
+          />
         ))}
       </div>
       <GreenButton text="Больше товаров" link="/products" />

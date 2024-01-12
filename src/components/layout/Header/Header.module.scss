@@ -1,12 +1,16 @@
 @use "../../../App.scss" as App;
 @import "../../../App.scss";
 
+.bigWrapper {
+  width: 100%;
+  background-color: white;
+}
+
 .wrapper {
   @include wrapper-1170px;
   top: 0;
   width: 100%;
   height: 120px;
-
   z-index: 2;
   display: flex;
   justify-content: space-between;

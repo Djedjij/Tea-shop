@@ -10,7 +10,7 @@ const MainInstagram = () => {
         <h4>Инстаграм лента</h4>
         <div className={styles.pictures}>
           {instagramImages.map((picture) => (
-            <img src={picture.img} alt={picture.name} />
+            <img key={picture.img} src={picture.img} alt={picture.name} />
           ))}
         </div>
       </div>

@@ -54,6 +54,25 @@
   width: 60%;
   margin-left: 50px;
 }
+
+.awardsTextEnter {
+  opacity: 0;
+}
+
+.awardsTextEnterActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.awardsTextExit {
+  opacity: 0;
+}
+
+.awardsTextExitActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
 .awardsText {
   margin-top: 50px;
   margin-left: 50px;
