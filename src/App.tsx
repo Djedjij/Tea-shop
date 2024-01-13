@@ -5,6 +5,7 @@ import "./App.scss";
 import BlackHeader from "./components/layout/BlackHeader/BlackHeader";
 import PanelButtons from "./components/UI/PanelButtons/PanelButtons";
 import DropHeader from "./components/UI/DropHeader/DropHeader";
+import ButtonUp from "./components/UI/ButtonUp/ButtonUp";
 function App() {
   return (
     <div className="App">
@@ -14,6 +15,7 @@ function App() {
       <Main />
       <PanelButtons />
       <Footer />
+      <ButtonUp />
     </div>
   );
 }

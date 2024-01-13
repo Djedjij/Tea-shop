@@ -1,0 +1,25 @@
+@use "../../../App.scss" as App;
+@import "../../../App.scss";
+
+.buttonUp {
+  background-color: App.$greyButtonColor;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1000;
+  bottom: -100px;
+  margin-bottom: 50px;
+  margin-right: 30px;
+  right: 0;
+  transition: bottom 0.3s ease-in-out;
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+  cursor: pointer;
+}
+.buttonUp img {
+  max-width: 20px;
+}
