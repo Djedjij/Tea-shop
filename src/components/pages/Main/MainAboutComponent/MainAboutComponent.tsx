@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import styles from "./MainAboutComponent.module.scss";
-import GreenButton from "../../../UI/GreenButton/GreenButton";
+import GreenButton from "../../../UI/Buttons/GreenButton/GreenButton";
 import { historyAndAwards } from "../../../../utils/consts";
-import AboutButtons from "../../../UI/AboutButtons/AboutButtons";
+import AboutButtons from "../../../UI/Buttons/AboutButtons/AboutButtons";
 import { CSSTransition } from "react-transition-group";
 
 const MainAboutComponent: React.FC = () => {

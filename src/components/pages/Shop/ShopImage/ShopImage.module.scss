@@ -1,0 +1,22 @@
+@use "../../../../App.scss" as App;
+@import "../../../../App.scss";
+
+.wrapper {
+  @include wrapper-1170px;
+  display: flex;
+  padding-left: 0;
+  padding-right: 0;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../../../../../public/images/main-images/slide3.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding-bottom: 200px;
+}
+.wrapper h1 {
+  @include whiteh1;
+}
+.wrapper h4 {
+  @include whiteh4;
+}

@@ -6,8 +6,8 @@ interface GreyButtonProps {
   onClick?: () => void;
 }
 
-const GreenButton: React.FC<GreyButtonProps> = (props) => {
+const GreyButton: React.FC<GreyButtonProps> = (props) => {
   return <button className={styles.greyButton}>{props.text}</button>;
 };
 
-export default GreenButton;
+export default GreyButton;

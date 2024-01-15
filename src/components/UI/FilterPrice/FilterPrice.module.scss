@@ -1,0 +1,10 @@
+@use "../../../App.scss" as App;
+@import "../../../App.scss";
+
+.wrapper {
+  @include greyWrapperUI;
+  margin-top: 30px;
+}
+.wrapper h3 {
+  @include nameh3;
+}

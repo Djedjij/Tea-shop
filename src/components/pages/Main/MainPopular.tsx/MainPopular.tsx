@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./MainPopular.module.scss";
 import { popularTea } from "../../../../utils/consts";
 import VerticalTeaCard from "../../../UI/TeaCards/VerticalTeaCard/VerticalTeaCard";
-import GreenButton from "../../../UI/GreenButton/GreenButton";
+import GreenButton from "../../../UI/Buttons/GreenButton/GreenButton";
 
 const MainPopular = () => {
   return (

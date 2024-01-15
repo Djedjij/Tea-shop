@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./MainTeaAbout.module.scss";
-import GreenButton from "../../../UI/GreenButton/GreenButton";
+import GreenButton from "../../../UI/Buttons/GreenButton/GreenButton";
 const MainTeaAbout = () => {
   return (
     <div className={styles.bigWrapper}>

@@ -1,0 +1,67 @@
+@use "../../../App.scss" as App;
+@import "../../../App.scss";
+
+.wrapper {
+  @include greyWrapperUI;
+}
+.wrapper h3 {
+  @include nameh3;
+}
+.teaList {
+  margin-top: 20px;
+}
+.tea {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+.tea img {
+  max-width: 70px;
+}
+.tea a {
+  @include priceStyle;
+  font-size: 15px;
+  text-decoration: none;
+}
+.teaContent {
+  display: flex;
+  flex-direction: row;
+}
+.teaText {
+  margin-left: 10px;
+}
+.teaText form {
+  margin-top: 15px;
+  @include priceStyle;
+  font-size: 15px;
+}
+
+.teaText form input {
+  border: none;
+}
+.closeButton {
+  width: max-content;
+  height: max-content;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.closeButton img {
+  width: 25px;
+}
+
+.subtotal {
+  text-align: center;
+}
+.subtotal h4 {
+  @include brownh4;
+  border-top: 1px solid #dad9d9;
+  border-bottom: 1px solid #dad9d9;
+  padding: 10px;
+}
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}

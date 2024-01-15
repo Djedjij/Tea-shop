@@ -79,29 +79,6 @@ export const mainPageCategories: MainPageCategories[] = [
   },
 ];
 
-export const menuNavbar = [
-  {
-    name: "Главная",
-    link: "/",
-  },
-  {
-    name: "О нас",
-    link: "/about",
-  },
-  {
-    name: "Ассортимент",
-    link: "/products",
-  },
-  {
-    name: "Блог",
-    link: "/blog",
-  },
-  {
-    name: "Контакты",
-    link: "/contacts",
-  },
-];
-
 export const historyAndAwards = [
   {
     id: 1,

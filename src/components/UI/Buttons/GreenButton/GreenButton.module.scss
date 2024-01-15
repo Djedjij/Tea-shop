@@ -1,4 +1,5 @@
-@use "../../../App.scss" as App;
+@use "../../../../App.scss" as App;
+@import "../../../../App.scss";
 
 .greenButton {
   background-color: App.$greenButtonColor;

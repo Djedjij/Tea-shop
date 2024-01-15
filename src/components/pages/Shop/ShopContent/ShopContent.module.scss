@@ -1,0 +1,10 @@
+@use "../../../../App.scss" as App;
+@import "../../../../App.scss";
+
+.wrapper {
+  @include wrapper-1170px;
+  margin-top: 75px;
+}
+.horizontal-slider {
+  height: 30px;
+}

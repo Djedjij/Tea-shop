@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./VerticalTeaCard.module.scss";
-import GreyButton from "../../GreyButton/GreyButton";
+import GreyButton from "../../Buttons/GreyButton/GreyButton";
 
 interface VerticalTeaCardProps {
   name: string;

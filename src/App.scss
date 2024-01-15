@@ -18,6 +18,23 @@ $OpenSansFont: "Open Sans", sans-serif;
   padding: 0 20px;
 }
 
+@mixin whiteh1 {
+  margin-top: 250px;
+  color: white;
+  font-size: 60px;
+  font-family: App.$QuestrialFont;
+  font-weight: 300;
+}
+
+@mixin whiteh4 {
+  margin-top: 30px;
+  color: white;
+  font-size: 20px;
+  font-family: App.$QuestrialFont;
+  font-weight: 400;
+  margin-bottom: 70px;
+}
+
 @mixin brownh4 {
   color: App.$greyButtonColor;
   font-family: App.$OpenSansFont;
@@ -45,4 +62,12 @@ $OpenSansFont: "Open Sans", sans-serif;
   font-family: App.$QuestrialFont;
   color: App.$priceColor;
   font-weight: 300;
+}
+
+@mixin greyWrapperUI {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  background-color: App.$greyBackgroundColor;
+  padding: 20px;
 }

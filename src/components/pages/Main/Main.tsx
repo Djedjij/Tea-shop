@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Main.module.scss";
-import GreenButton from "../../UI/GreenButton/GreenButton";
+import GreenButton from "../../UI/Buttons/GreenButton/GreenButton";
 import MainCards from "./MainCards/MainCards";
 import MainAboutComponent from "./MainAboutComponent/MainAboutComponent";
 import MainAdvestiring from "./MainAdvestiring/MainAdvestiring";

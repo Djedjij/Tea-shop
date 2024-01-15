@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./MainInstagram.module.scss";
 import { instagramImages } from "../../../../utils/consts";
-import GreenButton from "../../../UI/GreenButton/GreenButton";
+import GreenButton from "../../../UI/Buttons/GreenButton/GreenButton";
 
 const MainInstagram = () => {
   return (

@@ -21,23 +21,3 @@ const DropHeader = () => {
 };
 
 export default DropHeader;
-
-// import React, { useRef, useState } from "react";
-// import styles from "./DropHeader.module.scss";
-
-// const DropHeader: React.FC = () => {
-//   const [isDrop, setIsDrop] = useState(false);
-//   const nodeRef = useRef(null);
-//   const toggleHeader = () => {
-//     setIsDrop(!isDrop);
-//     console.log(isDrop);
-//   };
-//   return (
-//     <div>
-
-//       <button onClick={toggleHeader}>Toggle</button>
-//     </div>
-//   );
-// };
-
-// export default DropHeader;

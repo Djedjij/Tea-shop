@@ -18,17 +18,8 @@
   text-align: center;
 }
 .main_slogan {
-  margin-top: 250px;
-  color: white;
-  font-size: 60px;
-  font-family: App.$QuestrialFont;
-  font-weight: 300;
+  @include whiteh1;
 }
 .little_slogan {
-  margin-top: 30px;
-  color: white;
-  font-size: 20px;
-  font-family: App.$QuestrialFont;
-  font-weight: 400;
-  margin-bottom: 70px;
+  @include whiteh4;
 }

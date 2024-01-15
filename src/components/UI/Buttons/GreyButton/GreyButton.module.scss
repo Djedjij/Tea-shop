@@ -1,4 +1,5 @@
-@use "../../../App.scss" as App;
+@use "../../../../App.scss" as App;
+@import "../../../../App.scss";
 
 .greyButton {
   border: 2px solid App.$greyButtonColor;

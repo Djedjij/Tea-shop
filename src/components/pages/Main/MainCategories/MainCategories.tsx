@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { mainPageCategories } from "../../../../utils/consts";
 import styles from "./MainCategories.module.scss";
-import GreenButton from "../../../UI/GreenButton/GreenButton";
+import GreenButton from "../../../UI/Buttons/GreenButton/GreenButton";
 const MainCategories = () => {
   const settings = {
     infinite: true,
