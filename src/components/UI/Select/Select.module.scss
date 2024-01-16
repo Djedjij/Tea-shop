@@ -1,0 +1,15 @@
+@use "../../../App.scss" as App;
+@import "../../../App.scss";
+
+.select {
+  border: none;
+  border-bottom: 2px solid App.$greyButtonColor;
+  padding: 2px;
+  font-family: App.$OpenSansFont;
+  color: App.$priceColor;
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: none;
+}

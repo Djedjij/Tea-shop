@@ -1,0 +1,9 @@
+@use "../../../App.scss" as App;
+@import "../../../App.scss";
+
+.wrapperContent {
+  @include wrapper-1170px;
+  margin-top: 75px;
+  display: flex;
+  justify-content: space-between;
+}

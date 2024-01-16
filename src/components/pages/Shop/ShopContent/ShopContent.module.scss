@@ -3,7 +3,9 @@
 
 .wrapper {
   @include wrapper-1170px;
-  margin-top: 75px;
+  padding: 0;
+  margin: 0;
+  width: 20%;
 }
 .horizontal-slider {
   height: 30px;

@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.gridButtonColumn img {
+  max-width: 30px;
+  max-height: 30px;
+  cursor: pointer;
+}
+
+.gridButtonRow img {
+  max-width: 34px;
+  max-height: 28px;
+  margin-top: 1px;
+  margin-left: 5px;
+  cursor: pointer;
+}

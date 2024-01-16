@@ -3,12 +3,12 @@
 
 .verticalCard {
   background-color: App.$greyBackgroundColor;
-  width: max-content;
   display: flex;
   flex-direction: column;
   padding: 30px;
   align-items: center;
   margin-bottom: 20px;
+  height: max-content;
 }
 .verticalCard img {
   max-width: 200px;
@@ -17,6 +17,7 @@
 .verticalCard h3 {
   @include nameh3;
   margin-top: 30px;
+  font-size: 22px;
 }
 .verticalCard p {
   @include priceStyle;

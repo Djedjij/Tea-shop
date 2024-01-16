@@ -1,0 +1,17 @@
+.wrapper {
+  width: 74%;
+}
+
+.tea {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: max-content;
+}
+.teaCard {
+  margin-bottom: 20px;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
