@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "./GridButton.module.scss";
 interface GreenButtonsProps {
-  onClick?: () => void;
+  onVerticalClick: () => void;
+  onHorizontalClick: () => void;
 }
 
 const GridButtons: React.FC<GreenButtonsProps> = (props) => {
@@ -9,10 +10,12 @@ const GridButtons: React.FC<GreenButtonsProps> = (props) => {
   const [isColumnActive, setIsColumnActive] = useState<boolean>(true);
 
   const handleRow = () => {
+    props.onHorizontalClick();
     setIsRowActive(true);
     setIsColumnActive(false);
   };
   const handleColumn = () => {
+    props.onVerticalClick();
     setIsColumnActive(true);
     setIsRowActive(false);
   };

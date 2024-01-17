@@ -1,0 +1,28 @@
+@use "../../../../App.scss" as App;
+@import "../../../../App.scss";
+
+.horizontalCard {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: App.$greyBackgroundColor;
+  margin-bottom: 10px;
+}
+.horizontalCard img {
+  border-radius: 50%;
+  max-width: 225px;
+}
+.description {
+  padding: 20px;
+}
+.description h3 {
+  @include nameh3;
+}
+.description p {
+  @include priceStyle;
+  font-size: 15px;
+  margin-top: 20px;
+}
+.button {
+  margin-top: 20px;
+}

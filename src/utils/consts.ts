@@ -7,6 +7,7 @@ interface PopularTea {
   name: string;
   img: string;
   price: number;
+  desc?: string;
 }
 
 interface InstagramImages {
@@ -38,21 +39,25 @@ export const popularTea: PopularTea[] = [
     name: "Генмайча",
     img: "/images/main-images/main-categories/green-tea.jpg",
     price: 9,
+    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, laborum nostrum quos voluptate reiciendis quas architecto quasi itaque beatae,harum aliquam nulla quis facilis, excepturi nemo cupiditate quo quod unde.",
   },
   {
     name: "Сун Чжэнь",
     img: "/images/main-images/main-categories/white-tea.jpg",
     price: 11,
+    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, laborum nostrum quos voluptate reiciendis quas architecto quasi itaque beatae,harum aliquam nulla quis facilis, excepturi nemo cupiditate quo quod unde.",
   },
   {
     name: "Би Ло Чун",
     img: "images/main-images/main-categories/ylyn-tea.jpg",
     price: 8,
+    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, laborum nostrum quos voluptate reiciendis quas architecto quasi itaque beatae,harum aliquam nulla quis facilis, excepturi nemo cupiditate quo quod unde.",
   },
   {
     name: "Си Ху Лун Цзин",
     img: "images/main-images/main-categories/pyer-tea.jpg",
     price: 15,
+    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, laborum nostrum quos voluptate reiciendis quas architecto quasi itaque beatae,harum aliquam nulla quis facilis, excepturi nemo cupiditate quo quod unde.",
   },
 ];
 

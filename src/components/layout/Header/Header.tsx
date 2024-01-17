@@ -26,11 +26,6 @@ const Header = () => {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link className={styles.navbar_a} to={accountRoute.path}>
-                Счет: 0.00р
-              </Link>
-            </li>
           </ul>
         </nav>
       </div>

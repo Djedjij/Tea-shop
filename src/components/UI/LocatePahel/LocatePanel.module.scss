@@ -1,0 +1,43 @@
+@use "../../../App.scss" as App;
+@import "../../../App.scss";
+
+.bigWrapper {
+  width: 100%;
+  height: max-content;
+  background-color: App.$greyBackgroundColor;
+  margin-bottom: 75px;
+}
+.wrapper {
+  @include wrapper-1170px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.adress {
+  display: flex;
+  align-items: center;
+}
+.adress img {
+  max-height: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.wrapper h3 {
+  @include brownh4;
+  letter-spacing: 0;
+  font-size: 18px;
+}
+.wrapper p {
+  @include priceStyle;
+  font-size: 13px;
+}
+.wrapper a {
+  @include priceStyle;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 13px;
+}
+.wrapper a:hover {
+  color: App.$greyButtonColor;
+}

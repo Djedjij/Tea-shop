@@ -15,3 +15,21 @@
   display: flex;
   justify-content: space-between;
 }
+
+.CardEnter {
+  opacity: 0;
+}
+
+.CardEnterActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.CardExit {
+  opacity: 0;
+}
+
+.CardExitActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
