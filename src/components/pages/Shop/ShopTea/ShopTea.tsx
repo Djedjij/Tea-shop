@@ -11,7 +11,7 @@ const ShopTea: React.FC = () => {
   const [isVertical, setIsVertical] = useState<boolean>(true);
 
   const handleVerticalClick = () => {
-    setIsVertical(true);
+    setIsVertical(true); // eeeee
   };
 
   const handleHorizontalClick = () => {
