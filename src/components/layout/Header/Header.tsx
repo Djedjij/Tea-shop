@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../Header/Header.module.scss";
 import { Link } from "react-router-dom";
-import { accountRoute, mainRoutes } from "../../../utils/routes";
+import { mainRoutes } from "../../../utils/routes";
 const Header = () => {
   return (
     <div className={styles.bigWrapper}>

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { popularTea } from "../utils/consts";
 
 interface Tea {
   name: string;
@@ -15,7 +16,7 @@ interface TeasState {
 }
 
 const initialState: TeasState = {
-  teas: [],
+  teas: popularTea,
   currentPage: 1,
   itemsPerPage: 3,
   totalItems: 0,
@@ -36,3 +37,6 @@ const teasSlice = createSlice({
     },
   },
 });
+
+export const { setTeas, setCurrentPage, setTotalItems } = teasSlice.actions;
+export default teasSlice.reducer;

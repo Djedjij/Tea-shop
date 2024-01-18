@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import { popularTea } from "../../../../utils/consts";
-import VerticalTeaCard from "../../../UI/TeaCards/VerticalTeaCard/VerticalTeaCard";
 import styles from "./ShopTea.module.scss";
 import GridButtons from "../../../UI/Buttons/GridButtons/GridButton";
 import Select from "../../../UI/Select/Select";
-import HorizontalTeaCard from "../../../UI/TeaCards/HorizontalTeaCard/HorizontalTeaCard";
 import { CSSTransition } from "react-transition-group";
+import TeaList from "../TeaList/TeaList";
 
 const ShopTea: React.FC = () => {
   const [isVertical, setIsVertical] = useState<boolean>(true);
 
   const handleVerticalClick = () => {
-    setIsVertical(true); // eeeee
+    setIsVertical(true);
   };
 
   const handleHorizontalClick = () => {
@@ -36,26 +34,7 @@ const ShopTea: React.FC = () => {
           exitActive: styles.CardExitActive,
         }}
       >
-        <div className={styles.tea}>
-          {popularTea.map((tea) => (
-            <div className={styles.teaCard} key={tea.name}>
-              {isVertical ? (
-                <VerticalTeaCard
-                  name={tea.name}
-                  img={tea.img}
-                  price={tea.price}
-                />
-              ) : (
-                <HorizontalTeaCard
-                  name={tea.name}
-                  img={tea.img}
-                  price={tea.price}
-                  desc={tea.desc}
-                />
-              )}
-            </div>
-          ))}
-        </div>
+        <TeaList isVertical={isVertical} />
       </CSSTransition>
     </div>
   );
