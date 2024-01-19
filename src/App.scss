@@ -71,3 +71,15 @@ $OpenSansFont: "Open Sans", sans-serif;
   background-color: App.$greyBackgroundColor;
   padding: 20px;
 }
+
+@mixin arrowButton {
+  background-color: App.$greyButtonColor;
+  border: 1px solid App.$greyButtonColor;
+  margin: 2px;
+  cursor: pointer;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 35px;
+  transition: background-color 0.3s ease;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./ShopTea.module.scss";
 import GridButtons from "../../../UI/Buttons/GridButtons/GridButton";
 import Select from "../../../UI/Select/Select";
@@ -7,6 +7,16 @@ import TeaList from "../TeaList/TeaList";
 
 const ShopTea: React.FC = () => {
   const [isVertical, setIsVertical] = useState<boolean>(true);
+  const [isRendered, setIsRendered] = useState<boolean>(true);
+
+  const upRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (upRef.current) {
+      const headerHeight = document.querySelector("header")!.offsetHeight;
+      const topOffset = upRef.current.offsetTop - headerHeight - 50;
+      window.scrollTo({ top: topOffset, behavior: "smooth" });
+    }
+  }, [isRendered]);
 
   const handleVerticalClick = () => {
     setIsVertical(true);
@@ -15,8 +25,16 @@ const ShopTea: React.FC = () => {
   const handleHorizontalClick = () => {
     setIsVertical(false);
   };
+
+  const renderTeaList = () => {
+    if (isRendered) {
+      setIsRendered(false);
+    } else {
+      setIsRendered(true);
+    }
+  };
   return (
-    <div className={styles.wrapper}>
+    <div ref={upRef} className={styles.wrapper}>
       <div className={styles.buttons}>
         <GridButtons
           onVerticalClick={handleVerticalClick}
@@ -34,7 +52,7 @@ const ShopTea: React.FC = () => {
           exitActive: styles.CardExitActive,
         }}
       >
-        <TeaList isVertical={isVertical} />
+        <TeaList isVertical={isVertical} renderTeaList={renderTeaList} />
       </CSSTransition>
     </div>
   );
