@@ -6,7 +6,6 @@ interface VerticalTeaCardProps {
   name: string;
   img: string;
   price: number;
-  desc?: string;
 }
 
 const VerticalTeaCard: React.FC<VerticalTeaCardProps> = (props) => {

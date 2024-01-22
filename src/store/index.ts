@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import teasReduser from "./teasSlice";
+import teasReduser from "./redusers/teasSlice";
 
 const store = configureStore({
   reducer: {

@@ -6,11 +6,21 @@
   justify-content: space-between;
   padding: 20px;
   background-color: App.$greyBackgroundColor;
-  margin-bottom: 10px;
+  height: auto;
+  max-height: 250px;
+  overflow: hidden;
+  transition: max-height 1.5s;
 }
+
+.enabled {
+  max-height: 1000px;
+  transition: max-height 1.5s;
+}
+
 .horizontalCard img {
   border-radius: 50%;
   max-width: 225px;
+  max-height: 225px;
 }
 .description {
   padding: 20px;
@@ -25,4 +35,35 @@
 }
 .button {
   margin-top: 20px;
+}
+
+.visibleBtn {
+  background-color: none;
+  border: none;
+  color: App.$greyButtonColor;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.visibleBtn:hover {
+  color: App.$greenButtonColor;
+}
+
+.textEnter {
+  opacity: 0;
+}
+
+.textEnterActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.textExit {
+  opacity: 0;
+}
+
+.textExitActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
 }

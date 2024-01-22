@@ -1,19 +1,27 @@
-import React, { useState } from "react";
-import { setCurrentPage } from "../../../../store/teasSlice";
+import React, { useEffect, useState } from "react";
+import { setCurrentPage } from "../../../../store/redusers/teasSlice";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/hooks";
 import VerticalTeaCard from "../../../UI/TeaCards/VerticalTeaCard/VerticalTeaCard";
 import HorizontalTeaCard from "../../../UI/TeaCards/HorizontalTeaCard/HorizontalTeaCard";
 import { CSSTransition } from "react-transition-group";
 import styles from "./TeaList.module.scss";
+import { fetchTeas } from "../../../../store/redusers/fetchTeas";
 interface TeaListProps {
   isVertical: boolean;
   renderTeaList: () => void;
 }
 
 const TeaList: React.FC<TeaListProps> = (props) => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchTeas(0, 100));
+  }, [dispatch]);
+
+  const teas = useAppSelector((state) => state.teas.teas);
+  const currentPage = useAppSelector((state) => state.teas.currentPage);
+  const itemsPerPage = useAppSelector((state) => state.teas.itemsPerPage);
 
   const [transition, setTransition] = useState<boolean>(false);
-  
   const handleTransition = () => {
     props.renderTeaList();
     if (transition) {
@@ -22,11 +30,6 @@ const TeaList: React.FC<TeaListProps> = (props) => {
       setTransition(true);
     }
   };
-
-  const teas = useAppSelector((state) => state.teas.teas);
-  const currentPage = useAppSelector((state) => state.teas.currentPage);
-  const itemsPerPage = useAppSelector((state) => state.teas.itemsPerPage);
-  const dispatch = useAppDispatch();
 
   const paginateButtons = () => {
     const countPages = Math.ceil(teas.length / itemsPerPage);
@@ -83,14 +86,14 @@ const TeaList: React.FC<TeaListProps> = (props) => {
                   <VerticalTeaCard
                     name={tea.name}
                     price={tea.price}
-                    img={tea.img}
+                    img={tea.imagesLinks[0]}
                   />
                 ) : (
                   <HorizontalTeaCard
                     name={tea.name}
                     price={tea.price}
-                    img={tea.img}
-                    desc={tea.desc}
+                    img={tea.imagesLinks[0]}
+                    desc={tea.description}
                   />
                 )}
               </div>
