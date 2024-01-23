@@ -14,7 +14,7 @@ interface TeaListProps {
 const TeaList: React.FC<TeaListProps> = (props) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchTeas(0, 100));
+    dispatch(fetchTeas());
   }, [dispatch]);
 
   const teas = useAppSelector((state) => state.teas.teas);

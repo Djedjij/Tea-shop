@@ -31,7 +31,7 @@ const HorizontalTeaCard: React.FC<HorizontalTeaCardProps> = (props) => {
   return (
     <div
       className={`${styles.horizontalCard} ${
-        textVisible ? styles.enabled : styles.horizontalCard
+        textVisible ? styles.enabled : styles.disabled
       } `}
     >
       <img src={props.img} alt={props.name} />

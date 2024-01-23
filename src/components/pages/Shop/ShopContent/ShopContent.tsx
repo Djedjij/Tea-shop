@@ -6,9 +6,11 @@ import ShopCategories from "./ShopCategories/ShopCategories";
 const ShopContent = () => {
   return (
     <div className={styles.wrapper}>
-      <ShoppingCardUI />
-      <FilterPrice />
-      <ShopCategories />
+      <div className={styles.sticky}>
+        <ShoppingCardUI />
+        <FilterPrice />
+        <ShopCategories />
+      </div>
     </div>
   );
 };

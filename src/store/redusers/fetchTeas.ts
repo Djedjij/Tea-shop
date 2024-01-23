@@ -1,17 +1,17 @@
 import axios from "axios";
-import { AppDispatch } from "..";
 import { ITea } from "../../models/ITea";
-import { teaFetching, teaFetchingError, teaFetchingSuccess } from "./teasSlice";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchTeas =
-  (p: number, count: number) => async (dispatch: AppDispatch) => {
+export const fetchTeas = createAsyncThunk(
+  "teas/fetchAll",
+  async (_, thunkAPI) => {
     try {
-      dispatch(teaFetching());
       const response = await axios.get<ITea[]>(
-        process.env.REACT_APP_API_URL + `/products?p=${p}&count=${count}`
+        process.env.REACT_APP_API_URL + `/products`
       );
-      dispatch(teaFetchingSuccess(response.data));
-    } catch (e: any) {
-      dispatch(teaFetchingError(e.message));
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue("Ошибка при загрузке");
     }
-  };
+  }
+);
