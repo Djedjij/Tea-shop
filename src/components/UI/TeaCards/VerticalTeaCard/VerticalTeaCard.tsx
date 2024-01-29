@@ -3,7 +3,7 @@ import styles from "./VerticalTeaCard.module.scss";
 import GreyButton from "../../Buttons/GreyButton/GreyButton";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/hooks";
 import {
-  setShopCard,
+  setShopCart,
   setTotalCost,
 } from "../../../../store/redusers/shopCardSlice";
 
@@ -16,8 +16,8 @@ interface VerticalTeaCardProps {
 
 const VerticalTeaCard: React.FC<VerticalTeaCardProps> = (props) => {
   const dispatch = useAppDispatch();
-  const cartItems = useAppSelector((state) => state.shopCard.shopCard.itemsMap);
-  let totalCost = useAppSelector((state) => state.shopCard.shopCard.totalCost);
+  const cartItems = useAppSelector((state) => state.shopCard.shopCart.itemsMap);
+  let totalCost = useAppSelector((state) => state.shopCard.shopCart.totalCost);
 
   const addInShopCard = (
     id: number,
@@ -26,7 +26,7 @@ const VerticalTeaCard: React.FC<VerticalTeaCardProps> = (props) => {
     img: string
   ) => {
     dispatch(
-      setShopCard([
+      setShopCart([
         ...cartItems,
         {
           id,

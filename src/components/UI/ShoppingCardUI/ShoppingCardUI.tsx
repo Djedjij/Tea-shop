@@ -4,17 +4,17 @@ import GreyButton from "../Buttons/GreyButton/GreyButton";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { useEffect, useState } from "react";
 import {
-  setShopCard,
+  setShopCart,
   setTotalCost,
 } from "../../../store/redusers/shopCardSlice";
 
 const ShoppingCardUI: React.FC = () => {
   const [isEmpty, setIsEmpty] = useState(false);
   const dispatch = useAppDispatch();
-  const cartItems = useAppSelector((state) => state.shopCard.shopCard.itemsMap);
+  const cartItems = useAppSelector((state) => state.shopCard.shopCart.itemsMap);
 
   const totalCost = useAppSelector(
-    (state) => state.shopCard.shopCard.totalCost
+    (state) => state.shopCard.shopCart.totalCost
   );
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const ShoppingCardUI: React.FC = () => {
     const index = cartItems.findIndex((el) => el.id === id);
     if (index !== -1) {
       dispatch(
-        setShopCard([
+        setShopCart([
           ...cartItems.slice(0, index),
           ...cartItems.slice(index + 1),
         ])

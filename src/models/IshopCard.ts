@@ -1,17 +1,17 @@
-export interface ICardItem {
+export interface ICartItem {
   id: number;
   img: string;
   title: string;
   quantity: number;
   costByHundredGrams: number;
 }
-export interface IShopCard {
-  itemsMap: ICardItem[];
+export interface IShopCart {
+  itemsMap: ICartItem[];
   totalCost: number;
 }
 
-export interface ShopCardState {
-  shopCard: IShopCard;
+export interface ShopCartState {
+  shopCart: IShopCart;
   isLoading: boolean;
   error: string;
 }
