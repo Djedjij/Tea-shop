@@ -7,7 +7,11 @@ interface GreyButtonProps {
 }
 
 const GreyButton: React.FC<GreyButtonProps> = (props) => {
-  return <button className={styles.greyButton}>{props.text}</button>;
+  return (
+    <button onClick={props.onClick} className={styles.greyButton}>
+      {props.text}
+    </button>
+  );
 };
 
 export default GreyButton;

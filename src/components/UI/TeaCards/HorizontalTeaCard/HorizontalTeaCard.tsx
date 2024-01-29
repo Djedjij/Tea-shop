@@ -3,6 +3,7 @@ import styles from "./HorizontalTeaCard.module.scss";
 import GreyButton from "../../Buttons/GreyButton/GreyButton";
 import { CSSTransition } from "react-transition-group";
 interface HorizontalTeaCardProps {
+  id: number;
   name: string;
   img: string;
   price: number;

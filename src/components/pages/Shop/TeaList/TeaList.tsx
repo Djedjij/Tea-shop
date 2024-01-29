@@ -84,12 +84,14 @@ const TeaList: React.FC<TeaListProps> = (props) => {
               <div key={tea.name} className={styles.teaCard}>
                 {props.isVertical ? (
                   <VerticalTeaCard
+                    id={tea.productId}
                     name={tea.name}
                     price={tea.price}
                     img={tea.imagesLinks[0]}
                   />
                 ) : (
                   <HorizontalTeaCard
+                    id={tea.productId}
                     name={tea.name}
                     price={tea.price}
                     img={tea.imagesLinks[0]}

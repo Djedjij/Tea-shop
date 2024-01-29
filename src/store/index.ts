@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import teasReduser from "./redusers/teasSlice";
+import shopCardReduser from "./redusers/shopCardSlice";
 
 const store = configureStore({
   reducer: {
     teas: teasReduser,
+    shopCard: shopCardReduser,
   },
 });
 

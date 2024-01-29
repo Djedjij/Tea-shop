@@ -1,64 +1,76 @@
-import React, { useState } from "react";
 import styles from "./ShoppingCardUI.module.scss";
-import { popularTea } from "../../../utils/consts";
 import { Link } from "react-router-dom";
 import GreyButton from "../Buttons/GreyButton/GreyButton";
-
-interface TeaQuantity {
-  [key: string]: number;
-}
+import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
+import { useEffect, useState } from "react";
+import {
+  setShopCard,
+  setTotalCost,
+} from "../../../store/redusers/shopCardSlice";
 
 const ShoppingCardUI: React.FC = () => {
-  const isEmpty = false;
-  const [teaQuantities, setTeaQuantities] = useState<TeaQuantity>(
-    popularTea.reduce((acc: TeaQuantity, tea) => {
-      acc[tea.name] = 1;
-      return acc;
-    }, {})
+  const [isEmpty, setIsEmpty] = useState(false);
+  const dispatch = useAppDispatch();
+  const cartItems = useAppSelector((state) => state.shopCard.shopCard.itemsMap);
+
+  const totalCost = useAppSelector(
+    (state) => state.shopCard.shopCard.totalCost
   );
-  const teaCounter = (name: string, value: string) => {
-    const quantity = Math.max(Number(value), 1);
-    setTeaQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [name]: quantity,
-    }));
+
+  useEffect(() => {
+    setIsEmpty(!!cartItems.length);
+  }, [cartItems.length]);
+
+  const deleteCartItem = (id: number, price: number) => {
+    const index = cartItems.findIndex((el) => el.id === id);
+    if (index !== -1) {
+      dispatch(
+        setShopCard([
+          ...cartItems.slice(0, index),
+          ...cartItems.slice(index + 1),
+        ])
+      );
+      dispatch(setTotalCost(totalCost - price));
+    }
   };
 
   return (
     <div className={styles.wrapper}>
       <h3>Корзина</h3>
-      {isEmpty ? (
+      {!isEmpty ? (
         <p>Ваша корзина пуста</p>
       ) : (
         <div>
           <div className={styles.teaList}>
-            {popularTea.map((tea) => (
-              <div key={tea.name} className={styles.tea}>
+            {cartItems.map((tea) => (
+              <div key={tea.id} className={styles.tea}>
                 <div className={styles.teaContent}>
-                  <img src={tea.img} alt={tea.name} />
+                  <img src={tea.img} alt={tea.title} />
                   <div className={styles.teaText}>
-                    <Link to="/">{tea.name}</Link>
-                    <form>
+                    <Link to="/">{tea.title}</Link>
+                    <div className={styles.inputNumber}>
+                      <div className={styles.inputNumberMinus}>-</div>
                       <input
-                        type="number"
-                        value={teaQuantities[tea.name]}
-                        onChange={(e) => teaCounter(tea.name, e.target.value)}
-                        name="quantity"
-                        min={1}
-                        max={5}
-                      />{" "}
-                      {/* x {tea.price}p */}
-                    </form>
+                        className={styles.inputNumberInput}
+                        type="text"
+                        pattern="^[0-9]+$"
+                        defaultValue="1"
+                      />
+                      <div className={styles.inputNumberPlus}>+</div>
+                    </div>
                   </div>
                 </div>
-                <button className={styles.closeButton}>
+                <button
+                  onClick={() => deleteCartItem(tea.id, tea.costByHundredGrams)}
+                  className={styles.closeButton}
+                >
                   <img src="/images/icons/icon-cross.svg" alt="close" />
                 </button>
               </div>
             ))}
           </div>
           <div className={styles.subtotal}>
-            <h4>Итого: 24р</h4>
+            <h4>Итого: {totalCost}р</h4>
             <div className={styles.buttons}>
               <GreyButton text="Корзина" />
               <GreyButton text="Оплатить" />
