@@ -1,4 +1,4 @@
-import styles from "./ShoppingCardUI.module.scss";
+import styles from "./ShopCartUI.module.scss";
 import { Link } from "react-router-dom";
 import GreyButton from "../Buttons/GreyButton/GreyButton";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
@@ -7,6 +7,8 @@ import {
   setShopCart,
   setTotalCost,
 } from "../../../store/redusers/shopCardSlice";
+import DeleteButton from "../Buttons/DeleteButton/DeleteButton";
+import CounterInput from "../Inputs/CounterInput";
 
 const ShoppingCardUI: React.FC = () => {
   const [isEmpty, setIsEmpty] = useState(false);
@@ -42,37 +44,28 @@ const ShoppingCardUI: React.FC = () => {
       ) : (
         <div>
           <div className={styles.teaList}>
-            {cartItems.map((tea) => (
+            {cartItems.map((tea, index) => (
               <div key={tea.id} className={styles.tea}>
                 <div className={styles.teaContent}>
                   <img src={tea.img} alt={tea.title} />
                   <div className={styles.teaText}>
                     <Link to="/">{tea.title}</Link>
-                    <div className={styles.inputNumber}>
-                      <div className={styles.inputNumberMinus}>-</div>
-                      <input
-                        className={styles.inputNumberInput}
-                        type="text"
-                        pattern="^[0-9]+$"
-                        defaultValue="1"
-                      />
-                      <div className={styles.inputNumberPlus}>+</div>
-                    </div>
+
+                    <CounterInput index={index} quantity={tea.quantity} />
                   </div>
                 </div>
-                <button
-                  onClick={() => deleteCartItem(tea.id, tea.costByHundredGrams)}
-                  className={styles.closeButton}
-                >
-                  <img src="/images/icons/icon-cross.svg" alt="close" />
-                </button>
+                <DeleteButton
+                  onclick={() => deleteCartItem(tea.id, tea.costByHundredGrams)}
+                />
               </div>
             ))}
           </div>
           <div className={styles.subtotal}>
             <h4>Итого: {totalCost}р</h4>
             <div className={styles.buttons}>
-              <GreyButton text="Корзина" />
+              <Link to={"/shopCart"}>
+                <GreyButton text="Корзина" />
+              </Link>
               <GreyButton text="Оплатить" />
             </div>
           </div>

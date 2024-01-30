@@ -17,16 +17,16 @@ const shopCartSlise = createSlice({
     setTotalCost: (state, action: PayloadAction<number>) => {
       state.shopCart.totalCost = action.payload;
     },
-    setTeaGrams: (
+    setQuantity: (
       state,
-      action: PayloadAction<{ index: number; costByHundredGrams: number }>
+      action: PayloadAction<{ index: number; quantity: number }>
     ) => {
-      state.shopCart.itemsMap[action.payload.index].costByHundredGrams =
-        action.payload.costByHundredGrams;
+      state.shopCart.itemsMap[action.payload.index].quantity =
+        action.payload.quantity;
     },
   },
 });
 
-export const { setShopCart, setTotalCost } = shopCartSlise.actions;
+export const { setShopCart, setTotalCost, setQuantity } = shopCartSlise.actions;
 
 export default shopCartSlise.reducer;

@@ -1,0 +1,103 @@
+@use "../../../App.scss" as App;
+@import "../../../App.scss";
+
+.wrapper {
+  @include wrapper-1170px;
+}
+.emptyShopCart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 150px;
+}
+
+.emptyShopCart img {
+  margin-bottom: 20px;
+}
+
+.emptyShopCart a {
+  color: App.$greyButtonColor;
+  transition: color 0.3s ease;
+}
+.emptyShopCart p {
+  color: App.$priceColor;
+}
+.emptyShopCart a:hover {
+  color: App.$greenButtonColor;
+}
+
+.shopCart {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.teas {
+  width: 65%;
+}
+
+.tea {
+  display: flex;
+  border-top: 2px solid App.$greyButtonColor;
+  padding: 20px;
+  justify-content: space-between;
+  background-color: App.$greyBackgroundColor;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.tea img {
+  max-width: 120px;
+}
+
+.nameAndImg {
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+.price {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+}
+.price h4 {
+  margin-left: 20px;
+}
+// send-panel
+
+.sendPanel {
+  border-top: 2px solid App.$greyButtonColor;
+  width: 330px;
+  padding: 20px;
+  background-color: App.$greyBackgroundColor;
+  height: max-content;
+}
+.sendPanel hr {
+  border: 1px solid App.$greyButtonColor;
+  margin-bottom: 20px;
+}
+.totalCost {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.totalCost h4 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.pay {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pay p {
+  font-size: 14px;
+  opacity: 0.6;
+  margin-top: 20px;
+}

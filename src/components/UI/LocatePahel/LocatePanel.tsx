@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./LocatePanel.module.scss";
 import { Link, useLocation } from "react-router-dom";
-import { mainRoute, mainRoutes } from "../../../utils/routes";
+import { mainRoute, routes } from "../../../utils/routes";
 const LocatePanel = () => {
   const locate = useLocation();
-  const component = mainRoutes.find((route) => route.path === locate.pathname);
+  const component = routes.find((route) => route.path === locate.pathname);
   console.log(component);
 
   return (

@@ -39,17 +39,6 @@
 .teaText form input {
   border: none;
 }
-.closeButton {
-  width: max-content;
-  height: max-content;
-  border: none;
-  background-color: white;
-  cursor: pointer;
-  margin-left: 10px;
-}
-.closeButton img {
-  width: 25px;
-}
 
 .subtotal {
   text-align: center;
@@ -64,39 +53,4 @@
   margin-top: 20px;
   display: flex;
   justify-content: space-around;
-}
-
-// input price
-
-.inputNumber {
-  margin-top: 15px;
-  display: flex;
-  align-items: center;
-  background: App.$greenButtonColor;
-  border: 1px solid #e5e8ee;
-  box-sizing: border-box;
-  border-radius: 6px;
-  color: white;
-  font-size: 14px;
-  text-align: center;
-  width: max-content;
-}
-.inputNumberInput {
-  background: App.$greyBackgroundColor;
-  width: 15px;
-  height: 15px;
-  border: none;
-  padding: 8px;
-  text-align: center;
-}
-
-.inputNumberMinus,
-.inputNumberPlus {
-  width: 20px;
-  height: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  user-select: none;
 }

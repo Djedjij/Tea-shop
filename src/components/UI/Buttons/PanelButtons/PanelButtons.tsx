@@ -49,7 +49,7 @@ const PanelButton = () => {
           }
           onMouseEnter={handleMouseEnterShoppingCard}
           onMouseLeave={handleMouseLeaveShoppingCard}
-          to={""}
+          to={"/shopCart"}
         >
           <img
             className={styles.panelButtonCardImg}
