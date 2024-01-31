@@ -1,24 +1,35 @@
 import React from "react";
 import styles from "./CounterInput.module.scss";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
-import { setQuantity } from "../../../store/redusers/shopCardSlice";
+import {
+  setCost,
+  setDecrementQuantity,
+  setIncrementQuantity,
+} from "../../../store/redusers/shopCardSlice";
 
 interface ICounterInputProps {
   quantity: number;
   index: number;
 }
 
-const CounterInput: React.FC<ICounterInputProps> = ({ quantity, index }) => {
+const CounterInput: React.FC<ICounterInputProps> = (props) => {
   const cartItems = useAppSelector((state) => state.shopCard.shopCart.itemsMap);
-  console.log(cartItems);
 
   const dispatch = useAppDispatch();
+
   const quantityIncrement = () => {
-    // dispatch(setQuantity(cartItems[index].quantity + 1));
+    dispatch(setIncrementQuantity({ index: props.index }));
+    dispatch(setCost({ index: props.index }));
+    console.log(props.quantity);
+    console.log(cartItems);
   };
   const quantityDecrement = () => {
-    quantity = quantity - 1;
+    if (props.quantity > 1) {
+      dispatch(setDecrementQuantity({ index: props.index }));
+      dispatch(setCost({ index: props.index }));
+    }
   };
+
   return (
     <div className={styles.inputNumber}>
       <div onClick={quantityDecrement} className={styles.inputNumberMinus}>
@@ -28,7 +39,9 @@ const CounterInput: React.FC<ICounterInputProps> = ({ quantity, index }) => {
         className={styles.inputNumberInput}
         type="text"
         pattern="^[0-9]+$"
-        defaultValue={quantity}
+        value={props.quantity}
+        defaultValue={props.quantity}
+        readOnly
       />
       <div onClick={quantityIncrement} className={styles.inputNumberPlus}>
         +

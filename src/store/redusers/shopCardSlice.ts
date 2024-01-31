@@ -17,16 +17,26 @@ const shopCartSlise = createSlice({
     setTotalCost: (state, action: PayloadAction<number>) => {
       state.shopCart.totalCost = action.payload;
     },
-    setQuantity: (
-      state,
-      action: PayloadAction<{ index: number; quantity: number }>
-    ) => {
-      state.shopCart.itemsMap[action.payload.index].quantity =
-        action.payload.quantity;
+    setIncrementQuantity: (state, action: PayloadAction<{ index: number }>) => {
+      state.shopCart.itemsMap[action.payload.index].quantity += 1;
+    },
+    setDecrementQuantity: (state, action: PayloadAction<{ index: number }>) => {
+      state.shopCart.itemsMap[action.payload.index].quantity -= 1;
+    },
+    setCost: (state, action: PayloadAction<{ index: number }>) => {
+      state.shopCart.itemsMap[action.payload.index].costByHundredGrams =
+        state.shopCart.itemsMap[action.payload.index].costByHundredGrams *
+        state.shopCart.itemsMap[action.payload.index].quantity;
     },
   },
 });
 
-export const { setShopCart, setTotalCost, setQuantity } = shopCartSlise.actions;
+export const {
+  setShopCart,
+  setTotalCost,
+  setIncrementQuantity,
+  setDecrementQuantity,
+  setCost,
+} = shopCartSlise.actions;
 
 export default shopCartSlise.reducer;

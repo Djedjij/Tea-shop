@@ -37,7 +37,15 @@ const VerticalTeaCard: React.FC<VerticalTeaCardProps> = (props) => {
         },
       ])
     );
-    dispatch(setTotalCost(totalCost + price));
+    dispatch(
+      setTotalCost(
+        cartItems.reduce(
+          (acc, el) =>
+            Number(acc) + Number(el.quantity) * Number(el.costByHundredGrams),
+          0
+        )
+      )
+    );
   };
 
   return (
