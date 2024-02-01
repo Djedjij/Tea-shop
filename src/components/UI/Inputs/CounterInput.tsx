@@ -5,30 +5,34 @@ import {
   setCost,
   setDecrementQuantity,
   setIncrementQuantity,
+  setTotalCost,
 } from "../../../store/redusers/shopCardSlice";
 
 interface ICounterInputProps {
   quantity: number;
   index: number;
+  teaPrice: number;
 }
 
 const CounterInput: React.FC<ICounterInputProps> = (props) => {
   const cartItems = useAppSelector((state) => state.shopCard.shopCart.itemsMap);
-
+  let totalCost = useAppSelector((state) => state.shopCard.shopCart.totalCost);
   const dispatch = useAppDispatch();
 
   const quantityIncrement = () => {
     dispatch(setIncrementQuantity({ index: props.index }));
     dispatch(setCost({ index: props.index }));
-    console.log(props.quantity);
-    console.log(cartItems);
+    dispatch(setTotalCost());
   };
   const quantityDecrement = () => {
     if (props.quantity > 1) {
       dispatch(setDecrementQuantity({ index: props.index }));
       dispatch(setCost({ index: props.index }));
+      dispatch(setTotalCost());
     }
   };
+  console.log(`Массив чаев: ${cartItems}`);
+  console.log(`Итоговая цена: ${totalCost}`);
 
   return (
     <div className={styles.inputNumber}>

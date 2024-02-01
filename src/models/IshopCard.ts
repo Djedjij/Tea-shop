@@ -5,8 +5,15 @@ export interface ICartItem {
   title: string;
   quantity: number;
   costByHundredGrams: number;
+  teaPrice: number;
 }
+
+export interface ICartUuid {
+  uuid: string;
+}
+
 export interface IShopCart {
+  cartId: ICartUuid;
   itemsMap: ICartItem[];
   totalCost: number;
 }

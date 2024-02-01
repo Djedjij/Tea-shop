@@ -34,18 +34,12 @@ const VerticalTeaCard: React.FC<VerticalTeaCardProps> = (props) => {
           img,
           quantity: 1,
           costByHundredGrams: price,
+          teaPrice: price,
         },
       ])
     );
-    dispatch(
-      setTotalCost(
-        cartItems.reduce(
-          (acc, el) =>
-            Number(acc) + Number(el.quantity) * Number(el.costByHundredGrams),
-          0
-        )
-      )
-    );
+    dispatch(setTotalCost());
+    console.log(totalCost);
   };
 
   return (

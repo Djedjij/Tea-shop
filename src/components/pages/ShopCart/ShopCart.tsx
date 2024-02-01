@@ -33,7 +33,7 @@ const ShopCart = () => {
           ...cartItems.slice(index + 1),
         ])
       );
-      dispatch(setTotalCost(totalCost - price));
+      dispatch(setTotalCost());
     }
   };
 
@@ -60,7 +60,11 @@ const ShopCart = () => {
                   </div>
                   <div className={styles.content}>
                     <div className={styles.price}>
-                      <CounterInput index={index} quantity={tea.quantity} />
+                      <CounterInput
+                        index={index}
+                        quantity={tea.quantity}
+                        teaPrice={tea.teaPrice}
+                      />
                       <h4>{tea.costByHundredGrams}р.</h4>
                     </div>
                     <DeleteButton

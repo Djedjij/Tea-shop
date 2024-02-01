@@ -32,7 +32,7 @@ const ShoppingCardUI: React.FC = () => {
           ...cartItems.slice(index + 1),
         ])
       );
-      dispatch(setTotalCost(totalCost - price));
+      dispatch(setTotalCost());
     }
   };
 
@@ -51,7 +51,11 @@ const ShoppingCardUI: React.FC = () => {
                   <div className={styles.teaText}>
                     <Link to="/">{tea.title}</Link>
 
-                    <CounterInput index={index} quantity={tea.quantity} />
+                    <CounterInput
+                      index={index}
+                      quantity={tea.quantity}
+                      teaPrice={tea.teaPrice}
+                    />
                   </div>
                 </div>
                 <DeleteButton
