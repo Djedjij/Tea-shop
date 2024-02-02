@@ -8,12 +8,8 @@ export interface ICartItem {
   teaPrice: number;
 }
 
-export interface ICartUuid {
-  uuid: string;
-}
-
 export interface IShopCart {
-  cartId: ICartUuid;
+  cartId: string;
   itemsMap: ICartItem[];
   totalCost: number;
 }

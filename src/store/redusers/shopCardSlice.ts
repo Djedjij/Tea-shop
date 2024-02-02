@@ -1,9 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ICartItem, ICartUuid, ShopCartState } from "../../models/IshopCard";
+import { ICartItem, ShopCartState } from "../../models/IshopCard";
 import { fetchUuid } from "./fetchShopCart";
 
 const initialState: ShopCartState = {
-  shopCart: { itemsMap: [], totalCost: 0, cartId: { uuid: "" } },
+  shopCart: { itemsMap: [], totalCost: 0, cartId: "" },
   isLoading: false,
   error: "",
 };
@@ -32,7 +32,7 @@ const shopCartSlise = createSlice({
         state.shopCart.itemsMap[action.payload.index].costByHundredGrams *
         state.shopCart.itemsMap[action.payload.index].quantity;
     },
-    setUuid: (state, action: PayloadAction<ICartUuid>) => {
+    setUuid: (state, action) => {
       state.shopCart.cartId = action.payload;
     },
   },

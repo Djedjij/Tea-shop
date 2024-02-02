@@ -6,6 +6,7 @@ import {
   setShopCart,
   setTotalCost,
 } from "../../../../store/redusers/shopCardSlice";
+import { shopCartAPI } from "../../../../services/shopCartService";
 
 interface VerticalTeaCardProps {
   id: number;
@@ -17,9 +18,10 @@ interface VerticalTeaCardProps {
 const VerticalTeaCard: React.FC<VerticalTeaCardProps> = (props) => {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.shopCard.shopCart.itemsMap);
-  let totalCost = useAppSelector((state) => state.shopCard.shopCart.totalCost);
 
-  const addInShopCard = (
+  const [postTea] = shopCartAPI.usePostTeaMutation();
+
+  const addInShopCard = async (
     id: number,
     title: string,
     price: number,
@@ -39,7 +41,7 @@ const VerticalTeaCard: React.FC<VerticalTeaCardProps> = (props) => {
       ])
     );
     dispatch(setTotalCost());
-    console.log(totalCost);
+    postTea({ weight: price, id });
   };
 
   return (

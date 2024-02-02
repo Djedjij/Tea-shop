@@ -8,6 +8,7 @@ import styles from "./TeaList.module.scss";
 import { fetchTeas } from "../../../../store/redusers/fetchTeas";
 import { fetchUuid } from "../../../../store/redusers/fetchShopCart";
 import { setUuid } from "../../../../store/redusers/shopCardSlice";
+// import { setUuid } from "../../../../store/redusers/shopCardSlice";
 interface TeaListProps {
   isVertical: boolean;
   renderTeaList: () => void;
@@ -15,21 +16,26 @@ interface TeaListProps {
 
 const TeaList: React.FC<TeaListProps> = (props) => {
   const dispatch = useAppDispatch();
-  const uuid = useAppSelector((state) => state.shopCard.shopCart.cartId);
+
   useEffect(() => {
     dispatch(fetchTeas());
-
-    if (localStorage.getItem("shopCartUuid")) {
-      // console.log(`uuid из localStorage ${uuid}`);
-    } else {
-      dispatch(fetchUuid());
-      // console.log(uuid);
-      // console.log(`uuid от сервера ${uuid}`);
-      localStorage.setItem("shopCartUuid", uuid.uuid);
-    }
   }, [dispatch]);
 
-  console.log(uuid);
+  const fetchUuidData = async () => {
+    let uuid = localStorage.getItem("uuid");
+    if (uuid) {
+      dispatch(setUuid(uuid));
+      console.log(`uuid из localStorage ${uuid}`);
+    } else {
+      await dispatch(fetchUuid()).then(() => {
+        console.log("uuid сохранен в localStorage");
+      });
+    }
+  };
+
+  useEffect(() => {
+    fetchUuidData();
+  }, []);
 
   const teas = useAppSelector((state) => state.teas.teas);
   const currentPage = useAppSelector((state) => state.teas.currentPage);
