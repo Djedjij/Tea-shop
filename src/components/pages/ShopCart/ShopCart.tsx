@@ -55,15 +55,16 @@ const ShopCart = () => {
               {cartItems.map((tea, index) => (
                 <div key={tea.id} className={styles.tea}>
                   <div className={styles.nameAndImg}>
-                    <img src={tea.img} alt={tea.title} />
-                    <h4>{tea.title}</h4>
+                    <img src={tea.img} alt={tea.name} />
+                    <h4>{tea.name}</h4>
                   </div>
                   <div className={styles.content}>
                     <div className={styles.price}>
                       <CounterInput
                         index={index}
-                        quantity={tea.quantity}
-                        teaPrice={tea.teaPrice}
+                        weight={tea.weight}
+                        sum={tea.sum}
+                        id={tea.id}
                       />
                       <h4>{tea.costByHundredGrams}р.</h4>
                     </div>

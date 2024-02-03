@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./VerticalTeaCard.module.scss";
 import GreyButton from "../../Buttons/GreyButton/GreyButton";
-import { useAppDispatch, useAppSelector } from "../../../../hooks/hooks";
-import {
-  setShopCart,
-  setTotalCost,
-} from "../../../../store/redusers/shopCardSlice";
+// import { useAppDispatch, useAppSelector } from "../../../../hooks/hooks";
+// import {
+//   setShopCart,
+//   setTotalCost,
+// } from "../../../../store/redusers/shopCardSlice";
 import { shopCartAPI } from "../../../../services/shopCartService";
 
 interface VerticalTeaCardProps {
@@ -13,35 +13,37 @@ interface VerticalTeaCardProps {
   name: string;
   img: string;
   price: number;
+  weight: number;
 }
 
 const VerticalTeaCard: React.FC<VerticalTeaCardProps> = (props) => {
-  const dispatch = useAppDispatch();
-  const cartItems = useAppSelector((state) => state.shopCard.shopCart.itemsMap);
+  // const dispatch = useAppDispatch();
+  // const cartItems = useAppSelector((state) => state.shopCard.shopCart.itemsMap);
 
   const [postTea] = shopCartAPI.usePostTeaMutation();
 
   const addInShopCard = async (
     id: number,
-    title: string,
+    name: string,
     price: number,
-    img: string
+    img: string,
+    weight: number
   ) => {
-    dispatch(
-      setShopCart([
-        ...cartItems,
-        {
-          id,
-          title,
-          img,
-          quantity: 1,
-          costByHundredGrams: price,
-          teaPrice: price,
-        },
-      ])
-    );
-    dispatch(setTotalCost());
-    postTea({ weight: price, id });
+    // dispatch(
+    //   setShopCart([
+    //     ...cartItems,
+    //     {
+    //       id,
+    //       name,
+    //       img,
+    //       weight: 100,
+    //       costByHundredGrams: price,
+    //       sum: price,
+    //     },
+    //   ])
+    // );
+    // dispatch(setTotalCost());
+    postTea({ weight, id });
   };
 
   return (
@@ -51,7 +53,13 @@ const VerticalTeaCard: React.FC<VerticalTeaCardProps> = (props) => {
       <div className={styles.price}>
         <GreyButton
           onClick={() =>
-            addInShopCard(props.id, props.name, props.price, props.img)
+            addInShopCard(
+              props.id,
+              props.name,
+              props.price,
+              props.img,
+              props.weight
+            )
           }
           text="В корзину"
         />

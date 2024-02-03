@@ -17,20 +17,20 @@ const shopCartSlise = createSlice({
     },
     setTotalCost: (state, action: PayloadAction<void>) => {
       state.shopCart.totalCost = state.shopCart.itemsMap.reduce(
-        (acc, item) => acc + item.teaPrice,
+        (acc, item) => acc + item.sum,
         0
       );
     },
     setIncrementQuantity: (state, action: PayloadAction<{ index: number }>) => {
-      state.shopCart.itemsMap[action.payload.index].quantity += 1;
+      state.shopCart.itemsMap[action.payload.index].weight += 100;
     },
     setDecrementQuantity: (state, action: PayloadAction<{ index: number }>) => {
-      state.shopCart.itemsMap[action.payload.index].quantity -= 1;
+      state.shopCart.itemsMap[action.payload.index].weight -= 100;
     },
     setCost: (state, action: PayloadAction<{ index: number }>) => {
-      state.shopCart.itemsMap[action.payload.index].teaPrice =
+      state.shopCart.itemsMap[action.payload.index].sum =
         state.shopCart.itemsMap[action.payload.index].costByHundredGrams *
-        state.shopCart.itemsMap[action.payload.index].quantity;
+        state.shopCart.itemsMap[action.payload.index].weight;
     },
     setUuid: (state, action) => {
       state.shopCart.cartId = action.payload;

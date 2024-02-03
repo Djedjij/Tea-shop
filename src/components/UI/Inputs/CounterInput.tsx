@@ -1,38 +1,40 @@
 import React from "react";
 import styles from "./CounterInput.module.scss";
-import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
-import {
-  setCost,
-  setDecrementQuantity,
-  setIncrementQuantity,
-  setTotalCost,
-} from "../../../store/redusers/shopCardSlice";
+import { shopCartAPI } from "../../../services/shopCartService";
+
+// import { useAppDispatch } from "../../../hooks/hooks";
+// import {
+//   setCost,
+//   setDecrementQuantity,
+//   setIncrementQuantity,
+//   setTotalCost,
+// } from "../../../store/redusers/shopCardSlice";
 
 interface ICounterInputProps {
-  quantity: number;
+  weight: number;
   index: number;
-  teaPrice: number;
+  sum: number;
+  id: number;
 }
 
 const CounterInput: React.FC<ICounterInputProps> = (props) => {
-  const cartItems = useAppSelector((state) => state.shopCard.shopCart.itemsMap);
-  let totalCost = useAppSelector((state) => state.shopCard.shopCart.totalCost);
-  const dispatch = useAppDispatch();
+  // const cartItems = useAppSelector((state) => state.shopCard.shopCart.itemsMap);
+  // let totalCost = useAppSelector((state) => state.shopCard.shopCart.totalCost);
+  // const dispatch = useAppDispatch();
 
   const quantityIncrement = () => {
-    dispatch(setIncrementQuantity({ index: props.index }));
-    dispatch(setCost({ index: props.index }));
-    dispatch(setTotalCost());
+    // changeWeightTea({ variables: { weight: props.weight, id: props.id } });
+    // dispatch(setIncrementQuantity({ index: props.index }));
+    // dispatch(setCost({ index: props.index }));
+    // dispatch(setTotalCost());
   };
   const quantityDecrement = () => {
-    if (props.quantity > 1) {
-      dispatch(setDecrementQuantity({ index: props.index }));
-      dispatch(setCost({ index: props.index }));
-      dispatch(setTotalCost());
+    if (props.weight > 100) {
+      // dispatch(setDecrementQuantity({ index: props.index }));
+      // dispatch(setCost({ index: props.index }));
+      // dispatch(setTotalCost());
     }
   };
-  console.log(`Массив чаев: ${cartItems}`);
-  console.log(`Итоговая цена: ${totalCost}`);
 
   return (
     <div className={styles.inputNumber}>
@@ -43,8 +45,8 @@ const CounterInput: React.FC<ICounterInputProps> = (props) => {
         className={styles.inputNumberInput}
         type="text"
         pattern="^[0-9]+$"
-        value={props.quantity}
-        defaultValue={props.quantity}
+        value={props.weight}
+        defaultValue={props.weight}
         readOnly
       />
       <div onClick={quantityIncrement} className={styles.inputNumberPlus}>

@@ -1,11 +1,10 @@
 export interface ICartItem {
-  [x: string]: any;
   id: number;
   img: string;
-  title: string;
-  quantity: number;
+  name: string;
+  weight: number;
   costByHundredGrams: number;
-  teaPrice: number;
+  sum: number;
 }
 
 export interface IShopCart {

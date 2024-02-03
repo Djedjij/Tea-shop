@@ -35,7 +35,7 @@ const TeaList: React.FC<TeaListProps> = (props) => {
 
   useEffect(() => {
     fetchUuidData();
-  }, []);
+  });
 
   const teas = useAppSelector((state) => state.teas.teas);
   const currentPage = useAppSelector((state) => state.teas.currentPage);
@@ -107,6 +107,7 @@ const TeaList: React.FC<TeaListProps> = (props) => {
                     name={tea.name}
                     price={tea.price}
                     img={tea.imagesLinks[0]}
+                    weight={100}
                   />
                 ) : (
                   <HorizontalTeaCard
