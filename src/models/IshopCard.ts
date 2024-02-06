@@ -1,6 +1,6 @@
 export interface ICartItem {
   id: number;
-  img: string;
+  imagesLink: string;
   name: string;
   weight: number;
   costByHundredGrams: number;

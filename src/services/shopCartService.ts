@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IShopCart } from "../models/IshopCard";
-
 interface IPostTea {
   weight: number;
   id: number;
@@ -8,12 +7,14 @@ interface IPostTea {
 
 export const shopCartAPI = createApi({
   reducerPath: "shopCart",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://25.15.198.17:5555/cart/" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: process.env.REACT_APP_API_URL + "cart-service/cart",
+  }),
   tagTypes: ["ShopCart"],
   endpoints: (build) => ({
     fetchShopCart: build.query<IShopCart, void>({
       query: () => ({
-        url: "v1/api/cart",
+        url: "",
         headers: {
           cart_id: localStorage.getItem("uuid") || "",
         },
@@ -23,8 +24,12 @@ export const shopCartAPI = createApi({
 
     postTea: build.mutation<IPostTea, IPostTea>({
       query: (tea) => ({
-        url: `v1/api/cart/add/${tea.id}?weight=${tea.weight}`,
+        url: "/items",
         method: "POST",
+        body: {
+          id: tea.id,
+          weight: tea.weight,
+        },
         headers: {
           cart_id: localStorage.getItem("uuid") || "",
         },
@@ -34,7 +39,7 @@ export const shopCartAPI = createApi({
 
     deleteTea: build.mutation<IPostTea, number>({
       query: (id) => ({
-        url: `v1/api/cart/remove/${id}`,
+        url: `/items/${id}`,
         method: "DELETE",
         headers: {
           cart_id: localStorage.getItem("uuid") || "",
@@ -42,15 +47,29 @@ export const shopCartAPI = createApi({
       }),
       invalidatesTags: ["ShopCart"],
     }),
-
-    changeWeightTea: build.query<IPostTea, IPostTea>({
+    changeWeightTea: build.mutation<IPostTea, IPostTea>({
       query: (tea) => ({
-        url: `v1/api/cart/increment/${tea.id}?weight=${tea.weight}`,
+        url: `/items/${tea.id}`,
+        method: "PUT",
+        body: {
+          id: tea.id,
+          weight: tea.weight,
+        },
         headers: {
           cart_id: localStorage.getItem("uuid") || "",
         },
-        invalidatesTags: ["ShopCart"],
       }),
+      invalidatesTags: ["ShopCart"],
+    }),
+    clearShopCart: build.mutation<IShopCart, void>({
+      query: () => ({
+        url: "/items",
+        method: "DELETE",
+        headers: {
+          cart_id: localStorage.getItem("uuid") || "",
+        },
+      }),
+      invalidatesTags: ["ShopCart"],
     }),
   }),
 });

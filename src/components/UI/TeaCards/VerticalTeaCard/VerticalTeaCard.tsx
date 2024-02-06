@@ -1,11 +1,6 @@
 import React from "react";
 import styles from "./VerticalTeaCard.module.scss";
 import GreyButton from "../../Buttons/GreyButton/GreyButton";
-// import { useAppDispatch, useAppSelector } from "../../../../hooks/hooks";
-// import {
-//   setShopCart,
-//   setTotalCost,
-// } from "../../../../store/redusers/shopCardSlice";
 import { shopCartAPI } from "../../../../services/shopCartService";
 
 interface VerticalTeaCardProps {
@@ -17,9 +12,6 @@ interface VerticalTeaCardProps {
 }
 
 const VerticalTeaCard: React.FC<VerticalTeaCardProps> = (props) => {
-  // const dispatch = useAppDispatch();
-  // const cartItems = useAppSelector((state) => state.shopCard.shopCart.itemsMap);
-
   const [postTea] = shopCartAPI.usePostTeaMutation();
 
   const addInShopCard = async (
@@ -29,20 +21,6 @@ const VerticalTeaCard: React.FC<VerticalTeaCardProps> = (props) => {
     img: string,
     weight: number
   ) => {
-    // dispatch(
-    //   setShopCart([
-    //     ...cartItems,
-    //     {
-    //       id,
-    //       name,
-    //       img,
-    //       weight: 100,
-    //       costByHundredGrams: price,
-    //       sum: price,
-    //     },
-    //   ])
-    // );
-    // dispatch(setTotalCost());
     postTea({ weight, id });
   };
 

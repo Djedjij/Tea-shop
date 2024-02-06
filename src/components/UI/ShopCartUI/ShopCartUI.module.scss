@@ -3,6 +3,8 @@
 
 .wrapper {
   @include greyWrapperUI;
+  width: 225px;
+  min-height: 150px;
 }
 .wrapper h3 {
   @include nameh3;
@@ -30,11 +32,6 @@
 .teaText {
   margin-left: 10px;
 }
-.teaText form {
-  margin-top: 15px;
-  @include priceStyle;
-  font-size: 15px;
-}
 
 .teaText form input {
   border: none;
@@ -52,5 +49,13 @@
 .buttons {
   margin-top: 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+.empty {
+  margin-top: 20px;
+  @include priceStyle;
+}
+.counter {
+  margin-top: 10px;
 }

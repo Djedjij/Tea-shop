@@ -33,6 +33,8 @@
 }
 
 .teas {
+  display: flex;
+  flex-direction: column;
   width: 65%;
 }
 
@@ -67,7 +69,10 @@
   margin-left: 20px;
 }
 // send-panel
-
+.sendPanelWrapper {
+  display: flex;
+  flex-direction: column;
+}
 .sendPanel {
   border-top: 2px solid App.$greyButtonColor;
   width: 330px;
@@ -100,4 +105,19 @@
   font-size: 14px;
   opacity: 0.6;
   margin-top: 20px;
+}
+
+.clearShopCart {
+  color: App.$redColor;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: max-content;
+  align-self: flex-end;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.clearShopCart:hover {
+  color: #cc215a;
 }

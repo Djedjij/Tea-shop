@@ -15,7 +15,7 @@
 }
 .inputNumberInput {
   background: App.$greyBackgroundColor;
-  width: 15px;
+  width: 25px;
   height: 15px;
   border: none;
   padding: 8px;
@@ -31,4 +31,39 @@
   justify-content: center;
   cursor: pointer;
   user-select: none;
+}
+.inputNumberPlusDisabled {
+  width: 20px;
+  height: 31px;
+  border-radius: 0px 5px 5px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  background-color: App.$greyBackgroundColor;
+  opacity: 0.6;
+}
+.errorMessage {
+  color: App.$redColor;
+  font-size: 12px;
+  position: absolute;
+  text-align: center;
+  margin-top: 5px;
+}
+.textEnter {
+  opacity: 0;
+}
+
+.textEnterActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.textExit {
+  opacity: 0;
+}
+
+.textExitActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
 }
