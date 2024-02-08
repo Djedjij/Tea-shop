@@ -13,7 +13,6 @@ const ShopCart = () => {
   const { data: shopCart } = shopCartAPI.useFetchShopCartQuery();
   const [deleteTea] = shopCartAPI.useDeleteTeaMutation();
   const [clearShopCart] = shopCartAPI.useClearShopCartMutation();
-
   useEffect(() => {
     setIsEmpty(!!shopCart?.itemsMap.length);
   }, [shopCart?.itemsMap.length]);

@@ -1,12 +1,23 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./PahelButtons.module.scss";
 import { CSSTransition } from "react-transition-group";
+import { shopCartAPI } from "../../../../services/shopCartService";
 const PanelButton = () => {
   const [isHoveredShoppingCard, setIsHoveredShoppingCard] = useState(false);
   const [isHoveredUserCard, setIsHoveredUserCard] = useState(false);
+  const { data: shopCart } = shopCartAPI.useFetchShopCartQuery();
+  const [countTeas, setCountTeas] = useState(0);
   const shoppingCardRef = useRef(null);
   const userCardRef = useRef(null);
+
+  useEffect(() => {
+    if (shopCart?.itemsMap.length) {
+      setCountTeas(shopCart?.itemsMap.length);
+    } else {
+      setCountTeas(0);
+    }
+  }, [shopCart?.itemsMap.length]);
 
   const handleMouseEnterShoppingCard = () => {
     setIsHoveredShoppingCard(true);
@@ -51,6 +62,7 @@ const PanelButton = () => {
           onMouseLeave={handleMouseLeaveShoppingCard}
           to={"/shopCart"}
         >
+          {countTeas ? <div className={styles.count}>{countTeas}</div> : ""}
           <img
             className={styles.panelButtonCardImg}
             src="/images/icons/shopping-card.svg"

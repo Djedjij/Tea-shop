@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
 import styles from "./CounterInput.module.scss";
 import { shopCartAPI } from "../../../services/shopCartService";
+import { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 interface ICounterInputProps {
   weight: number;
@@ -9,14 +9,18 @@ interface ICounterInputProps {
 
 const CounterInput: React.FC<ICounterInputProps> = (props) => {
   const [localError, setLocalError] = useState(false);
-
-  const [changeWeightTea, { error: createError }] =
+  const [changeWeightTea, { isError: createError }] =
     shopCartAPI.useChangeWeightTeaMutation();
-
   useEffect(() => {
+    setLocalError(false);
     if (createError) {
       setLocalError(true);
-      setTimeout(() => setLocalError(false), 2000);
+      const timerId = setTimeout(() => {
+        if (createError) {
+          setLocalError(false);
+        }
+      }, 300);
+      return () => clearTimeout(timerId);
     }
   }, [createError]);
 
@@ -53,9 +57,8 @@ const CounterInput: React.FC<ICounterInputProps> = (props) => {
           +
         </div>
       </div>
-
       <CSSTransition
-        in={!localError}
+        in={localError}
         timeout={300}
         classNames={{
           enter: styles.textEnter,
