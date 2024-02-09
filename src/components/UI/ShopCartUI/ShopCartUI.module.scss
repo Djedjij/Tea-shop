@@ -5,6 +5,7 @@
   @include greyWrapperUI;
   width: 225px;
   min-height: 150px;
+  position: relative;
 }
 .wrapper h3 {
   @include nameh3;
@@ -58,4 +59,11 @@
 }
 .counter {
   margin-top: 10px;
+}
+
+.loading {
+  @include loading;
+}
+.load {
+  position: relative;
 }

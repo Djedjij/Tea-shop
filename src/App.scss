@@ -84,3 +84,10 @@ $OpenSansFont: "Open Sans", sans-serif;
   width: 35px;
   transition: background-color 0.3s ease;
 }
+
+// loader
+
+@mixin loading {
+  filter: blur(3px);
+  z-index: 1;
+}

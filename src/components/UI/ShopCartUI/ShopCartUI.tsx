@@ -5,13 +5,14 @@ import { useEffect, useState } from "react";
 import DeleteButton from "../Buttons/DeleteButton/DeleteButton";
 import CounterInput from "../Inputs/CounterInput";
 import { shopCartAPI } from "../../../services/shopCartService";
+import Loader from "../Loader/Loader";
 
 const ShoppingCardUI: React.FC = () => {
   const [isEmpty, setIsEmpty] = useState(false);
-
   const {
     data: shopCart,
     isLoading,
+    isFetching,
     isError,
   } = shopCartAPI.useFetchShopCartQuery();
   const [deleteTea] = shopCartAPI.useDeleteTeaMutation();
@@ -25,11 +26,17 @@ const ShoppingCardUI: React.FC = () => {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={`${styles.wrapper} ${
+        isLoading || isFetching ? styles.loading : ""
+      }`}
+    >
       <h3>Корзина</h3>
+
+      {(isLoading || isFetching) && <Loader />}
+
       {!isEmpty && <p className={styles.empty}>Ваша корзина пуста</p>}
-      {isLoading && <h1>Идет загрузка</h1>}
-      {isError && <h1>Произошла ошибка</h1>}
+      {!isEmpty && isError && <h1>Ошибка при загрузке корзины</h1>}
       {isEmpty && (
         <div>
           <div className={styles.teaList}>

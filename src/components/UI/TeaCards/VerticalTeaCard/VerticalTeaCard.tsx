@@ -14,13 +14,7 @@ interface VerticalTeaCardProps {
 const VerticalTeaCard: React.FC<VerticalTeaCardProps> = (props) => {
   const [postTea] = shopCartAPI.usePostTeaMutation();
 
-  const addInShopCard = async (
-    id: number,
-    name: string,
-    price: number,
-    img: string,
-    weight: number
-  ) => {
+  const addInShopCard = async (id: number, weight: number) => {
     postTea({ weight, id });
   };
 
@@ -30,15 +24,7 @@ const VerticalTeaCard: React.FC<VerticalTeaCardProps> = (props) => {
       <h3>{props.name}</h3>
       <div className={styles.price}>
         <GreyButton
-          onClick={() =>
-            addInShopCard(
-              props.id,
-              props.name,
-              props.price,
-              props.img,
-              props.weight
-            )
-          }
+          onClick={() => addInShopCard(props.id, props.weight)}
           text="В корзину"
         />
         <p>{props.price}.00 p</p>
