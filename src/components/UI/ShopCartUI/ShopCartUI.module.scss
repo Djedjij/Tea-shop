@@ -5,7 +5,11 @@
   @include greyWrapperUI;
   width: 225px;
   min-height: 150px;
+  height: max-content;
   position: relative;
+}
+.loaderWrapper {
+  @include loaderWrapper;
 }
 .wrapper h3 {
   @include nameh3;
@@ -63,7 +67,4 @@
 
 .loading {
   @include loading;
-}
-.load {
-  position: relative;
 }

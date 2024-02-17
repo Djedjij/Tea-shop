@@ -88,6 +88,16 @@ $OpenSansFont: "Open Sans", sans-serif;
 // loader
 
 @mixin loading {
+  opacity: 0.8;
+  position: relative;
   filter: blur(3px);
   z-index: 1;
+}
+
+@mixin loaderWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
 }

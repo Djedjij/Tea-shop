@@ -1,6 +1,13 @@
 @use "../../../App.scss" as App;
 @import "../../../App.scss";
-
+.loading {
+  @include loading;
+}
+.loaderWrapper {
+  @include loaderWrapper;
+  width: max-content;
+  flex-grow: 1;
+}
 .wrapper {
   @include wrapper-1170px;
 }
@@ -35,9 +42,8 @@
 .teas {
   display: flex;
   flex-direction: column;
-  width: 65%;
+  flex-grow: 1;
 }
-
 .tea {
   display: flex;
   border-top: 2px solid App.$greyButtonColor;
@@ -54,6 +60,15 @@
 .nameAndImg {
   display: flex;
   align-items: center;
+  transition: opacity 0.2s ease;
+}
+.nameAndImg:hover {
+  opacity: 0.6;
+}
+.teaName {
+  @include nameh3;
+  font-size: 20px;
+  text-decoration: none;
 }
 
 .content {
@@ -63,10 +78,12 @@
 .price {
   display: flex;
   align-items: center;
-  margin-right: 50px;
+  margin-right: 20px;
 }
-.price h4 {
+.price p {
+  @include priceStyle;
   margin-left: 20px;
+  font-size: 15px;
 }
 // send-panel
 .sendPanelWrapper {

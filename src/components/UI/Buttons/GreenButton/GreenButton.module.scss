@@ -23,3 +23,6 @@
   color: App.$greenButtonColor;
   border: 2px solid App.$greenButtonColor;
 }
+.disabled {
+  pointer-events: none;
+}

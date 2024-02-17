@@ -26,48 +26,48 @@ const ShoppingCardUI: React.FC = () => {
   };
 
   return (
-    <div
-      className={`${styles.wrapper} ${
-        isLoading || isFetching ? styles.loading : ""
-      }`}
-    >
-      <h3>Корзина</h3>
-
+    <div className={styles.loaderWrapper}>
       {(isLoading || isFetching) && <Loader />}
-
-      {!isEmpty && <p className={styles.empty}>Ваша корзина пуста</p>}
-      {!isEmpty && isError && <h1>Ошибка при загрузке корзины</h1>}
-      {isEmpty && (
-        <div>
-          <div className={styles.teaList}>
-            {shopCart?.itemsMap.map((tea, index) => (
-              <div key={tea.id} className={styles.tea}>
-                <div className={styles.teaContent}>
-                  <img src={tea.imagesLink} alt={tea.name} />
-                  <div className={styles.teaText}>
-                    <Link className={styles.teaTextLink} to="/">
-                      {tea.name}
-                    </Link>
-                    <div className={styles.counter}>
-                      <CounterInput weight={tea.weight} id={tea.id} />
+      <div
+        className={`${styles.wrapper} ${
+          isLoading || isFetching ? styles.loading : ""
+        }`}
+      >
+        <h3>Корзина</h3>
+        {!isEmpty && <p className={styles.empty}>Ваша корзина пуста</p>}
+        {!isEmpty && isError && <h1>Ошибка при загрузке корзины</h1>}
+        {isEmpty && (
+          <div>
+            <div className={styles.teaList}>
+              {shopCart?.itemsMap.map((tea) => (
+                <div key={tea.id} className={styles.tea}>
+                  <div className={styles.teaContent}>
+                    <img src={tea.imagesLink} alt={tea.name} />
+                    <div className={styles.teaText}>
+                      <Link className={styles.teaTextLink} to="/">
+                        {tea.name}
+                      </Link>
+                      <div className={styles.counter}>
+                        <CounterInput weight={tea.weight} id={tea.id} />
+                      </div>
                     </div>
                   </div>
+                  <DeleteButton onclick={() => deleteCartItem(tea.id)} />
                 </div>
-                <DeleteButton onclick={() => deleteCartItem(tea.id)} />
+              ))}
+            </div>
+            <div className={styles.subtotal}>
+              <h4>Итого: {shopCart?.totalCost}р</h4>
+              <div className={styles.buttons}>
+                <Link to={"/shopCart"}>
+                  <GreyButton text="Корзина" />
+                </Link>
+                <GreyButton text="Оплатить" />
               </div>
-            ))}
-          </div>
-          <div className={styles.subtotal}>
-            <h4>Итого: {shopCart?.totalCost}р</h4>
-            <div className={styles.buttons}>
-              <Link to={"/shopCart"}>
-                <GreyButton text="Корзина" />
-              </Link>
-              <GreyButton text="Оплатить" />
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
