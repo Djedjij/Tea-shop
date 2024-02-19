@@ -11,10 +11,12 @@ export interface ITea {
 }
 
 export interface TeasState {
+  filteredTeas: any;
   teas: ITea[];
   isLoading: boolean;
   error: string;
   currentPage: number;
   itemsPerPage: number;
   totalItems: number;
+  isFiltered: boolean;
 }

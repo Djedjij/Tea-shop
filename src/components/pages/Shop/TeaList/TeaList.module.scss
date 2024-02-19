@@ -4,17 +4,15 @@
 .wrapper {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  gap: 40px;
   flex-wrap: wrap;
 }
 
-.teaCard {
-  margin-bottom: 30px;
-}
 .paginate {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 30px;
 }
 .paginateButton {
   @include priceStyle;
@@ -86,4 +84,31 @@
 .teasExitActive {
   opacity: 1;
   transition: opacity 300ms ease-in;
+}
+
+// EmptyTeaList !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+.emptyWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.emptyWrapper img {
+  width: 250px;
+}
+.emptyWrapper p {
+  margin-top: 30px;
+  color: App.$priceColor;
+}
+.emptyWrapper button {
+  font-size: 15px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  color: App.$greyButtonColor;
+  transition: color 0.3s ease;
+}
+.emptyWrapper button:hover {
+  color: App.$greenButtonColor;
 }

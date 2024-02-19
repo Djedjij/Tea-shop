@@ -1,10 +1,32 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import styles from "./FilterPrice.module.scss";
 import GreyButton from "../Buttons/GreyButton/GreyButton";
+import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
+import { showFilteredByPriceTeas } from "../../../store/redusers/teasSlice";
 
 const FilterPrice = () => {
-  const [slider1Value, setSlider1Value] = useState<number>(7);
-  const [slider2Value, setSlider2Value] = useState<number>(25);
+  const dispatch = useAppDispatch();
+  const teas = useAppSelector((state) => state.teas.teas);
+  const [slider1Value, setSlider1Value] = useState<number>(0);
+  const [slider2Value, setSlider2Value] = useState<number>(0);
+  const [minPrice, setMinPrice] = useState<number>(0);
+  const [maxPrice, setMaxPrice] = useState<number>(0);
+  useEffect(() => {
+    if (teas && teas.length > 0) {
+      setMinPrice(
+        teas.reduce((acc, current) => {
+          return acc.price < current.price ? acc : current;
+        }, teas[0]).price
+      );
+      setMaxPrice(
+        teas.reduce((acc, current) => {
+          return acc.price > current.price ? acc : current;
+        }, teas[0]).price
+      );
+      setSlider1Value(minPrice);
+      setSlider2Value(maxPrice);
+    }
+  }, [teas, minPrice, maxPrice]);
 
   let minGap: number = 1;
 
@@ -36,8 +58,8 @@ const FilterPrice = () => {
           onChange={handleSlider1}
           value={slider1Value}
           type="range"
-          min={7}
-          max={25}
+          min={minPrice}
+          max={maxPrice}
           step={1}
         />
         <input
@@ -45,8 +67,8 @@ const FilterPrice = () => {
           onChange={handleSlider2}
           value={slider2Value}
           type="range"
-          min={7}
-          max={25}
+          min={minPrice}
+          max={maxPrice}
           step={1}
         />
       </div>
@@ -58,7 +80,12 @@ const FilterPrice = () => {
         </p>
       </div>
       <div className={styles.button}>
-        <GreyButton text="Отфильтровать" />
+        <GreyButton
+          text="Отфильтровать"
+          onClick={() =>
+            dispatch(showFilteredByPriceTeas([slider1Value, slider2Value]))
+          }
+        />
       </div>
     </div>
   );

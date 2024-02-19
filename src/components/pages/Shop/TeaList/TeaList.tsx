@@ -4,11 +4,12 @@ import { useAppDispatch, useAppSelector } from "../../../../hooks/hooks";
 import VerticalTeaCard from "../../../UI/TeaCards/VerticalTeaCard/VerticalTeaCard";
 import HorizontalTeaCard from "../../../UI/TeaCards/HorizontalTeaCard/HorizontalTeaCard";
 import { CSSTransition } from "react-transition-group";
-import styles from "./TeaList.module.scss";
 import { fetchTeas } from "../../../../store/redusers/fetchTeas";
 import { fetchUuid } from "../../../../store/redusers/fetchShopCart";
 import { setUuid } from "../../../../store/redusers/shopCardSlice";
-// import { setUuid } from "../../../../store/redusers/shopCardSlice";
+import styles from "./TeaList.module.scss";
+import { ITea } from "../../../../models/ITea";
+
 interface TeaListProps {
   isVertical: boolean;
   renderTeaList: () => void;
@@ -25,21 +26,19 @@ const TeaList: React.FC<TeaListProps> = (props) => {
     let uuid = localStorage.getItem("uuid");
     if (uuid) {
       dispatch(setUuid(uuid));
-      console.log(`uuid из localStorage ${uuid}`);
     } else {
-      await dispatch(fetchUuid()).then(() => {
-        console.log("uuid сохранен в localStorage");
-      });
+      await dispatch(fetchUuid()).then(() => {});
     }
   };
-
   useEffect(() => {
     fetchUuidData();
   });
-
   const teas = useAppSelector((state) => state.teas.teas);
+  const filteredTeas = useAppSelector((state) => state.teas.filteredTeas);
+  const isFiltered = useAppSelector((state) => state.teas.isFiltered);
   const currentPage = useAppSelector((state) => state.teas.currentPage);
   const itemsPerPage = useAppSelector((state) => state.teas.itemsPerPage);
+  console.log(isFiltered);
 
   const [transition, setTransition] = useState<boolean>(false);
   const handleTransition = () => {
@@ -51,7 +50,10 @@ const TeaList: React.FC<TeaListProps> = (props) => {
     }
   };
   const paginateButtons = () => {
-    const countPages = Math.ceil(teas.length / itemsPerPage);
+    const countPages =
+      filteredTeas && filteredTeas.length > 0
+        ? Math.ceil(filteredTeas.length / itemsPerPage)
+        : Math.ceil(teas.length / itemsPerPage);
     const buttonCount: number[] = [];
 
     for (let i = 0; i < countPages; i++) {
@@ -59,32 +61,37 @@ const TeaList: React.FC<TeaListProps> = (props) => {
     }
 
     return (
-      <div>
-        {buttonCount.map((buttonNum: number, index: number) => (
-          <button
-            className={
-              buttonNum === currentPage
-                ? styles.paginateActiveButton
-                : styles.paginateButton
-            }
-            disabled={buttonNum === currentPage}
-            key={index}
-            onClick={() => {
-              dispatch(setCurrentPage(buttonNum));
-              handleTransition();
-            }}
-          >
-            {buttonNum}
-          </button>
-        ))}
-      </div>
+      buttonCount.length !== 1 && (
+        <div>
+          {buttonCount.map((buttonNum: number, index: number) => (
+            <button
+              className={
+                buttonNum === currentPage
+                  ? styles.paginateActiveButton
+                  : styles.paginateButton
+              }
+              disabled={buttonNum === currentPage}
+              key={index}
+              onClick={() => {
+                dispatch(setCurrentPage(buttonNum));
+                handleTransition();
+              }}
+            >
+              {buttonNum}
+            </button>
+          ))}
+        </div>
+      )
     );
   };
 
   const renderTeasForCurrentPage = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = currentPage * itemsPerPage;
-    const teasForCurrentPage = teas.slice(startIndex, endIndex);
+    const teasForCurrentPage =
+      filteredTeas && filteredTeas.length > 0
+        ? filteredTeas.slice(startIndex, endIndex)
+        : teas.slice(startIndex, endIndex);
 
     return (
       <div>
@@ -99,7 +106,7 @@ const TeaList: React.FC<TeaListProps> = (props) => {
           }}
         >
           <div className={styles.wrapper}>
-            {teasForCurrentPage.map((tea) => (
+            {teasForCurrentPage.map((tea: ITea) => (
               <div key={tea.name} className={styles.teaCard}>
                 {props.isVertical ? (
                   <VerticalTeaCard
@@ -125,36 +132,41 @@ const TeaList: React.FC<TeaListProps> = (props) => {
       </div>
     );
   };
-
   return (
     <div>
       {renderTeasForCurrentPage()}
-      <div className={styles.paginate}>
-        <button
-          className={
-            currentPage === 1
-              ? styles.notActiveButton
-              : styles.paginateArrowButtonLeft
-          }
-          onClick={() => {
-            dispatch(setCurrentPage(currentPage - 1));
-            handleTransition();
-          }}
-        ></button>
-        {paginateButtons()}
-        <button
-          disabled={teas.length - currentPage * itemsPerPage <= 0}
-          className={
-            teas.length - currentPage * itemsPerPage <= 0
-              ? styles.notActiveButton
-              : styles.paginateArrowButtonRight
-          }
-          onClick={() => {
-            dispatch(setCurrentPage(currentPage + 1));
-            handleTransition();
-          }}
-        ></button>
-      </div>
+      {
+        <div className={styles.paginate}>
+          <button
+            className={
+              currentPage === 1
+                ? styles.notActiveButton
+                : styles.paginateArrowButtonLeft
+            }
+            onClick={() => {
+              dispatch(setCurrentPage(currentPage - 1));
+              handleTransition();
+            }}
+          ></button>
+          {paginateButtons()}
+          <button
+            disabled={
+              teas.length - currentPage * itemsPerPage <= 0 ||
+              filteredTeas.length - currentPage * itemsPerPage <= 0
+            }
+            className={
+              teas.length - currentPage * itemsPerPage <= 0 ||
+              filteredTeas.length - currentPage * itemsPerPage <= 0
+                ? styles.notActiveButton
+                : styles.paginateArrowButtonRight
+            }
+            onClick={() => {
+              dispatch(setCurrentPage(currentPage + 1));
+              handleTransition();
+            }}
+          ></button>
+        </div>
+      }
     </div>
   );
 };

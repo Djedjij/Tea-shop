@@ -9,6 +9,8 @@ const initialState: TeasState = {
   currentPage: 1,
   itemsPerPage: 9,
   totalItems: 100,
+  filteredTeas: [],
+  isFiltered: false,
 };
 
 const teasSlice = createSlice({
@@ -23,6 +25,51 @@ const teasSlice = createSlice({
     },
     setTotalItems: (state, action: PayloadAction<number>) => {
       state.totalItems = action.payload;
+    },
+    setLowCostTeas: (state) => {
+      state.teas = [...state.teas].sort(
+        (a, b) => Number(a.price) - Number(b.price)
+      );
+      state.currentPage = 1;
+      state.filteredTeas = [];
+      state.isFiltered = false;
+    },
+    setHighCostTeas: (state) => {
+      state.teas = [...state.teas].sort(
+        (a, b) => Number(b.price) - Number(a.price)
+      );
+      state.currentPage = 1;
+      state.filteredTeas = [];
+      state.isFiltered = false;
+    },
+    showFilteredByCategoryTeas: (state, action: PayloadAction<string>) => {
+      const filteredTeas = state.teas.filter(
+        (tea) => tea.category === action.payload
+      );
+      let newState = { ...state, filteredTeas };
+      if (filteredTeas.length === 0) {
+        newState.isFiltered = true;
+      }
+      return newState;
+    },
+    showFilteredByPriceTeas: (
+      state,
+      action: PayloadAction<[number, number]>
+    ) => {
+      const [minPrice, maxPrice] = action.payload;
+      const filteredTeas = state.teas.filter(
+        (tea) => tea.price >= minPrice && tea.price <= maxPrice
+      );
+
+      return {
+        ...state,
+        filteredTeas,
+      };
+    },
+
+    resetFilters: (state) => {
+      state.filteredTeas = [];
+      state.isFiltered = false;
     },
   },
   extraReducers: (builder) => {
@@ -46,19 +93,15 @@ const teasSlice = createSlice({
   },
 });
 
-export const { setTeas, setCurrentPage, setTotalItems } = teasSlice.actions;
+export const {
+  setTeas,
+  setCurrentPage,
+  setTotalItems,
+  setLowCostTeas,
+  setHighCostTeas,
+  showFilteredByCategoryTeas,
+  showFilteredByPriceTeas,
+  resetFilters,
+} = teasSlice.actions;
 
 export default teasSlice.reducer;
-
-// teaFetching(state) {
-//   state.isLoading = true;
-// },
-// teaFetchingSuccess(state, action: PayloadAction<ITea[]>) {
-//   state.isLoading = false;
-//   state.error = "";
-//   state.teas = action.payload;
-// },
-// teaFetchingError(state, action: PayloadAction<string>) {
-//   state.isLoading = false;
-//   state.error = action.payload;
-// },

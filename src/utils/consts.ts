@@ -63,11 +63,11 @@ export const popularTea: PopularTea[] = [
 
 export const mainPageCategories: MainPageCategories[] = [
   {
-    name: "Зеленый",
+    name: "Зеленый чай",
     img: "/images/main-images/main-categories/green-tea.jpg",
   },
   {
-    name: "Белый",
+    name: "Белый чай",
     img: "images/main-images/main-categories/white-tea.jpg",
   },
   {
@@ -79,7 +79,7 @@ export const mainPageCategories: MainPageCategories[] = [
     img: "images/main-images/main-categories/pyer-tea.jpg",
   },
   {
-    name: "Черный",
+    name: "Черный чай",
     img: "/images/main-images/main-categories/black-tea.jpg",
   },
 ];
