@@ -6,7 +6,6 @@
 .loaderWrapper {
   @include loaderWrapper;
   width: max-content;
-  flex-grow: 1;
 }
 .wrapper {
   @include wrapper-1170px;
@@ -37,6 +36,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  min-height: 50vh;
 }
 
 .teas {
@@ -69,11 +69,13 @@
   @include nameh3;
   font-size: 20px;
   text-decoration: none;
+  margin-left: 20px;
 }
 
 .content {
   display: flex;
   align-items: center;
+  margin-left: 100px;
 }
 .price {
   display: flex;
@@ -91,6 +93,7 @@
   flex-direction: column;
 }
 .sendPanel {
+  margin-top: 45px;
   border-top: 2px solid App.$greyButtonColor;
   width: 330px;
   padding: 20px;

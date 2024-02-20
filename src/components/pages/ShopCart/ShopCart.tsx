@@ -115,6 +115,7 @@ const ShopCart = () => {
             </div>
           </div>
         )}
+        {/* <hr className={styles.strip} /> */}
       </div>
     </div>
   );

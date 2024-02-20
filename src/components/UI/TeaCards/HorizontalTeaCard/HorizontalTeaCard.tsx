@@ -2,17 +2,24 @@ import React, { useState } from "react";
 import styles from "./HorizontalTeaCard.module.scss";
 import GreyButton from "../../Buttons/GreyButton/GreyButton";
 import { CSSTransition } from "react-transition-group";
+import { shopCartAPI } from "../../../../services/shopCartService";
 interface HorizontalTeaCardProps {
   id: number;
   name: string;
   img: string;
   price: number;
   desc: string;
+  weight: number;
 }
 
 const HorizontalTeaCard: React.FC<HorizontalTeaCardProps> = (props) => {
   const [textVisible, setTextVisible] = useState<boolean>(false);
 
+  const [postTea] = shopCartAPI.usePostTeaMutation();
+
+  const addInShopCard = async (id: number, weight: number) => {
+    postTea({ weight, id });
+  };
   const handleVisible = () => {
     setTextVisible(!textVisible);
   };
@@ -61,7 +68,10 @@ const HorizontalTeaCard: React.FC<HorizontalTeaCardProps> = (props) => {
         </CSSTransition>
         <p>{props.price}.00 p</p>
         <div className={styles.button}>
-          <GreyButton text="В корзину" />
+          <GreyButton
+            text="В корзину"
+            onClick={() => addInShopCard(props.id, props.weight)}
+          />
         </div>
       </div>
     </div>

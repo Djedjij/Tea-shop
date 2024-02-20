@@ -97,7 +97,6 @@ $OpenSansFont: "Open Sans", sans-serif;
 @mixin loaderWrapper {
   position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
   width: max-content;
 }

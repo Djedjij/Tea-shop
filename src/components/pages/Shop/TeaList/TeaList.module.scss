@@ -1,6 +1,14 @@
 @use "../../../../App.scss" as App;
 @import "../../../../App.scss";
 
+.loading {
+  @include loading;
+}
+.loaderWrapper {
+  @include loaderWrapper;
+  width: 100%;
+  flex-grow: 1;
+}
 .wrapper {
   width: 100%;
   display: flex;
@@ -92,6 +100,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .emptyWrapper img {

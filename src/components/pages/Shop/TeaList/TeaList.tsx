@@ -9,15 +9,16 @@ import { fetchUuid } from "../../../../store/redusers/fetchShopCart";
 import { setUuid } from "../../../../store/redusers/shopCardSlice";
 import styles from "./TeaList.module.scss";
 import { ITea } from "../../../../models/ITea";
+import TeaListEmpty from "./TeaListEmpty";
+import Loader from "../../../UI/Loader/Loader";
 
 interface TeaListProps {
   isVertical: boolean;
   renderTeaList: () => void;
 }
 
-const TeaList: React.FC<TeaListProps> = (props) => {
+const TeaList: React.FC<TeaListProps> = ({ isVertical, renderTeaList }) => {
   const dispatch = useAppDispatch();
-
   useEffect(() => {
     dispatch(fetchTeas());
   }, [dispatch]);
@@ -27,28 +28,35 @@ const TeaList: React.FC<TeaListProps> = (props) => {
     if (uuid) {
       dispatch(setUuid(uuid));
     } else {
-      await dispatch(fetchUuid()).then(() => {});
+      await dispatch(fetchUuid());
     }
   };
   useEffect(() => {
     fetchUuidData();
   });
+
   const teas = useAppSelector((state) => state.teas.teas);
+  const loading = useAppSelector((state) => state.teas.isLoading);
+
   const filteredTeas = useAppSelector((state) => state.teas.filteredTeas);
   const isFiltered = useAppSelector((state) => state.teas.isFiltered);
   const currentPage = useAppSelector((state) => state.teas.currentPage);
   const itemsPerPage = useAppSelector((state) => state.teas.itemsPerPage);
-  console.log(isFiltered);
+
+  useEffect(() => {
+    handleTransition();
+  }, [teas, filteredTeas, isFiltered]);
 
   const [transition, setTransition] = useState<boolean>(false);
   const handleTransition = () => {
-    props.renderTeaList();
+    renderTeaList();
     if (transition) {
       setTransition(false);
     } else {
       setTransition(true);
     }
   };
+
   const paginateButtons = () => {
     const countPages =
       filteredTeas && filteredTeas.length > 0
@@ -105,34 +113,46 @@ const TeaList: React.FC<TeaListProps> = (props) => {
             exitActive: styles.teasExitActive,
           }}
         >
-          <div className={styles.wrapper}>
-            {teasForCurrentPage.map((tea: ITea) => (
-              <div key={tea.name} className={styles.teaCard}>
-                {props.isVertical ? (
-                  <VerticalTeaCard
-                    id={tea.productId}
-                    name={tea.name}
-                    price={tea.price}
-                    img={tea.imagesLinks[0]}
-                    weight={100}
-                  />
-                ) : (
-                  <HorizontalTeaCard
-                    id={tea.productId}
-                    name={tea.name}
-                    price={tea.price}
-                    img={tea.imagesLinks[0]}
-                    desc={tea.description}
-                  />
-                )}
-              </div>
-            ))}
+          <div className={styles.loaderWrapper}>
+            {loading && <Loader />}
+            <div
+              className={`${styles.wrapper} ${loading ? styles.loading : ""}`}
+            >
+              {filteredTeas.length === 0 && isFiltered ? (
+                <TeaListEmpty />
+              ) : (
+                teasForCurrentPage.map((tea: ITea) => (
+                  <div key={tea.name} className={styles.teaCard}>
+                    {isVertical ? (
+                      <VerticalTeaCard
+                        id={tea.productId}
+                        name={tea.name}
+                        price={tea.price}
+                        img={tea.imagesLinks[0]}
+                        weight={100}
+                      />
+                    ) : (
+                      <HorizontalTeaCard
+                        id={tea.productId}
+                        name={tea.name}
+                        price={tea.price}
+                        img={tea.imagesLinks[0]}
+                        desc={tea.description}
+                        weight={100}
+                      />
+                    )}
+                  </div>
+                ))
+              )}
+            </div>
           </div>
         </CSSTransition>
       </div>
     );
   };
-  return (
+  return filteredTeas.length === 0 && isFiltered ? (
+    <TeaListEmpty />
+  ) : (
     <div>
       {renderTeasForCurrentPage()}
       {

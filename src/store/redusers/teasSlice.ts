@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ITea, TeasState } from "../../models/ITea";
-import { fetchTeas } from "./fetchTeas";
+import { fetchFilteredByPriceTeas, fetchTeas } from "./fetchTeas";
 
 const initialState: TeasState = {
   teas: [],
@@ -52,20 +52,6 @@ const teasSlice = createSlice({
       }
       return newState;
     },
-    showFilteredByPriceTeas: (
-      state,
-      action: PayloadAction<[number, number]>
-    ) => {
-      const [minPrice, maxPrice] = action.payload;
-      const filteredTeas = state.teas.filter(
-        (tea) => tea.price >= minPrice && tea.price <= maxPrice
-      );
-
-      return {
-        ...state,
-        filteredTeas,
-      };
-    },
 
     resetFilters: (state) => {
       state.filteredTeas = [];
@@ -89,6 +75,22 @@ const teasSlice = createSlice({
         } else {
           state.error = "Неизвестная ошибка";
         }
+      })
+      .addCase(fetchFilteredByPriceTeas.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = "";
+        state.filteredTeas = action.payload;
+      })
+      .addCase(fetchFilteredByPriceTeas.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchFilteredByPriceTeas.rejected, (state, action) => {
+        state.isLoading = false;
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "Неизвестная ошибка";
+        }
       });
   },
 });
@@ -100,7 +102,6 @@ export const {
   setLowCostTeas,
   setHighCostTeas,
   showFilteredByCategoryTeas,
-  showFilteredByPriceTeas,
   resetFilters,
 } = teasSlice.actions;
 

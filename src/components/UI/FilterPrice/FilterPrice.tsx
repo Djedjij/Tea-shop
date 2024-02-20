@@ -2,7 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import styles from "./FilterPrice.module.scss";
 import GreyButton from "../Buttons/GreyButton/GreyButton";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
-import { showFilteredByPriceTeas } from "../../../store/redusers/teasSlice";
+import { fetchFilteredByPriceTeas } from "../../../store/redusers/fetchTeas";
 
 const FilterPrice = () => {
   const dispatch = useAppDispatch();
@@ -83,7 +83,12 @@ const FilterPrice = () => {
         <GreyButton
           text="Отфильтровать"
           onClick={() =>
-            dispatch(showFilteredByPriceTeas([slider1Value, slider2Value]))
+            dispatch(
+              fetchFilteredByPriceTeas({
+                min_price: slider1Value.toString(),
+                max_price: slider2Value.toString(),
+              })
+            )
           }
         />
       </div>

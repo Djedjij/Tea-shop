@@ -4,11 +4,13 @@ import GridButtons from "../../../UI/Buttons/GridButtons/GridButton";
 import Select from "../../../UI/Select/Select";
 import { CSSTransition } from "react-transition-group";
 import TeaList from "../TeaList/TeaList";
+import { useAppSelector } from "../../../../hooks/hooks";
+import ErrorMessage from "../../../Error/ErrorMessage";
 
 const ShopTea: React.FC = () => {
   const [isVertical, setIsVertical] = useState<boolean>(true);
   const [isRendered, setIsRendered] = useState<boolean>(true);
-
+  const error = useAppSelector((state) => state.teas.error);
   const upRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (upRef.current) {
@@ -52,7 +54,14 @@ const ShopTea: React.FC = () => {
           exitActive: styles.CardExitActive,
         }}
       >
-        <TeaList isVertical={isVertical} renderTeaList={renderTeaList} />
+        {error ? (
+          <ErrorMessage
+            message="Произошла ошибка. Попробуйте позже"
+            showImg={true}
+          />
+        ) : (
+          <TeaList isVertical={isVertical} renderTeaList={renderTeaList} />
+        )}
       </CSSTransition>
     </div>
   );

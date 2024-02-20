@@ -14,18 +14,31 @@
   margin-bottom: 20px;
 }
 
-.wrapper li {
+.category {
   @include priceStyle;
   cursor: pointer;
   transition: color 0.3s ease;
   margin-top: 10px;
   list-style-type: none;
 }
-.wrapper li::before {
+.categoryActive {
+  @include priceStyle;
+  color: App.$greyButtonColor;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  margin-top: 10px;
+  list-style-type: none;
+}
+.categoryActive::before {
   color: App.$greenButtonColor; /* Цвет маркера */
   content: "▪"; /* Сам маркер */
   padding-right: 10px;
 }
-.wrapper li:hover {
+.category::before {
+  color: App.$greenButtonColor; /* Цвет маркера */
+  content: "▪"; /* Сам маркер */
+  padding-right: 10px;
+}
+.category:hover {
   color: App.$greyButtonColor;
 }
