@@ -1,32 +1,25 @@
 import styles from "./CounterInput.module.scss";
 import { shopCartAPI } from "../../../services/shopCartService";
-import { useEffect, useState } from "react";
-import { CSSTransition } from "react-transition-group";
+import { useAppDispatch } from "../../../hooks/hooks";
+import { setError } from "../../../store/redusers/errorSlice";
+
 interface ICounterInputProps {
   weight: number;
   id: number;
 }
 
 const CounterInput: React.FC<ICounterInputProps> = (props) => {
-  const [localError, setLocalError] = useState(false);
+  const dispatch = useAppDispatch();
   const [changeWeightTea, { isError: createError }] =
     shopCartAPI.useChangeWeightTeaMutation();
-  useEffect(() => {
-    setLocalError(false);
-    if (createError) {
-      setLocalError(true);
-      const timerId = setTimeout(() => {
-        if (createError) {
-          setLocalError(false);
-        }
-      }, 300);
-      return () => clearTimeout(timerId);
-    }
-  }, [createError]);
 
-  const quantityIncrement = () => {
-    changeWeightTea({ weight: 100, id: props.id });
+  const quantityIncrement = async () => {
+    await changeWeightTea({ weight: 100, id: props.id });
+    if (createError) {
+      dispatch(setError("Большего количества нет на складе"));
+    }
   };
+
   const quantityDecrement = () => {
     if (props.weight > 100) {
       changeWeightTea({ weight: -100, id: props.id });
@@ -57,19 +50,6 @@ const CounterInput: React.FC<ICounterInputProps> = (props) => {
           +
         </div>
       </div>
-      <CSSTransition
-        in={localError}
-        timeout={300}
-        classNames={{
-          enter: styles.textEnter,
-          enterActive: styles.textEnterActive,
-          exit: styles.textExit,
-          exitActive: styles.textExitActive,
-        }}
-        unmountOnExit
-      >
-        <p className={styles.errorMessage}>Большего количества нет на складе</p>
-      </CSSTransition>
     </div>
   );
 };

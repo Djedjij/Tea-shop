@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import LocatePanel from "../../UI/LocatePahel/LocatePanel";
 import { Link } from "react-router-dom";
-
 import CounterInput from "../../UI/Inputs/CounterInput";
 import DeleteButton from "../../UI/Buttons/DeleteButton/DeleteButton";
 import styles from "./ShopCart.module.scss";
 import GreenButton from "../../UI/Buttons/GreenButton/GreenButton";
 import { shopCartAPI } from "../../../services/shopCartService";
 import Loader from "../../UI/Loader/Loader";
+import ErrorMessage from "../../Error/ErrorMessage";
 
 const ShopCart = () => {
   const [isEmpty, setIsEmpty] = useState(false);
@@ -15,6 +15,7 @@ const ShopCart = () => {
     data: shopCart,
     isLoading,
     isFetching,
+    isError,
   } = shopCartAPI.useFetchShopCartQuery();
   const [deleteTea] = shopCartAPI.useDeleteTeaMutation();
   const [clearShopCart] = shopCartAPI.useClearShopCartMutation();
@@ -27,6 +28,14 @@ const ShopCart = () => {
     deleteTea(id);
   };
 
+  if (isError) {
+    return (
+      <ErrorMessage
+        message="Произошла ошибка. Попробуйте позже"
+        showImg={true}
+      />
+    );
+  }
   return (
     <div>
       <LocatePanel />

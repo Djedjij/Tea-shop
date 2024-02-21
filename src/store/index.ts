@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import teasReduser from "./redusers/teasSlice";
-import shopCardReduser from "./redusers/shopCardSlice";
+import teasReducer from "./redusers/teasSlice";
+import shopCardReducer from "./redusers/shopCardSlice";
 import { shopCartAPI } from "../services/shopCartService";
-
+import errorReducer from "./redusers/errorSlice";
 const store = configureStore({
   reducer: {
-    teas: teasReduser,
-    shopCard: shopCardReduser,
+    teas: teasReducer,
+    shopCard: shopCardReducer,
+    error: errorReducer,
     [shopCartAPI.reducerPath]: shopCartAPI.reducer,
   },
   middleware: (getDefaultMiddleware) =>

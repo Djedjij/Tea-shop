@@ -7,6 +7,7 @@ import DropHeader from "./components/UI/DropHeader/DropHeader";
 import ButtonUp from "./components/UI/Buttons/ButtonUp/ButtonUp";
 import { Route, Routes } from "react-router-dom";
 import { routes } from "./utils/routes";
+import ModalError from "./components/Error/ModalError";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         ))}
       </Routes>
       <PanelButtons />
+      <ModalError />
       <Footer />
       <ButtonUp />
     </div>
