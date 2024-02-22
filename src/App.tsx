@@ -8,6 +8,8 @@ import ButtonUp from "./components/UI/Buttons/ButtonUp/ButtonUp";
 import { Route, Routes } from "react-router-dom";
 import { routes } from "./utils/routes";
 import ModalError from "./components/Error/ModalError";
+import AuthInput from "./components/UI/Inputs/AuthInput/AuthInput";
+import LoginInput from "./components/UI/Inputs/AuthInput/LoginInput";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
       <ModalError />
       <Footer />
       <ButtonUp />
+      <AuthInput />
+      <LoginInput />
     </div>
   );
 }
