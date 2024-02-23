@@ -1,0 +1,23 @@
+@use "../../../App.scss" as App;
+@import "../../../App.scss";
+
+.wrapper {
+  @include wrapper-1170px;
+}
+.inputEnter {
+  opacity: 0;
+}
+
+.inputEnterActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.inputExit {
+  opacity: 0;
+}
+
+.inputExitActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}

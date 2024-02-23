@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 }
+*:focus {
+  outline: none;
+}
 
 $greyButtonColor: #c2b698;
 $greenButtonColor: #bcdf00;

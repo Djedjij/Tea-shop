@@ -93,12 +93,12 @@ const PanelButton = () => {
           }
           onMouseEnter={handleMouseEnterUserCard}
           onMouseLeave={handleMouseLeaveUserCard}
-          to={""}
+          to={"/account"}
         >
           <img
             className={styles.panelButtonUserImg}
             src="/images/icons/user.svg"
-            alt="shopping-card"
+            alt="user"
           />
         </Link>
       </div>

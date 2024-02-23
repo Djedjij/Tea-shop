@@ -2,6 +2,7 @@ import { FunctionComponent } from "react";
 import Main from "../components/pages/Main/Main";
 import Shop from "../components/pages/Shop/Shop";
 import ShopCart from "../components/pages/ShopCart/ShopCart";
+import Account from "../components/pages/Account/Account";
 
 interface IMainRoute {
   name: string;
@@ -38,11 +39,6 @@ export const accountRoute: IMainRoute = {
   path: "/account",
 };
 
-// export const shopCartRoute: IMainRoute = {
-//   name: "Корзина",
-//   path: "/shopCart",
-// };
-
 export const mainRoutes: IMainRoute[] = [
   mainRoute,
   aboutRoute,
@@ -73,5 +69,10 @@ export const routes: IRoute[] = [
     path: "/shopCart",
     name: "Корзина",
     Component: ShopCart,
+  },
+  {
+    path: "/account",
+    name: "Аккаунт",
+    Component: Account,
   },
 ];
