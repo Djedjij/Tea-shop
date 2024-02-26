@@ -4,6 +4,7 @@ import shopCardReducer from "./redusers/shopCardSlice";
 import { shopCartAPI } from "../services/shopCartService";
 import errorReducer from "./redusers/errorSlice";
 import userReducer from "./redusers/userSlice";
+import { teaAPI } from "../services/teaService";
 const store = configureStore({
   reducer: {
     teas: teasReducer,
@@ -11,9 +12,10 @@ const store = configureStore({
     error: errorReducer,
     user: userReducer,
     [shopCartAPI.reducerPath]: shopCartAPI.reducer,
+    [teaAPI.reducerPath]: teaAPI.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(shopCartAPI.middleware),
+    getDefaultMiddleware().concat(shopCartAPI.middleware, teaAPI.middleware),
 });
 
 export default store;

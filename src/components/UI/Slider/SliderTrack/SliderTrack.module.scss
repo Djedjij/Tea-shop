@@ -1,0 +1,19 @@
+@use "../../../../App.scss" as App;
+@import "../../../../App.scss";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  height: 300px;
+}
+.window {
+  width: 100%;
+  height: 100%;
+}
+.border {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 2px solid App.$greenButtonColor;
+}

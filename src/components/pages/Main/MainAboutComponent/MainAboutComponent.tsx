@@ -37,7 +37,7 @@ const MainAboutComponent: React.FC = () => {
             {historyAndAwards.map((button) => (
               <AboutButtons
                 key={button.year}
-                year={button.year}
+                text={button.year}
                 onClick={() => handleButtonClick(button.id)}
                 className={button.id === activeButton ? false : true}
               />

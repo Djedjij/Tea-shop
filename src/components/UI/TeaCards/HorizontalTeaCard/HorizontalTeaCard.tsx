@@ -3,6 +3,7 @@ import styles from "./HorizontalTeaCard.module.scss";
 import GreyButton from "../../Buttons/GreyButton/GreyButton";
 import { CSSTransition } from "react-transition-group";
 import { shopCartAPI } from "../../../../services/shopCartService";
+import { Link } from "react-router-dom";
 interface HorizontalTeaCardProps {
   id: number;
   name: string;
@@ -44,7 +45,7 @@ const HorizontalTeaCard: React.FC<HorizontalTeaCardProps> = (props) => {
     >
       <img src={props.img} alt={props.name} />
       <div className={styles.description}>
-        <h3>{props.name}</h3>
+        <Link to={`/shop/${props.id}`}>{props.name}</Link>
         <CSSTransition
           in={textVisible}
           timeout={300}

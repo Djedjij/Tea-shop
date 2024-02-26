@@ -42,7 +42,7 @@
   user-select: none;
   background-color: App.$greyBackgroundColor;
   opacity: 0.6;
-  pointer-events: none;
+  // pointer-events: none;
 }
 .errorMessage {
   color: App.$redColor;

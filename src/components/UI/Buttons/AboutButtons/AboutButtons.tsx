@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./AboutButtons.module.scss";
 
 interface AboutButtonProps {
-  year: string;
+  text: string;
   className: boolean;
   onClick: () => void;
 }
@@ -15,7 +15,7 @@ const AboutButtons: React.FC<AboutButtonProps> = (props) => {
         props.className ? styles.aboutButton : styles.aboutButtonActive
       }
     >
-      {props.year}
+      {props.text}
     </button>
   );
 };

@@ -1,0 +1,115 @@
+@use "../../../App.scss" as App;
+@import "../../../App.scss";
+
+.wrapper {
+  @include wrapper-1170px;
+}
+.teaWrapper {
+  margin-top: 50px;
+  display: flex;
+  background-color: App.$greyBackgroundColor;
+  margin-bottom: 50px;
+}
+.teaWrapper img {
+  max-width: 300px;
+}
+.description {
+  margin-top: 65px;
+}
+.description h3 {
+  @include nameh3;
+}
+.description h5 {
+  @include nameh3;
+  margin-top: 5px;
+  font-size: 15px;
+  color: #c2bfbf;
+}
+.description a {
+  text-decoration: none;
+  color: App.$greyButtonColor;
+  transition: color 0.3s ease;
+}
+.description a:hover {
+  color: App.$greenButtonColor;
+}
+.description p {
+  margin-top: 20px;
+  font-family: App.$OpenSansFont;
+  font-size: 15px;
+  color: App.$priceColor;
+  width: 90%;
+}
+.shopButton {
+  margin-top: 20px;
+}
+.aboutButton {
+  position: relative;
+  padding: 5px 10px;
+  border: none;
+  color: App.$greenButtonColor;
+  background-color: white;
+  cursor: pointer;
+  font-size: 1.867em;
+  font-family: App.$QuestrialFont;
+  margin-right: 50px;
+}
+
+.aboutButtonActive {
+  position: relative;
+  padding: 5px 10px;
+  border: none;
+  background-color: App.$greenButtonColor;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.867em;
+  cursor: pointer;
+  font-family: App.$QuestrialFont;
+  margin-right: 50px;
+}
+
+.aboutButtonActive:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: App.$greenButtonColor transparent transparent transparent;
+}
+
+.descriptionBlock {
+  margin-top: 20px;
+  background-color: App.$greyBackgroundColor;
+  padding: 30px;
+  margin-bottom: 50px;
+}
+.descriptionBlock h3 {
+  font-size: 1.625em;
+  color: App.$blackButtonColor;
+  font-weight: 400;
+  font-family: "Questrial", sans-serif;
+  line-height: 1.3em;
+}
+.descriptionBlock p {
+  margin-top: 10px;
+  font-family: "Open-sans", sans-serif;
+  font-size: 15px;
+  color: App.$priceColor;
+}
+.similar h2 {
+  font-size: 1.887em;
+  color: App.$blackButtonColor;
+  font-weight: 400;
+  font-family: "Questrial", sans-serif;
+  line-height: 1.3em;
+}
+.similarTeas {
+  margin-top: 30px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}

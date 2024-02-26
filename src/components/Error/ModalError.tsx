@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import styles from "./ModalError.module.scss";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { setError } from "../../store/redusers/errorSlice";
+import { setModalError } from "../../store/redusers/errorSlice";
 
 const ModalError = () => {
   const dispatch = useAppDispatch();
@@ -9,7 +9,7 @@ const ModalError = () => {
   const [showError, setShowError] = useState<string>("-100px");
 
   const handleDispatch = useCallback(() => {
-    dispatch(setError(""));
+    dispatch(setModalError(""));
   }, [dispatch]);
 
   useEffect(() => {

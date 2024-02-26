@@ -82,6 +82,7 @@ const AuthInput: React.FC<AuthInputProps> = (props) => {
           placeholder="Email*"
           value={email}
           onFocus={() => setEmailError("")}
+          // onBlur={() => validateEmail("")}
           onChange={(e) => setEmail(e.target.value)}
         />
         {emailError ? <p className={styles.error}>{emailError}</p> : ""}

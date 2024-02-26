@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./VerticalTeaCard.module.scss";
 import GreyButton from "../../Buttons/GreyButton/GreyButton";
 import { shopCartAPI } from "../../../../services/shopCartService";
+import { Link } from "react-router-dom";
 
 interface VerticalTeaCardProps {
   id: number;
@@ -21,7 +22,7 @@ const VerticalTeaCard: React.FC<VerticalTeaCardProps> = (props) => {
   return (
     <div className={styles.verticalCard}>
       <img src={props.img} alt={props.name} />
-      <h3>{props.name}</h3>
+      <Link to={`/shop/${props.id}`}>{props.name}</Link>
       <div className={styles.price}>
         <GreyButton
           onClick={() => addInShopCard(props.id, props.weight)}

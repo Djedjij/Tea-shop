@@ -8,11 +8,11 @@ const errorSlice = createSlice({
   name: "error",
   initialState,
   reducers: {
-    setError: (state, action: PayloadAction<string>) => {
+    setModalError: (state, action: PayloadAction<string>) => {
       state.message = action.payload;
     },
   },
 });
 
-export const { setError } = errorSlice.actions;
+export const { setModalError } = errorSlice.actions;
 export default errorSlice.reducer;

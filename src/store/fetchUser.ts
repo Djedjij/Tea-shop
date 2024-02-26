@@ -13,19 +13,7 @@ export const auth = createAsyncThunk(
           headers: { cart_id: localStorage.getItem("uuid") || "" },
         }
       );
-      if (response.data.accessToken) {
-        localStorage.setItem("token", response.data.accessToken);
-      }
-      const token1 = document.cookie.replace(
-        /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-        "$1"
-      );
 
-      if (token1) {
-        console.log("Токен найден в cookie:", token1);
-      } else {
-        console.log("Токен не найден в cookie");
-      }
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue("Ошибка при регистрации");

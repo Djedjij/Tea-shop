@@ -68,7 +68,7 @@ const ShopCart = () => {
                   <div key={tea.id} className={styles.tea}>
                     <div className={styles.nameAndImg}>
                       <img src={tea.imagesLink} alt={tea.name} />
-                      <Link className={styles.teaName} to={""}>
+                      <Link className={styles.teaName} to={`/shop/${tea.id}`}>
                         {tea.name}
                       </Link>
                     </div>

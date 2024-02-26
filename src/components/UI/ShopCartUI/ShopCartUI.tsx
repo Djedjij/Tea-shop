@@ -44,7 +44,10 @@ const ShoppingCardUI: React.FC = () => {
                   <div className={styles.teaContent}>
                     <img src={tea.imagesLink} alt={tea.name} />
                     <div className={styles.teaText}>
-                      <Link className={styles.teaTextLink} to="/">
+                      <Link
+                        className={styles.teaTextLink}
+                        to={`/shop/${tea.id}`}
+                      >
                         {tea.name}
                       </Link>
                       <div className={styles.counter}>

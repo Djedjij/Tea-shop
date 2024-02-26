@@ -8,6 +8,7 @@ import ButtonUp from "./components/UI/Buttons/ButtonUp/ButtonUp";
 import { Route, Routes } from "react-router-dom";
 import { routes } from "./utils/routes";
 import ModalError from "./components/Error/ModalError";
+import TeaPage from "./components/pages/TeaPage/TeaPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             element={<route.Component />}
           />
         ))}
+        <Route path="/shop/:teaId" element={<TeaPage />} />
       </Routes>
       <PanelButtons />
       <ModalError />

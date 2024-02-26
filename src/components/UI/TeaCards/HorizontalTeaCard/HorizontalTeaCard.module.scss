@@ -10,7 +10,17 @@
   overflow: hidden;
   transition: max-height 1.5s;
 }
-
+.horizontalCard a {
+  @include nameh3;
+  font-size: 20px;
+  padding: 5px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.horizontalCard a:hover {
+  color: App.$greyButtonColor;
+}
 .enabled {
   max-height: 1000px;
   transition: max-height 1.5s;

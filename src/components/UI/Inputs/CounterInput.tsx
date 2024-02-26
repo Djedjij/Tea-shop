@@ -1,7 +1,8 @@
 import styles from "./CounterInput.module.scss";
 import { shopCartAPI } from "../../../services/shopCartService";
 import { useAppDispatch } from "../../../hooks/hooks";
-import { setError } from "../../../store/redusers/errorSlice";
+import { setModalError } from "../../../store/redusers/errorSlice";
+import { useEffect } from "react";
 
 interface ICounterInputProps {
   weight: number;
@@ -10,14 +11,18 @@ interface ICounterInputProps {
 
 const CounterInput: React.FC<ICounterInputProps> = (props) => {
   const dispatch = useAppDispatch();
+
   const [changeWeightTea, { isError: createError }] =
     shopCartAPI.useChangeWeightTeaMutation();
+  console.log(createError);
 
+  useEffect(() => {
+    if (createError) {
+      dispatch(setModalError("Большего количества нет на складе"));
+    }
+  }, [createError, dispatch]);
   const quantityIncrement = async () => {
     await changeWeightTea({ weight: 100, id: props.id });
-    if (createError) {
-      dispatch(setError("Большего количества нет на складе"));
-    }
   };
 
   const quantityDecrement = () => {

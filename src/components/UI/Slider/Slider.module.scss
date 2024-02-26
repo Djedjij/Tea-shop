@@ -1,0 +1,28 @@
+@use "../../../App.scss" as App;
+@import "../../../App.scss";
+
+.mainContainer {
+  width: 450px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+}
+.window {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: red;
+}
+.allItems {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  transition: translate;
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+}
+span {
+  cursor: pointer;
+}

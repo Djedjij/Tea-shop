@@ -57,6 +57,7 @@ const LoginInput: React.FC<LoginInputProps> = (props) => {
           placeholder="Email*"
           value={email}
           onFocus={() => setEmailError("")}
+          // onBlur={() => validateEmail("")}
           onChange={(e) => {
             setEmail(e.target.value);
           }}

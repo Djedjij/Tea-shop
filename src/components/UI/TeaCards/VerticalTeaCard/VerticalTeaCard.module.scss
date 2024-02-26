@@ -16,11 +16,16 @@
   max-height: 200px;
   border-radius: 50%;
 }
-.verticalCard h3 {
+.verticalCard a {
   @include nameh3;
   font-size: 20px;
   padding: 5px;
   margin-bottom: 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.verticalCard a:hover {
+  color: App.$greyButtonColor;
 }
 .verticalCard p {
   @include priceStyle;
