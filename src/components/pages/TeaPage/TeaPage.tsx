@@ -7,8 +7,6 @@ import LocatePanel from "../../UI/LocatePahel/LocatePanel";
 import { useAppSelector } from "../../../hooks/hooks";
 import VerticalTeaCard from "../../UI/TeaCards/VerticalTeaCard/VerticalTeaCard";
 
-import Carousel from "../../UI/Slider/Carousel";
-
 const TeaPage = () => {
   const { teaId } = useParams();
   const teas = useAppSelector((state) => state.teas.teas);
@@ -60,7 +58,6 @@ const TeaPage = () => {
             </div>
           </div>
         </div>
-        <Carousel images={tea.imagesLinks} />
       </div>
     );
   } else {

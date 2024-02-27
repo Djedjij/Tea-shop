@@ -1,32 +1,47 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./SliderTrack.module.scss";
-const SliderTrack = (props: any) => {
-  const maxHeight = 300;
-  const [borderCurrent, setBorderCurrent] = useState(0);
-  const handleBorder = () => {
-    //
-  };
+
+interface ISliderTrackProps {
+  images: string[];
+  pageHeight: number;
+  borderCurrent: number;
+  heightOneElement: number;
+  handleBorderTranslate: (index: number) => void;
+}
+const SliderTrack: React.FC<ISliderTrackProps> = ({
+  images,
+  pageHeight,
+  borderCurrent,
+  handleBorderTranslate,
+  heightOneElement,
+}) => {
   return (
-    <div className={styles.wrapper}>
-      <div
-        style={{
-          maxHeight: `${maxHeight / props.images.length - 4}px`,
-          maxWidth: `${maxHeight / props.images.length - 4}px`,
-          transform: `translateY(${borderCurrent}px)`,
-        }}
-        className={styles.border}
-      ></div>
-      {props.images.map((img: string) => (
-        <img
-          key={img}
+    <div>
+      <div style={{ height: pageHeight }} className={styles.wrapper}>
+        <span
           style={{
-            maxHeight: `${maxHeight / props.images.length - 4}px`,
-            maxWidth: `${maxHeight / props.images.length - 4}px`,
+            width: `${heightOneElement - 4}px`,
+            height: `${heightOneElement - 8}px`,
+            transform: `translateY(${borderCurrent}px)`,
           }}
-          src={img}
-          alt=""
-        />
-      ))}
+          className={styles.border}
+        ></span>
+        {images.map((img: string, index: number) => (
+          <img
+            className={styles.sliderTrackImg}
+            key={img}
+            style={{
+              maxHeight: `${heightOneElement - 4}px`,
+              maxWidth: `${heightOneElement - 4}px`,
+              marginTop: "2px",
+              marginBottom: "2px",
+            }}
+            onClick={() => handleBorderTranslate(index)}
+            src={img}
+            alt=""
+          />
+        ))}
+      </div>
     </div>
   );
 };

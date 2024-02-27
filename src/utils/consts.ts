@@ -33,7 +33,11 @@ export const instagramImages: InstagramImages[] = [
     img: "/images/inst-images/post4.jpg",
   },
 ];
-
+export const images = [
+  "/images/inst-images/post1.jpg",
+  "/images/inst-images/post2.jpg",
+  "/images/inst-images/post2.jpg",
+];
 export const popularTea: PopularTea[] = [
   {
     name: "Генмайча",

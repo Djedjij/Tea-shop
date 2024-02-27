@@ -1,37 +1,33 @@
 import React, { useState } from "react";
 import styles from "./Slider.module.scss";
 
-const Slider = (props: any) => {
-  const settings = {
-    pageWidth: 300,
-  };
-  const [offset, setOffset] = useState(0);
-  const handleLeftClick = () => {
-    setOffset((currentOffset) => {
-      const newOffset = currentOffset + settings.pageWidth;
-      return Math.min(newOffset, 0);
-    });
-  };
-  const handleRightClick = () => {
-    setOffset((currentOffset) => {
-      const newOffset = currentOffset - settings.pageWidth;
-      const maxOffset = -(settings.pageWidth * (props.images.length - 1));
-      return Math.max(newOffset, maxOffset);
-    });
-  };
+interface ISliderProps {
+  images: string[];
+  pageWidth: number;
+  pageHeight: number;
+  offset: number;
+}
+const Slider: React.FC<ISliderProps> = ({
+  images,
+  pageWidth,
+  pageHeight,
+  offset,
+}) => {
   return (
-    <div className={styles.mainContainer}>
-      <span onClick={handleLeftClick}>{"<"}</span>
+    <div
+      className={styles.mainContainer}
+      style={{ height: `${pageHeight}px`, width: `${pageWidth}px` }}
+    >
       <div className={styles.window}>
         <div
           className={styles.allItems}
-          style={{ transform: `translateY(${offset}px)` }}
+          style={{ transform: `translateY(${-offset}px)` }}
         >
-          {props.images.map((img: string) => (
+          {images.map((img: string) => (
             <img
               style={{
-                minHeight: `${settings.pageWidth}px`,
-                maxHeight: `${settings.pageWidth}px`,
+                minHeight: `${pageHeight}px`,
+                maxHeight: `${pageWidth}px`,
               }}
               src={img}
               alt=""
@@ -39,7 +35,6 @@ const Slider = (props: any) => {
           ))}
         </div>
       </div>
-      <span onClick={handleRightClick}>{">"}</span>
     </div>
   );
 };

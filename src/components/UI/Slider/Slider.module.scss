@@ -2,16 +2,14 @@
 @import "../../../App.scss";
 
 .mainContainer {
-  width: 450px;
-  height: 300px;
   display: flex;
   align-items: center;
+  margin-left: 10px;
 }
 .window {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background-color: red;
 }
 .allItems {
   width: 100%;
