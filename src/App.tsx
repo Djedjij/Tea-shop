@@ -9,8 +9,6 @@ import { Route, Routes } from "react-router-dom";
 import { routes } from "./utils/routes";
 import ModalError from "./components/Error/ModalError";
 import TeaPage from "./components/pages/TeaPage/TeaPage";
-import Carousel from "./components/UI/Slider/Carousel";
-import { images } from "./utils/consts";
 
 function App() {
   return (
@@ -31,7 +29,6 @@ function App() {
       <PanelButtons />
       <ModalError />
       <Footer />
-      <Carousel pageWidth={400} pageHeight={400} images={images} />
       <ButtonUp />
     </div>
   );

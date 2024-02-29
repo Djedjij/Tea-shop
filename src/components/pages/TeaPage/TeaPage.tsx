@@ -6,6 +6,8 @@ import GreyButton from "../../UI/Buttons/GreyButton/GreyButton";
 import LocatePanel from "../../UI/LocatePahel/LocatePanel";
 import { useAppSelector } from "../../../hooks/hooks";
 import VerticalTeaCard from "../../UI/TeaCards/VerticalTeaCard/VerticalTeaCard";
+import Carousel from "../../UI/Slider/Carousel";
+import Rating from "../../UI/Rating/Rating";
 
 const TeaPage = () => {
   const { teaId } = useParams();
@@ -22,7 +24,11 @@ const TeaPage = () => {
         <LocatePanel />
         <div className={styles.wrapper}>
           <div className={styles.teaWrapper}>
-            <img src={tea.imagesLinks[0]} alt={tea.name} />
+            <Carousel
+              images={tea.imagesLinks}
+              pageWidth={200}
+              pageHeight={200}
+            />
             <div className={styles.description}>
               <h3>{tea.name}</h3>
               <h5>
@@ -32,6 +38,7 @@ const TeaPage = () => {
               <p>{tea.effect}</p>
               <div className={styles.shopButton}>
                 <GreyButton text="В корзину" />
+                <Rating />
               </div>
             </div>
           </div>
@@ -53,6 +60,7 @@ const TeaPage = () => {
                   img={el.imagesLinks[0]}
                   price={el.price}
                   weight={100}
+                  key={el.productId}
                 />
               ))}
             </div>

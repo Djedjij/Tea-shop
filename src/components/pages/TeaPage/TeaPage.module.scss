@@ -8,13 +8,15 @@
   margin-top: 50px;
   display: flex;
   background-color: App.$greyBackgroundColor;
+  padding: 50px;
+  align-items: center;
   margin-bottom: 50px;
 }
 .teaWrapper img {
   max-width: 300px;
 }
 .description {
-  margin-top: 65px;
+  margin-left: 30px;
 }
 .description h3 {
   @include nameh3;
@@ -41,6 +43,8 @@
   width: 90%;
 }
 .shopButton {
+  display: flex;
+  align-items: center;
   margin-top: 20px;
 }
 .aboutButton {
@@ -112,4 +116,5 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
+  margin-bottom: 50px;
 }

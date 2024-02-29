@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Slider.module.scss";
 
 interface ISliderProps {
@@ -31,6 +31,7 @@ const Slider: React.FC<ISliderProps> = ({
               }}
               src={img}
               alt=""
+              key={img}
             />
           ))}
         </div>

@@ -14,7 +14,6 @@ const CounterInput: React.FC<ICounterInputProps> = (props) => {
 
   const [changeWeightTea, { isError: createError }] =
     shopCartAPI.useChangeWeightTeaMutation();
-  console.log(createError);
 
   useEffect(() => {
     if (createError) {
