@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./TeaPage.module.scss";
 import { Link, useParams } from "react-router-dom";
 import { teaAPI } from "../../../services/teaService";
@@ -8,16 +8,34 @@ import { useAppSelector } from "../../../hooks/hooks";
 import VerticalTeaCard from "../../UI/TeaCards/VerticalTeaCard/VerticalTeaCard";
 import Carousel from "../../UI/Slider/Carousel";
 import Rating from "../../UI/Rating/Rating";
+import { ITea } from "../../../models/ITea";
+
+const useSimilarTeas = (teas: ITea[]) => {
+  const [similarTeas, setSimilarTeas] = useState<ITea[]>([]);
+  if (similarTeas.length < 4) {
+    for (let i = 0; i < 4; i++) {
+      if (!similarTeas[i]) {
+        setSimilarTeas((prev) => [
+          ...prev,
+          teas[Math.floor(Math.random() * 10)],
+        ]);
+      }
+    }
+  }
+
+  return similarTeas;
+};
 
 const TeaPage = () => {
   const { teaId } = useParams();
   const teas = useAppSelector((state) => state.teas.teas);
-  const similarTeas = [];
-  for (let i = 0; i < 4; i++) {
-    similarTeas.push(teas[Math.floor(Math.random() * 10)]);
-  }
+
+  const similarTeas = useSimilarTeas(teas);
 
   const { data: tea } = teaAPI.useFetchTeaQuery(String(teaId));
+
+  console.log(similarTeas);
+
   if (tea) {
     return (
       <div>

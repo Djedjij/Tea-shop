@@ -22,9 +22,11 @@ const Rating = () => {
         )
       );
     }
-  }, [errorToken]);
+  }, [errorToken, dispatch]);
   return (
     <div className={styles.rating}>
+      {" "}
+      <h5>Рейтинг: </h5>
       <div className={styles.ratingBody}>
         <div
           className={styles.ratingActive}

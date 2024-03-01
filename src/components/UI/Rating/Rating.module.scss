@@ -4,7 +4,7 @@
 .rating {
   display: flex;
   align-items: flex-end;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 0.75;
   margin-left: 20px;
 }
@@ -30,8 +30,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  //   color: App.$greyButtonColor;
-  color: orange;
+  color: App.$greenButtonColor;
 }
 .ratingItems {
   display: flex;
@@ -48,6 +47,7 @@
   cursor: pointer;
 }
 .ratingValue {
-  font-size: 25px;
+  font-size: 20px;
   margin-left: 10px;
+  color: App.$blackButtonColor;
 }
