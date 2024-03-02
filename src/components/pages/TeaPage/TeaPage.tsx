@@ -9,6 +9,8 @@ import VerticalTeaCard from "../../UI/TeaCards/VerticalTeaCard/VerticalTeaCard";
 import Carousel from "../../UI/Slider/Carousel";
 import Rating from "../../UI/Rating/Rating";
 import { ITea } from "../../../models/ITea";
+import Reviews from "../../UI/Reviews/Reviews";
+import { CSSTransition } from "react-transition-group";
 
 const useSimilarTeas = (teas: ITea[]) => {
   const [similarTeas, setSimilarTeas] = useState<ITea[]>([]);
@@ -27,6 +29,7 @@ const useSimilarTeas = (teas: ITea[]) => {
 };
 
 const TeaPage = () => {
+  const [isDescription, setIsDercription] = useState<boolean>(true);
   const { teaId } = useParams();
   const teas = useAppSelector((state) => state.teas.teas);
 
@@ -61,12 +64,43 @@ const TeaPage = () => {
             </div>
           </div>
           <div className={styles.buttons}>
-            <button className={styles.aboutButtonActive}>Описание</button>
-            <button className={styles.aboutButton}>Отзывы</button>
+            <button
+              className={
+                isDescription ? styles.aboutButtonActive : styles.aboutButton
+              }
+              onClick={() => setIsDercription(true)}
+            >
+              Описание
+            </button>
+            <button
+              className={
+                isDescription ? styles.aboutButton : styles.aboutButtonActive
+              }
+              onClick={() => setIsDercription(false)}
+            >
+              Отзывы (0)
+            </button>
           </div>
-          <div className={styles.descriptionBlock}>
-            <h3>Описание</h3>
-            <p>{tea.description}</p>
+          <div>
+            <CSSTransition
+              in={isDescription}
+              timeout={300}
+              classNames={{
+                enter: styles.descriptionEnter,
+                enterActive: styles.descriptionEnterActive,
+                exit: styles.descriptionExit,
+                exitActive: styles.descriptionExitActive,
+              }}
+            >
+              {isDescription ? (
+                <div className={styles.descriptionBlock}>
+                  <h3>Описание</h3>
+                  <p>{tea.description}</p>
+                </div>
+              ) : (
+                <Reviews />
+              )}
+            </CSSTransition>
           </div>
           <div className={styles.similar}>
             <h2>Попробуйте также</h2>

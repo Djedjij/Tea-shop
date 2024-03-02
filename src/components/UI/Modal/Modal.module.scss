@@ -24,8 +24,8 @@
   padding: 20px;
   border-radius: 12px;
   background-color: white;
-  height: 300px;
-  width: 300px;
+  height: max-content;
+  width: max-content;
   transform: scale(0);
   transition: 0.4s all;
 }

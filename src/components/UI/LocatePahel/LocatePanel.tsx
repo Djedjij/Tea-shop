@@ -5,7 +5,6 @@ import { mainRoute, routes } from "../../../utils/routes";
 const LocatePanel = () => {
   const locate = useLocation();
   const component = routes.find((route) => route.path === locate.pathname);
-  console.log(locate);
 
   return (
     <div className={styles.bigWrapper}>

@@ -14,8 +14,6 @@ const LoginInput: React.FC<LoginInputProps> = (props) => {
   const [passwordError, setPasswordError] = useState("");
 
   const validateEmail = (email: string) => {
-    console.log(email);
-
     if (!email) {
       setEmailError(`Поле "Email" не может быть пустым`);
     } else {

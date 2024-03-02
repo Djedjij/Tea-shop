@@ -42,6 +42,23 @@
   color: App.$priceColor;
   width: 90%;
 }
+.descriptionEnter {
+  opacity: 0;
+}
+
+.descriptionEnterActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.descriptionExit {
+  opacity: 0;
+}
+
+.descriptionExitActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
 .shopButton {
   display: flex;
   align-items: center;

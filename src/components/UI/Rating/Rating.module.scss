@@ -7,14 +7,15 @@
   font-size: 20px;
   line-height: 0.75;
   margin-left: 20px;
+  margin-top: -5px;
 }
 .ratingBody {
   position: relative;
 }
 .ratingBody::before {
-  content: "★★★★★";
+  content: "☆☆☆☆☆";
   display: block;
-  color: #dcdcdc;
+  color: App.$greenButtonColor;
 }
 .ratingActive {
   position: absolute;
