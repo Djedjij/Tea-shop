@@ -6,13 +6,13 @@
   background-color: #262626;
 }
 
-.wrapper a {
+.infoLinks a {
   text-decoration: none;
   color: white;
   transition: opacity 0.3s ease;
   font-size: 14px;
 }
-a:hover {
+.infoLinks a:hover {
   opacity: 0.8;
 }
 
@@ -42,7 +42,7 @@ a:hover {
   font-size: 12px;
   color: white;
 }
-.wrapper img {
+.content img {
   max-width: 24px;
   max-height: 24px;
 }
@@ -57,7 +57,11 @@ a:hover {
   font-size: 12px;
   color: white;
 }
-
+.phoneWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .phone {
   display: flex;
   align-items: center;
@@ -78,4 +82,90 @@ a:hover {
 }
 .arrowImg.active {
   transform: rotate(180deg);
+}
+
+// Cities  Cities  Cities  Cities  Cities
+
+.citiesWrapper {
+  padding: 20px;
+  width: 25vw;
+  height: max-content;
+}
+.citiesWrapper h3 {
+  @include nameh3;
+}
+.inputAndbutton {
+  position: relative;
+  margin-top: 20px;
+}
+.cityInput {
+  width: 20vw;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid App.$greyButtonColor;
+}
+.clearInput {
+  position: absolute;
+  height: 30px;
+  right: 16%;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.citiesinfo p {
+  @include smallText;
+  margin-top: 10px;
+}
+
+.cities {
+  min-height: 200px;
+  max-height: 200px;
+  overflow: auto;
+  margin-top: 20px;
+}
+.cities p {
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cities p:hover {
+  background-color: App.$greyBackgroundColor;
+}
+
+.citiesEmpty {
+  text-align: center;
+}
+.citiesEnter {
+  opacity: 0;
+}
+
+.citiesEnterActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.citiesExit {
+  opacity: 0;
+}
+
+.citiesExitActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+/* Установка ширины скроллбара */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Установка цвета фона скроллбара */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+/* Установка цвета скроллбара */
+::-webkit-scrollbar-thumb {
+  background: App.$greyButtonColor;
+  transition: all 0.3s ease;
+  border-radius: 4px;
 }

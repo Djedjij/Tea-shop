@@ -15,6 +15,29 @@ interface InstagramImages {
   img: string;
 }
 
+export interface Iphones {
+  icon?: string;
+  text: string;
+  link?: string;
+}
+
+export const phones: Iphones[] = [
+  {
+    icon: "/images/icons/iconPhoneWhite.png",
+    text: "375-33-334-75-71",
+  },
+  { icon: "/images/icons/iconPhoneWhite.png", text: "375-44-774-75-20" },
+  {
+    icon: "/images/icons/icon-github.svg",
+    text: "Djedj",
+    link: "https://github.com/Djedjij",
+  },
+  {
+    icon: "/images/icons/icon-github.svg",
+    text: "EnoticSho",
+    link: "https://github.com/EnoticSho",
+  },
+];
 export const instagramImages: InstagramImages[] = [
   {
     name: "photo1",
@@ -114,4 +137,17 @@ export const historyAndAwards = [
     year: "2023",
     text: "Наша компания становится лидером среди производителей чая по устойчивости и социальной ответственности. Ее продукция пользуется высоким спросом, оставаясь органической, этически выращенной, с упаковкой без пластика и с острым фокусом на коммуникации своих достижений покупателям.",
   },
+];
+
+export const cities: string[] = [
+  "Минск",
+  "Могилев",
+  "Брест",
+  "Гродно",
+  "Витебск",
+  "Гомель",
+  "Костюковичи",
+  "Жодино",
+  "Климовичи",
+  "Круглое",
 ];

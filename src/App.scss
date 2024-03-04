@@ -88,6 +88,10 @@ $OpenSansFont: "Open Sans", sans-serif;
   transition: background-color 0.3s ease;
 }
 
+@mixin smallText {
+  font-size: 11px;
+  opacity: 0.6;
+}
 // loader
 
 @mixin loading {
