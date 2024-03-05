@@ -19,6 +19,7 @@ const Main = () => {
     }, 7000);
     return () => clearInterval(interval);
   }, []);
+
   const cardsAnimationX = {
     hidden: {
       x: -200,
@@ -28,7 +29,6 @@ const Main = () => {
       x: 0,
       opacity: 1,
       transition: { delay: custom * 0.8, duration: 0.8 },
-      ease: "easeOut",
     }),
   };
   const cardsAnimationY = {
@@ -40,9 +40,31 @@ const Main = () => {
       y: 0,
       opacity: 1,
       transition: { delay: custom * 0.8, duration: 0.8 },
-      ease: "easeOut",
     }),
   };
+  const cardsAnimationYUp = {
+    hidden: {
+      y: -200,
+      opacity: 0,
+    },
+    visible: (custom: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: { delay: custom * 0.8, duration: 0.8 },
+    }),
+  };
+  const variants = () => {
+    if (currentSlide === 0) {
+      return cardsAnimationX;
+    }
+    if (currentSlide === 1) {
+      return cardsAnimationY;
+    }
+    if (currentSlide === 2) {
+      return cardsAnimationYUp;
+    }
+  };
+
   return (
     <motion.div initial="hidden" animate="visible">
       <div
@@ -53,24 +75,22 @@ const Main = () => {
           <motion.h1
             key={currentSlide}
             custom={1}
-            variants={
-              currentSlide % 2 === 0 ? cardsAnimationX : cardsAnimationY
-            }
+            variants={variants()}
             className={styles.main_slogan}
           >
             {mainSlides[currentSlide].text}
           </motion.h1>
           <motion.h4
             key={currentSlide + 1}
-            variants={
-              currentSlide % 2 === 0 ? cardsAnimationX : cardsAnimationY
-            }
+            variants={variants()}
             custom={2}
             className={styles.little_slogan}
           >
             Тщательно смешан для создания идеального вкуса
           </motion.h4>
-          <GreenButton text="Каталог" link="/shop" />
+          <motion.div key={currentSlide + 2} variants={variants()} custom={3}>
+            <GreenButton text="Каталог" link="/shop" />
+          </motion.div>
         </div>
       </div>
       <MainCards />

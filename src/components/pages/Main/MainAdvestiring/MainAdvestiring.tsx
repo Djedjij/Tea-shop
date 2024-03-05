@@ -13,7 +13,6 @@ const MainAdvestiring = () => {
       x: 0,
       opacity: 1,
       transition: { delay: custom * 0.4, duration: 0.6 },
-      ease: "easeOut",
     }),
   };
   return (
