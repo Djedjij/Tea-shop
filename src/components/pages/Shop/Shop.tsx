@@ -4,7 +4,6 @@ import ShopContent from "./ShopContent/ShopContent";
 import styles from "./Shop.module.scss";
 import ShopTea from "./ShopTea/ShopTea";
 import LocatePanel from "../../UI/LocatePahel/LocatePanel";
-import TeaListEmpty from "./TeaList/TeaListEmpty";
 
 const Shop = () => {
   return (

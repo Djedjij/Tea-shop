@@ -21,6 +21,10 @@ export interface Iphones {
   link?: string;
 }
 
+interface ISlide {
+  img: string;
+  text: string;
+}
 export const phones: Iphones[] = [
   {
     icon: "/images/icons/iconPhoneWhite.png",
@@ -150,4 +154,19 @@ export const cities: string[] = [
   "Жодино",
   "Климовичи",
   "Круглое",
+];
+
+export const mainSlides: ISlide[] = [
+  {
+    img: "/images/main-images/slide1.jpg",
+    text: "Каждый чай собран с любовью.",
+  },
+  {
+    img: "/images/main-images/slide2.jpg",
+    text: "Насыщенный и сбалансированный вкус.",
+  },
+  {
+    img: "/images/main-images/slide3.jpg",
+    text: "Искусство в каждой чашке.",
+  },
 ];

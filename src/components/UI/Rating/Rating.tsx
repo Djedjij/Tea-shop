@@ -23,6 +23,11 @@ const Rating = () => {
       );
     }
   }, [errorToken, dispatch]);
+
+  // Убрать потом
+  setRatingState(ratingState);
+  //
+
   return (
     <div className={styles.rating}>
       {" "}

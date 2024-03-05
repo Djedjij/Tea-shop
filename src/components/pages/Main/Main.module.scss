@@ -3,11 +3,12 @@
 
 .big_wrapper {
   width: 100%;
-  background-image: url("../../../../public/images/main-images/slide1.jpg");
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   height: 757px;
+  transition: all 0.8s ease;
 }
 .wrapper {
   @include wrapper-1170px;
@@ -19,6 +20,7 @@
 }
 .main_slogan {
   @include whiteh1;
+  max-width: 60%;
 }
 .little_slogan {
   @include whiteh4;

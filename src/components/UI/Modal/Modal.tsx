@@ -12,9 +12,9 @@ const Modal: React.FC<IModalProps> = ({
   setActiveModal,
   children,
 }) => {
-  return activeModal ? (
+  return (
     <div
-      className={`${styles.modal} ${activeModal && styles.active}`}
+      className={`${styles.modal} ${activeModal ? styles.active : ""}`}
       onClick={() => setActiveModal(false)}
     >
       <div
@@ -26,7 +26,7 @@ const Modal: React.FC<IModalProps> = ({
         {children}
       </div>
     </div>
-  ) : null;
+  );
 };
 
 export default Modal;

@@ -37,15 +37,10 @@ const TeaList: React.FC<TeaListProps> = ({ isVertical, renderTeaList }) => {
 
   const teas = useAppSelector((state) => state.teas.teas);
   const loading = useAppSelector((state) => state.teas.isLoading);
-
   const filteredTeas = useAppSelector((state) => state.teas.filteredTeas);
   const isFiltered = useAppSelector((state) => state.teas.isFiltered);
   const currentPage = useAppSelector((state) => state.teas.currentPage);
   const itemsPerPage = useAppSelector((state) => state.teas.itemsPerPage);
-
-  useEffect(() => {
-    handleTransition();
-  }, [teas, filteredTeas, isFiltered]);
 
   const [transition, setTransition] = useState<boolean>(false);
   const handleTransition = () => {
@@ -56,6 +51,11 @@ const TeaList: React.FC<TeaListProps> = ({ isVertical, renderTeaList }) => {
       setTransition(true);
     }
   };
+
+  useEffect(() => {
+    handleTransition();
+    // eslint-disable-next-line
+  }, [teas, filteredTeas, isFiltered]);
 
   const paginateButtons = () => {
     const countPages =
