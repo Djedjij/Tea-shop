@@ -1,0 +1,185 @@
+@use "../../../App.scss" as App;
+@import "../../../App.scss";
+
+.buttonIcon {
+  position: fixed;
+  padding: 15px;
+  border-radius: 50%;
+  border: none;
+  bottom: 0;
+  left: 0;
+  margin-left: 50px;
+  margin-bottom: 40px;
+  z-index: 1000;
+  display: flex;
+  cursor: pointer;
+  background-color: App.$greenButtonColor;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.buttonIcon::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 18px solid App.$greenButtonColor;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 2.5s infinite;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
+.chatIcon {
+  width: 30px;
+}
+
+// Chat
+
+.chatWrapper {
+  position: fixed;
+  width: 300px;
+  height: 400px;
+  background-color: white;
+  border-radius: 12px;
+  bottom: 0;
+  margin-bottom: 120px;
+  margin-left: 50px;
+  display: flex;
+  border: 3px solid App.$greenButtonColor;
+  flex-direction: column;
+}
+
+.chatHeader {
+  background-color: App.$greenButtonColor;
+  height: 50px;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chatHeader h5 {
+  margin-left: 10px;
+}
+.crossButton {
+  border: none;
+  background: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.crossButton img {
+  width: 100%;
+  height: 100%;
+}
+//chat-body
+.chat {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  background-image: url("../../../../public/images/chat-background1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: auto;
+  min-height: 300px;
+  padding-bottom: 10px;
+}
+.chat::-webkit-scrollbar {
+  width: 5px;
+  margin-left: 5px;
+}
+
+.chat::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.chat::-webkit-scrollbar-thumb {
+  background: App.$greenButtonColor;
+  cursor: pointer;
+  border-radius: 0px;
+}
+
+.chat::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  cursor: pointer;
+}
+.message {
+  max-width: 70%;
+  font-size: 14px;
+  border: 2px solid App.$greenButtonColor;
+  margin: 10px 0px 0px 10px;
+  padding: 5px;
+  border-radius: 12px;
+  border-bottom-left-radius: 0px;
+  background-color: white;
+  height: max-content;
+  position: relative;
+}
+
+// chat-input
+.chatInput {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-top: 3px solid App.$greenButtonColor;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.chatInput textarea {
+  resize: none;
+  max-width: none;
+  width: 100%;
+  border: none;
+  padding-left: 10px;
+  margin-right: 10px;
+  border-bottom-left-radius: 10px;
+  font-family: App.$QuestrialFont;
+  padding-top: 7px;
+}
+
+.chatInput textarea::-webkit-scrollbar {
+  width: 5px;
+}
+
+.chatInput textarea::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.chatInput textarea::-webkit-scrollbar-thumb {
+  background: App.$greenButtonColor;
+  cursor: pointer;
+}
+
+.chatInput textarea::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  cursor: pointer;
+}
+.buttonInput {
+  right: 0;
+  margin-right: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: max-content;
+  height: max-content;
+}
+.buttonInput img {
+  width: 25px;
+  height: 25px;
+}

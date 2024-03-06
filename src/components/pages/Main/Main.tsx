@@ -18,7 +18,7 @@ const Main = () => {
       setCurrentSlide((prev) => (prev + 1 < mainSlides.length ? prev + 1 : 0));
     }, 7000);
     return () => clearInterval(interval);
-  }, []);
+  });
 
   const cardsAnimationX = {
     hidden: {
@@ -53,6 +53,7 @@ const Main = () => {
       transition: { delay: custom * 0.8, duration: 0.8 },
     }),
   };
+
   const variants = () => {
     if (currentSlide === 0) {
       return cardsAnimationX;

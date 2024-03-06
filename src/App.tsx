@@ -9,6 +9,7 @@ import { Route, Routes } from "react-router-dom";
 import { routes } from "./utils/routes";
 import ModalError from "./components/Error/ModalError";
 import TeaPage from "./components/pages/TeaPage/TeaPage";
+import DialogWindow from "./components/UI/DialogWindow/DialogWindow";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <ModalError />
       <Footer />
       <ButtonUp />
+      <DialogWindow />
     </div>
   );
 }
