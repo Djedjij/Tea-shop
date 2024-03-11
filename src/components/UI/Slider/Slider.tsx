@@ -6,12 +6,14 @@ interface ISliderProps {
   pageWidth: number;
   pageHeight: number;
   offset: number;
+  onClick?: () => void;
 }
 const Slider: React.FC<ISliderProps> = ({
   images,
   pageWidth,
   pageHeight,
   offset,
+  onClick,
 }) => {
   return (
     <div
@@ -32,6 +34,7 @@ const Slider: React.FC<ISliderProps> = ({
               src={img}
               alt=""
               key={img}
+              onClick={() => onClick && onClick()}
             />
           ))}
         </div>

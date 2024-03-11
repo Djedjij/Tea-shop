@@ -1,43 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./TeaPage.module.scss";
 import { Link, useParams } from "react-router-dom";
 import { teaAPI } from "../../../services/teaService";
 import GreyButton from "../../UI/Buttons/GreyButton/GreyButton";
 import LocatePanel from "../../UI/LocatePahel/LocatePanel";
-import { useAppSelector } from "../../../hooks/hooks";
-import VerticalTeaCard from "../../UI/TeaCards/VerticalTeaCard/VerticalTeaCard";
 import Carousel from "../../UI/Slider/Carousel";
 import Rating from "../../UI/Rating/Rating";
-import { ITea } from "../../../models/ITea";
 import Reviews from "../../UI/Reviews/Reviews";
 import { CSSTransition } from "react-transition-group";
-
-const useSimilarTeas = (teas: ITea[]) => {
-  const [similarTeas, setSimilarTeas] = useState<ITea[]>([]);
-  if (similarTeas.length < 4) {
-    for (let i = 0; i < 4; i++) {
-      if (!similarTeas[i]) {
-        setSimilarTeas((prev) => [
-          ...prev,
-          teas[Math.floor(Math.random() * 10)],
-        ]);
-      }
-    }
-  }
-
-  return similarTeas;
-};
+import Modal from "../../UI/Modal/Modal";
+import { shopCartAPI } from "../../../services/shopCartService";
+import GreyButtonDisabled from "../../UI/Buttons/GreyButton/GreyButtonDisabled";
 
 const TeaPage = () => {
-  const [isDescription, setIsDercription] = useState<boolean>(true);
   const { teaId } = useParams();
-  const teas = useAppSelector((state) => state.teas.teas);
-
-  const similarTeas = useSimilarTeas(teas);
-
   const { data: tea } = teaAPI.useFetchTeaQuery(String(teaId));
+  const [postTea] = shopCartAPI.usePostTeaMutation();
+  const { data: shopCart } = shopCartAPI.useFetchShopCartQuery();
+  const [isDescription, setIsDercription] = useState<boolean>(true);
+  const [activeModal, setActiveModal] = useState<boolean>(false);
 
-  console.log(similarTeas);
+  const [inShopCart, setInShopCart] = useState(false);
+  const handleSliderClick = () => {
+    setActiveModal(true);
+  };
+
+  useEffect(() => {
+    setInShopCart(
+      shopCart?.itemsMap.find(
+        (shopCartTea) => shopCartTea.id === tea?.productId
+      )
+        ? true
+        : false
+    );
+  }, [shopCart?.itemsMap, tea?.productId]);
+
+  const addInShopCard = async (id: number, weight: number) => {
+    postTea({ weight, id });
+  };
 
   if (tea) {
     return (
@@ -49,6 +49,7 @@ const TeaPage = () => {
               images={tea.imagesLinks}
               pageWidth={200}
               pageHeight={200}
+              onClick={handleSliderClick}
             />
             <div className={styles.description}>
               <h3>{tea.name}</h3>
@@ -58,7 +59,15 @@ const TeaPage = () => {
               <p>Цена за 100г - {tea.price}р.</p>
               <p>{tea.effect}</p>
               <div className={styles.shopButton}>
-                <GreyButton text="В корзину" />
+                {inShopCart ? (
+                  <GreyButtonDisabled text="В корзине" />
+                ) : (
+                  <GreyButton
+                    text="В корзину"
+                    onClick={() => addInShopCard(tea.productId, 100)}
+                  />
+                )}
+
                 <Rating />
               </div>
             </div>
@@ -95,7 +104,9 @@ const TeaPage = () => {
               {isDescription ? (
                 <div className={styles.descriptionBlock}>
                   <h3>Описание</h3>
-                  <p>{tea.description}</p>
+                  {tea.description.split("\n").map((el, index) => (
+                    <p key={index}>{el}</p>
+                  ))}
                 </div>
               ) : (
                 <Reviews />
@@ -104,20 +115,11 @@ const TeaPage = () => {
           </div>
           <div className={styles.similar}>
             <h2>Попробуйте также</h2>
-            <div className={styles.similarTeas}>
-              {similarTeas.map((el) => (
-                <VerticalTeaCard
-                  id={el.productId}
-                  name={el.name}
-                  img={el.imagesLinks[0]}
-                  price={el.price}
-                  weight={100}
-                  key={el.productId}
-                />
-              ))}
-            </div>
           </div>
         </div>
+        <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+          <Carousel images={tea.imagesLinks} pageWidth={500} pageHeight={500} />
+        </Modal>
       </div>
     );
   } else {

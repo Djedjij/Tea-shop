@@ -6,12 +6,14 @@ interface ICarouselProps {
   images: string[];
   pageWidth: number;
   pageHeight: number;
+  onClick?: () => void;
 }
 
 const Carousel: React.FC<ICarouselProps> = ({
   images,
   pageWidth,
   pageHeight,
+  onClick,
 }) => {
   const [borderCurrent, setBorderCurrent] = useState(0);
   const [offset, setOffset] = useState(0);
@@ -36,6 +38,7 @@ const Carousel: React.FC<ICarouselProps> = ({
         pageHeight={pageHeight}
         images={images}
         offset={offset}
+        onClick={onClick}
       />
     </div>
   );

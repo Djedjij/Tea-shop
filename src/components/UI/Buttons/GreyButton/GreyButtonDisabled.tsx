@@ -6,12 +6,12 @@ interface GreyButtonProps {
   onClick?: () => void;
 }
 
-const GreyButton: React.FC<GreyButtonProps> = ({ onClick, text }) => {
+const GreyButtonDisabled: React.FC<GreyButtonProps> = ({ onClick, text }) => {
   return (
-    <button onClick={onClick} className={styles.greyButton}>
+    <button onClick={onClick} className={styles.GreyButtonDisabled} disabled>
       {text}
     </button>
   );
 };
 
-export default GreyButton;
+export default GreyButtonDisabled;

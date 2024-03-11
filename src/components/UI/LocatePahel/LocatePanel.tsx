@@ -4,7 +4,10 @@ import { Link, useLocation } from "react-router-dom";
 import { mainRoute, routes } from "../../../utils/routes";
 const LocatePanel = () => {
   const locate = useLocation();
-  const component = routes.find((route) => route.path === locate.pathname);
+  const component = routes.find(
+    (route) => route.path === "/" + locate.pathname.split("/")[1]
+  );
+  console.log(locate.pathname.split("/"));
 
   return (
     <div className={styles.bigWrapper}>

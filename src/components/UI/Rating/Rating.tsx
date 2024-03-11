@@ -3,7 +3,8 @@ import styles from "./Rating.module.scss";
 import { useAppDispatch } from "../../../hooks/hooks";
 import { setModalError } from "../../../store/redusers/errorSlice";
 const Rating = () => {
-  const [ratingState, setRatingState] = useState(3.7);
+  // const [ratingState, setRatingState] = useState(3.7);
+  const ratingState = 3.7;
   const [ratingValue, setRatingValue] = useState(ratingState);
   const [errorToken, setErrorToken] = useState(false);
   const ratingValues = [1, 2, 3, 4, 5];
@@ -23,10 +24,6 @@ const Rating = () => {
       );
     }
   }, [errorToken, dispatch]);
-
-  // Убрать потом
-  setRatingState(ratingState);
-  //
 
   return (
     <div className={styles.rating}>
