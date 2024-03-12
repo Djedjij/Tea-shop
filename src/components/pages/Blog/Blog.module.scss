@@ -1,0 +1,129 @@
+@use "../../../App.scss" as App;
+@import "../../../App.scss";
+
+.wrapper {
+  @include wrapper-1170px;
+}
+.post {
+  margin-bottom: 100px;
+  padding: 0px 50px 0px 50px;
+}
+.header {
+  @include blackh1;
+  font-size: 36px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.header:hover {
+  color: App.$greyButtonColor;
+}
+.postDate {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+.date {
+  background-color: App.$greenButtonColor;
+  padding: 5px 10px 5px 10px;
+  font-family: App.$QuestrialFont;
+}
+.comments {
+  font-family: App.$QuestrialFont;
+  font-weight: 200;
+  margin-left: 20px;
+  color: App.$greyButtonColor;
+  border-bottom: 1px solid App.$greyButtonColor;
+  cursor: pointer;
+}
+.post img {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.postDescription {
+  margin-top: 20px;
+}
+.description {
+  margin-bottom: 30px;
+}
+
+// pagination
+
+.paginate {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.paginateButton {
+  @include priceStyle;
+  background-color: App.$greyButtonColor;
+  border: 1px solid App.$greyButtonColor;
+  margin: 2px;
+  padding: 7px 12px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.paginateButton:hover {
+  background-color: white;
+  border: 1px solid App.$greyButtonColor;
+  color: App.$greyButtonColor;
+}
+
+.paginateArrowButtonLeft {
+  @include arrowButton;
+  background-image: url("../../../../public/images/icons/icon-arrowPaginateLeftWhite.png");
+}
+
+.paginateArrowButtonLeft:hover {
+  background-image: url("../../../../public/images/icons/icon-arrowPaginateLeftBrown.png");
+  background-color: white;
+  border: 1px solid App.$greyButtonColor;
+  color: App.$greyButtonColor;
+}
+
+.paginateArrowButtonRight {
+  @include arrowButton;
+  background-image: url("../../../../public/images/icons/icon-arrowPaginateRightWhite.png");
+}
+
+.paginateArrowButtonRight:hover {
+  background-image: url("../../../../public/images/icons/icon-arrowPaginateRightBrown.png");
+  background-color: white;
+  border: 1px solid App.$greyButtonColor;
+  color: App.$greyButtonColor;
+}
+
+.notActiveButton {
+  display: none;
+}
+
+.paginateActiveButton {
+  @include priceStyle;
+  background-color: white;
+  border: 1px solid App.$greyButtonColor;
+  margin: 2px;
+  padding: 7px 12px;
+  color: App.$greyButtonColor;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.postsEnter {
+  opacity: 0;
+}
+
+.postsEnterActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.postsExit {
+  opacity: 0;
+}
+
+.postsExitActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}

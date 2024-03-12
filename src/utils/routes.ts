@@ -3,6 +3,7 @@ import Main from "../components/pages/Main/Main";
 import Shop from "../components/pages/Shop/Shop";
 import ShopCart from "../components/pages/ShopCart/ShopCart";
 import Account from "../components/pages/Account/Account";
+import Blog from "../components/pages/Blog/Blog";
 
 interface IMainRoute {
   name: string;
@@ -74,5 +75,10 @@ export const routes: IRoute[] = [
     path: "/account",
     name: "Аккаунт",
     Component: Account,
+  },
+  {
+    path: "/blog",
+    name: "Блог",
+    Component: Blog,
   },
 ];

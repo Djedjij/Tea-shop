@@ -10,6 +10,7 @@ import { routes } from "./utils/routes";
 import ModalError from "./components/Error/ModalError";
 import TeaPage from "./components/pages/TeaPage/TeaPage";
 import DialogWindow from "./components/UI/DialogWindow/DialogWindow";
+import Post from "./components/Post/Post";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           />
         ))}
         <Route path="/shop/:teaId" element={<TeaPage />} />
+        <Route path="/blog/:postId" element={<Post />} />
       </Routes>
       <PanelButtons />
       <ModalError />

@@ -1,0 +1,115 @@
+@use "../../App.scss" as App;
+@import "../../App.scss";
+
+.wrapper {
+  @include wrapper-1170px;
+  display: flex;
+  justify-content: space-between;
+}
+.post {
+  width: 80%;
+  margin-top: -30px;
+  margin-right: 50px;
+}
+.postImg {
+  width: 100%;
+}
+.header {
+  @include blackh1;
+  font-size: 36px;
+}
+.postDate {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+.date {
+  background-color: App.$greenButtonColor;
+  padding: 5px 10px 5px 10px;
+  font-family: App.$QuestrialFont;
+}
+.commentsNum {
+  font-family: App.$QuestrialFont;
+  font-weight: 200;
+  margin-left: 20px;
+  color: App.$greyButtonColor;
+  border-bottom: 1px solid App.$greyButtonColor;
+  cursor: pointer;
+}
+.postImg {
+  margin-top: 30px;
+}
+.text {
+  margin-top: 20px;
+  width: 100%;
+}
+.textParth {
+  margin-top: 20px;
+}
+
+.rightPanel {
+  width: 25%;
+}
+.rightPanelHeader {
+  @include nameh3;
+  margin-bottom: 20px;
+}
+.headerComments {
+  @include blackh1;
+  font-size: 40px;
+}
+.comment {
+  background-color: App.$greyBackgroundColor;
+  padding: 20px;
+  height: max-content;
+  min-height: 200px;
+}
+// resent
+.resent {
+  background-color: App.$greyBackgroundColor;
+  padding: 30px;
+  height: max-content;
+  min-height: 300px;
+  margin-bottom: 50px;
+}
+.resentPost {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.resentHeader {
+  display: flex;
+  text-decoration: none;
+  color: App.$blackButtonColor;
+  transition: color 0.3s ease;
+  font-size: 12px;
+}
+.resentHeader img {
+  min-width: 100px;
+  height: 70px;
+  margin-right: 10px;
+}
+.resentHeader p {
+  margin-left: 10px;
+  font-size: 15px;
+}
+.resentHeader:hover {
+  color: App.$greyButtonColor;
+}
+.resentDate {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  font-size: 12px;
+}
+// galery
+
+.galeryImages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.galeryImages img {
+  width: 64px;
+  margin-bottom: 8px;
+}
