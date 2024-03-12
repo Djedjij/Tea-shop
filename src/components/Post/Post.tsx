@@ -3,6 +3,7 @@ import styles from "./Post.module.scss";
 import { Link, useParams } from "react-router-dom";
 import { galeryImages, posts } from "../../utils/consts";
 import LocatePanel from "../UI/LocatePahel/LocatePanel";
+import Comment from "../UI/Comment/Comment";
 
 const Post = () => {
   const postId = useParams().postId;
@@ -18,7 +19,7 @@ const Post = () => {
             <h4 className={styles.date}>{post?.date}</h4>
             <h4
               className={styles.commentsNum}
-            >{`${post?.comments.length} Комментариев`}</h4>
+            >{`Комментарии ${post?.comments.length} `}</h4>
           </div>
           <div className={styles.text}>
             {post?.text.split("/n").map((parth, index) => (
@@ -33,7 +34,7 @@ const Post = () => {
             </h4>
             {post?.comments &&
               post.comments.map((comment) => (
-                <div className={styles.comment}></div>
+                <Comment key={comment.id} {...comment} />
               ))}
           </div>
         </div>
