@@ -11,6 +11,8 @@ import ModalError from "./components/Error/ModalError";
 import TeaPage from "./components/pages/TeaPage/TeaPage";
 import DialogWindow from "./components/UI/DialogWindow/DialogWindow";
 import Post from "./components/Post/Post";
+import HorizontalSlider from "./components/UI/Slider/HorizontalSlider/HorizontalSlider";
+import { images } from "./utils/consts";
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
       <Footer />
       <ButtonUp />
       <DialogWindow />
+      <HorizontalSlider images={images} />
     </div>
   );
 }

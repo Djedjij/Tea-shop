@@ -58,12 +58,13 @@
   @include blackh1;
   font-size: 40px;
 }
-.comment {
-  background-color: App.$greyBackgroundColor;
-  padding: 20px;
-  height: max-content;
-  min-height: 200px;
+.commentBtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
+
 // resent
 .resent {
   background-color: App.$greyBackgroundColor;
@@ -112,4 +113,9 @@
 .galeryImages img {
   width: 64px;
   margin-bottom: 8px;
+}
+
+hr {
+  border: 1px solid App.$greyButtonColor;
+  margin-top: 30px;
 }

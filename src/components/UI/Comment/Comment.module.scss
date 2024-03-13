@@ -4,19 +4,50 @@
 .comment {
   width: 100%;
   display: flex;
-  flex-direction: column;
+}
+.commentBody {
   background-color: App.$greyBackgroundColor;
   padding: 20px;
   margin-top: 30px;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 20px;
+  position: relative;
+  height: max-content;
 }
+.commentBody::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: -15px;
+  margin-top: 5px;
+  background-color: App.$greyBackgroundColor;
+  border-left: 15px solid transparent;
+  border-bottom: 15px solid white;
+  rotate: (90deg);
+}
+
 .commentHeader {
   display: flex;
   align-items: center;
 }
+.avatar {
+  background-color: App.$greyButtonColor;
+  color: white;
+  width: 55px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-top: 35px;
+}
 .name {
   @include blackh1;
   font-size: 20px;
-  margin-top: 0;
+  margin-top: 4px;
 }
 .date {
   background-color: App.$greenButtonColor;

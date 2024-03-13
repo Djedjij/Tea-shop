@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Post.module.scss";
 import { Link, useParams } from "react-router-dom";
 import { galeryImages, posts } from "../../utils/consts";
 import LocatePanel from "../UI/LocatePahel/LocatePanel";
 import Comment from "../UI/Comment/Comment";
+import GreyButton from "../UI/Buttons/GreyButton/GreyButton";
+import Modal from "../UI/Modal/Modal";
+import ModalReview from "../UI/Reviews/ModalReview";
 
 const Post = () => {
   const postId = useParams().postId;
   const post = posts.find((post) => String(post.id) === postId);
-
+  const [activeModalReview, setActiveModalReview] = useState(false);
   return (
     <div>
       <LocatePanel />
@@ -28,6 +31,7 @@ const Post = () => {
               </p>
             ))}
           </div>
+          <hr />
           <div className={styles.comments}>
             <h4 className={styles.headerComments}>
               {`Комментариев ${post?.comments.length}`}
@@ -36,6 +40,18 @@ const Post = () => {
               post.comments.map((comment) => (
                 <Comment key={comment.id} {...comment} />
               ))}
+          </div>
+          <div className={styles.commentBtn}>
+            <GreyButton
+              onClick={() => setActiveModalReview(true)}
+              text="Оставить комментарий"
+            />
+            <Modal
+              activeModal={activeModalReview}
+              setActiveModal={setActiveModalReview}
+            >
+              <ModalReview />
+            </Modal>
           </div>
         </div>
         <div className={styles.rightPanel}>
