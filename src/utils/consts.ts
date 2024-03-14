@@ -66,6 +66,12 @@ export const images = [
   "/images/inst-images/post1.jpg",
   "/images/inst-images/post2.jpg",
   "/images/inst-images/post2.jpg",
+  "/images/inst-images/post1.jpg",
+  "/images/inst-images/post2.jpg",
+  "/images/inst-images/post2.jpg",
+  "/images/inst-images/post1.jpg",
+  "/images/inst-images/post2.jpg",
+  "/images/inst-images/post2.jpg",
 ];
 export const galeryImages = [
   {

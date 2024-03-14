@@ -1,8 +1,16 @@
+@use "../../../../App.scss" as App;
+@import "../../../../App.scss";
+.sliderWrapper {
+  margin: 100px;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+}
+
 .mainContainer {
   display: flex;
   align-items: center;
-  margin-left: 30px;
-  margin: 100px;
 }
 .window {
   height: 100%;
@@ -16,7 +24,6 @@
   display: flex;
   transition: translate;
   transition-property: transform;
-  transition-duration: 250ms;
   transition-timing-function: ease-in-out;
   cursor: pointer;
 }
@@ -31,6 +38,25 @@
   -o-user-select: none;
   user-select: none;
 }
+
 span {
   cursor: pointer;
+}
+.dots {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.dot {
+  margin: 5px;
+  margin-top: 10px;
+  background-color: App.$greyButtonColor;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+.dot.active {
+  background-color: App.$greenButtonColor;
 }
