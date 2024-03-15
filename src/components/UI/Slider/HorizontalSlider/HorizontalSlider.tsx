@@ -20,7 +20,6 @@ const HorizontalSlider: React.FC<IHorizontalSliderProps> = ({ images }) => {
     dotsArray.push(i);
   }
 
-  //
   const slideLeft = () => {
     setOffset(offset < pageWidth ? offset : offset - pageWidth);
     setActiveDot((prevDot) => (prevDot > 0 ? prevDot - 1 : prevDot));
@@ -58,6 +57,7 @@ const HorizontalSlider: React.FC<IHorizontalSliderProps> = ({ images }) => {
     dragStart.current = 0;
     const indexImg = Math.round(offset / pageWidth);
     setOffset(pageWidth * indexImg);
+    setActiveDot(indexImg);
   };
 
   return (
@@ -66,7 +66,13 @@ const HorizontalSlider: React.FC<IHorizontalSliderProps> = ({ images }) => {
         className={styles.mainContainer}
         style={{ height: `${pageHeight}px`, width: `${pageWidth}px` }}
       >
-        <span onClick={() => slideLeft()}>{"<"}</span>
+        <span onClick={() => slideLeft()}>
+          <img
+            className={styles.arrowLeft}
+            src="/images/icons/icon-arrowRightBrown.svg"
+            alt=""
+          />
+        </span>
         <div
           className={styles.window}
           onMouseDown={handleMouseDown}
@@ -95,7 +101,11 @@ const HorizontalSlider: React.FC<IHorizontalSliderProps> = ({ images }) => {
           </div>
         </div>
         <span onClick={() => slideRight()}>
-          <img src="/images/icons/icon-arrowRight.svg" alt="" />
+          <img
+            className={styles.arrowRight}
+            src="/images/icons/icon-arrowRightBrown.svg"
+            alt=""
+          />
         </span>
       </div>
       <div className={styles.dots}>

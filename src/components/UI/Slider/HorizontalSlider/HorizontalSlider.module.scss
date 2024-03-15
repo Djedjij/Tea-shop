@@ -60,3 +60,10 @@ span {
 .dot.active {
   background-color: App.$greenButtonColor;
 }
+.arrowRight {
+  width: 25px;
+}
+.arrowLeft {
+  rotate: (180deg);
+  width: 25px;
+}
