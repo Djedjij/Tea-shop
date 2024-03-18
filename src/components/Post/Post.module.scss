@@ -56,7 +56,12 @@
 }
 .headerComments {
   @include blackh1;
-  font-size: 40px;
+  font-size: 36px;
+}
+.headerCommentsCenter {
+  @include blackh1;
+  font-size: 36px;
+  text-align: center;
 }
 .commentBtn {
   display: flex;
@@ -109,6 +114,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  cursor: pointer;
 }
 .galeryImages img {
   width: 64px;

@@ -23,10 +23,16 @@ export interface Iphones {
   link?: string;
 }
 
-interface ISlide {
+export interface ISlide {
   img: string;
   text: string;
 }
+
+export interface IImage {
+  img: string;
+  name: string;
+}
+
 export const phones: Iphones[] = [
   {
     icon: "/images/icons/iconPhoneWhite.png",

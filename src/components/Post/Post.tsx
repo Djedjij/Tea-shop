@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./Post.module.scss";
 import { Link, useParams } from "react-router-dom";
 import { galeryImages, posts } from "../../utils/consts";
@@ -6,12 +6,20 @@ import LocatePanel from "../UI/LocatePahel/LocatePanel";
 import Comment from "../UI/Comment/Comment";
 import GreyButton from "../UI/Buttons/GreyButton/GreyButton";
 import Modal from "../UI/Modal/Modal";
-import ModalReview from "../UI/Reviews/ModalReview";
+
+import HorizontalSlider from "../UI/Slider/HorizontalSlider/HorizontalSlider";
+import ModalComment from "../UI/Reviews/ModalComment";
 
 const Post = () => {
   const postId = useParams().postId;
   const post = posts.find((post) => String(post.id) === postId);
   const [activeModalReview, setActiveModalReview] = useState(false);
+  const [activeModalGallery, setActiveModalGallery] = useState(false);
+  const commentRef = useRef<HTMLDivElement>(null);
+
+  const scrollToElement = () => {
+    commentRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div>
       <LocatePanel />
@@ -21,6 +29,7 @@ const Post = () => {
           <div className={styles.postDate}>
             <h4 className={styles.date}>{post?.date}</h4>
             <h4
+              onClick={() => scrollToElement()}
               className={styles.commentsNum}
             >{`Комментарии ${post?.comments.length} `}</h4>
           </div>
@@ -32,15 +41,21 @@ const Post = () => {
             ))}
           </div>
           <hr />
-          <div className={styles.comments}>
-            <h4 className={styles.headerComments}>
-              {`Комментариев ${post?.comments.length}`}
+          {post?.comments.length && post?.comments.length > 0 ? (
+            <div className={styles.comments}>
+              <h4 ref={commentRef} className={styles.headerComments}>
+                {`Комментарии ${post?.comments.length}`}
+              </h4>
+              {post?.comments &&
+                post.comments.map((comment, index) => (
+                  <Comment key={index} {...comment} />
+                ))}
+            </div>
+          ) : (
+            <h4 ref={commentRef} className={styles.headerCommentsCenter}>
+              {`Комментариев пока нет`}
             </h4>
-            {post?.comments &&
-              post.comments.map((comment) => (
-                <Comment key={comment.id} {...comment} />
-              ))}
-          </div>
+          )}
           <div className={styles.commentBtn}>
             <GreyButton
               onClick={() => setActiveModalReview(true)}
@@ -50,7 +65,7 @@ const Post = () => {
               activeModal={activeModalReview}
               setActiveModal={setActiveModalReview}
             >
-              <ModalReview />
+              <ModalComment />
             </Modal>
           </div>
         </div>
@@ -86,9 +101,22 @@ const Post = () => {
             <h4 className={styles.rightPanelHeader}>Галерея</h4>
             <div className={styles.galeryImages}>
               {galeryImages.map((img, index) => (
-                <img key={index} src={img.img} alt="" />
+                <img
+                  key={index}
+                  src={img.img}
+                  alt=""
+                  onClick={() => {
+                    setActiveModalGallery(true);
+                  }}
+                />
               ))}
             </div>
+            <Modal
+              activeModal={activeModalGallery}
+              setActiveModal={setActiveModalGallery}
+            >
+              <HorizontalSlider images={galeryImages} />
+            </Modal>
           </div>
         </div>
       </div>

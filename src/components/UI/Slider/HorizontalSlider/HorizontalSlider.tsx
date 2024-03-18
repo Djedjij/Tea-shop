@@ -1,11 +1,12 @@
 import React, { useRef, useState } from "react";
 import styles from "./HorizontalSlider.module.scss";
+import { IImage } from "../../../../utils/consts";
 interface IHorizontalSliderProps {
-  images: string[];
+  images: IImage[];
 }
 const HorizontalSlider: React.FC<IHorizontalSliderProps> = ({ images }) => {
-  const pageHeight = 300;
-  const pageWidth = 400;
+  const pageHeight = 600;
+  const pageWidth = 800;
   const sliderLength = pageWidth * images.length;
   const [offset, setOffset] = useState<number>(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -13,7 +14,6 @@ const HorizontalSlider: React.FC<IHorizontalSliderProps> = ({ images }) => {
 
   const dragStart = useRef(0);
   const dragDistance = useRef(0);
-
   const dotsArray: number[] = [];
 
   for (let i = 0; i <= images.length - 1; i++) {
@@ -66,13 +66,13 @@ const HorizontalSlider: React.FC<IHorizontalSliderProps> = ({ images }) => {
         className={styles.mainContainer}
         style={{ height: `${pageHeight}px`, width: `${pageWidth}px` }}
       >
-        <span onClick={() => slideLeft()}>
-          <img
-            className={styles.arrowLeft}
-            src="/images/icons/icon-arrowRightBrown.svg"
-            alt=""
-          />
-        </span>
+        <img
+          onClick={() => slideLeft()}
+          className={styles.arrowLeft}
+          src="/images/icons/icon-arrowRightBrown.svg"
+          alt=""
+        />
+
         <div
           className={styles.window}
           onMouseDown={handleMouseDown}
@@ -87,26 +87,25 @@ const HorizontalSlider: React.FC<IHorizontalSliderProps> = ({ images }) => {
               transitionDuration: `${isDragging ? "0ms" : "250ms"}`,
             }}
           >
-            {images.map((img: string, index) => (
+            {images.map((img, index) => (
               <img
                 style={{
                   minWidth: `${pageWidth}px`,
                   maxWidth: `${pageWidth}px`,
                 }}
-                src={img}
+                src={img.img}
                 alt=""
                 key={index}
               />
             ))}
           </div>
         </div>
-        <span onClick={() => slideRight()}>
-          <img
-            className={styles.arrowRight}
-            src="/images/icons/icon-arrowRightBrown.svg"
-            alt=""
-          />
-        </span>
+        <img
+          onClick={() => slideRight()}
+          className={styles.arrowRight}
+          src="/images/icons/icon-arrowRightBrown.svg"
+          alt=""
+        />
       </div>
       <div className={styles.dots}>
         {dotsArray.map((dot) => (

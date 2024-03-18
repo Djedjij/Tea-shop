@@ -4,6 +4,7 @@ import Shop from "../components/pages/Shop/Shop";
 import ShopCart from "../components/pages/ShopCart/ShopCart";
 import Account from "../components/pages/Account/Account";
 import Blog from "../components/pages/Blog/Blog";
+import Contacts from "../components/pages/Contacts/Contacts";
 
 interface IMainRoute {
   name: string;
@@ -80,5 +81,10 @@ export const routes: IRoute[] = [
     path: "/blog",
     name: "Блог",
     Component: Blog,
+  },
+  {
+    path: "/contacts",
+    name: "Контакты",
+    Component: Contacts,
   },
 ];

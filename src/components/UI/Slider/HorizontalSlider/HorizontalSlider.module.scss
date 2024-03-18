@@ -1,8 +1,6 @@
 @use "../../../../App.scss" as App;
 @import "../../../../App.scss";
 .sliderWrapper {
-  margin: 100px;
-  margin-left: 30px;
   display: flex;
   flex-direction: column;
   width: max-content;
@@ -11,6 +9,7 @@
 .mainContainer {
   display: flex;
   align-items: center;
+  position: relative;
 }
 .window {
   height: 100%;
@@ -39,14 +38,14 @@
   user-select: none;
 }
 
-span {
-  cursor: pointer;
-}
 .dots {
   display: flex;
   width: 100%;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: -30px;
 }
 .dot {
   margin: 5px;
@@ -62,8 +61,18 @@ span {
 }
 .arrowRight {
   width: 25px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-right: -30px;
 }
 .arrowLeft {
   rotate: (180deg);
+  cursor: pointer;
   width: 25px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-left: -30px;
 }

@@ -1,45 +1,55 @@
 @use "../../../App.scss" as App;
 @import "../../../App.scss";
-.modalReview {
-  margin: 50px;
+
+.wrapper {
+  @include wrapper-1170px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
 }
-.emptyReviews {
-  width: 100%;
-  height: 40vh;
+.content {
+  width: 30%;
+  margin-top: -30px;
+}
+.content h4 {
+  @include nameh3;
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+.content a {
+  text-decoration: none;
+  color: App.$blackButtonColor;
+  transition: opacity 0.3s ease;
+}
+.content a:hover {
+  opacity: 0.7;
+}
+.row {
+  display: flex;
+  align-items: center;
+}
+.row p {
+  margin-left: 5px;
+}
+.map {
+  width: 70%;
+}
+
+// input
+.formQuestion {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.emptyReviews h3 {
-  @include nameh3;
-  margin-bottom: 20px;
-}
-.modalReviewContent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   width: 100%;
-  height: 100%;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
-.modalReviewContent h2 {
-  font-size: 30px;
-  color: App.$blackButtonColor;
-  font-family: App.$OpenSansFont;
+.formQuestion h1 {
+  @include blackh1;
 }
-.noLogin {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.noLogin h5 {
-  font-family: App.$OpenSansFont;
-  font-size: 14px;
-  margin-bottom: 40px;
-  color: App.$blackButtonColor;
-}
-.greenBtn {
-  margin-bottom: 20px;
+.formQuestion h2 {
+  @include brownh4;
 }
 .form {
   display: flex;
@@ -48,6 +58,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 10px;
+  max-width: 400px;
 }
 .authInput {
   border: none;
@@ -124,18 +135,4 @@
   background-color: white;
   border: 2px solid App.$greenButtonColor;
   color: App.$greenButtonColor;
-}
-.rating {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin-top: 20px;
-}
-.rating p {
-  opacity: 0.5;
-  font-family: App.$OpenSansFont;
-  font-size: 12px;
-}
-.error {
-  color: App.$redColor;
 }
