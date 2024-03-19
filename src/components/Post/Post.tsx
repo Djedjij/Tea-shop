@@ -6,7 +6,6 @@ import LocatePanel from "../UI/LocatePahel/LocatePanel";
 import Comment from "../UI/Comment/Comment";
 import GreyButton from "../UI/Buttons/GreyButton/GreyButton";
 import Modal from "../UI/Modal/Modal";
-
 import HorizontalSlider from "../UI/Slider/HorizontalSlider/HorizontalSlider";
 import ModalComment from "../UI/Reviews/ModalComment";
 
