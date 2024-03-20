@@ -6,6 +6,7 @@ import { CSSTransition } from "react-transition-group";
 import TeaList from "../TeaList/TeaList";
 import { useAppSelector } from "../../../../hooks/hooks";
 import ErrorMessage from "../../../Error/ErrorMessage";
+import SearchInput from "../../../UI/Inputs/SearchInput/SearchInput";
 
 const ShopTea: React.FC = () => {
   const [isVertical, setIsVertical] = useState<boolean>(true);
@@ -42,6 +43,7 @@ const ShopTea: React.FC = () => {
           onVerticalClick={handleVerticalClick}
           onHorizontalClick={handleHorizontalClick}
         />
+        <SearchInput />
         <Select />
       </div>
       <CSSTransition

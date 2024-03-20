@@ -11,6 +11,7 @@ interface IChatMessage {
   role: string;
   time: () => string;
 }
+
 const DialogWindow = () => {
   const [openChat, setOpenChat] = useState(false);
   return (
@@ -64,6 +65,15 @@ const Chat: React.FC<IChatProps> = ({ setOpenChat }) => {
     }
   };
 
+  const enterPostMessage = (e: any) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (message) {
+        postMessage(message);
+        setMessage("");
+      }
+    }
+  };
   return (
     <div className={styles.chatWrapper}>
       <div className={styles.chatHeader}>
@@ -105,6 +115,7 @@ const Chat: React.FC<IChatProps> = ({ setOpenChat }) => {
           placeholder="Введите ваше сообщение"
           onChange={(e) => setMessage(e.target.value)}
           value={message}
+          onKeyDown={enterPostMessage}
         />
         <button
           className={styles.buttonInput}

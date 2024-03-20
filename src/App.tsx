@@ -5,14 +5,20 @@ import BlackHeader from "./components/layout/BlackHeader/BlackHeader";
 import PanelButtons from "./components/UI/Buttons/PanelButtons/PanelButtons";
 import DropHeader from "./components/UI/DropHeader/DropHeader";
 import ButtonUp from "./components/UI/Buttons/ButtonUp/ButtonUp";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { routes } from "./utils/routes";
 import ModalError from "./components/Error/ModalError";
 import TeaPage from "./components/pages/TeaPage/TeaPage";
 import DialogWindow from "./components/UI/DialogWindow/DialogWindow";
-import Post from "./components/Post/Post";
+import Post from "./components/pages/Post/Post";
+import { useEffect } from "react";
 
 function App() {
+  const pathName = useLocation();
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [pathName]);
+
   return (
     <div className="App">
       <BlackHeader />

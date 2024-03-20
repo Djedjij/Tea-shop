@@ -1,0 +1,22 @@
+@use "../../../../App.scss" as App;
+@import "../../../../App.scss";
+
+.searchInput {
+  position: relative;
+  width: 50%;
+}
+.searchInput input {
+  border: 2px solid App.$greyButtonColor;
+  padding: 5px;
+  border-radius: 8px;
+  width: 100%;
+}
+.searchIcon {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 7px;
+  cursor: pointer;
+}

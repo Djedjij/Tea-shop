@@ -1,13 +1,13 @@
 import React, { useRef, useState } from "react";
 import styles from "./Post.module.scss";
 import { Link, useParams } from "react-router-dom";
-import { galeryImages, posts } from "../../utils/consts";
-import LocatePanel from "../UI/LocatePahel/LocatePanel";
-import Comment from "../UI/Comment/Comment";
-import GreyButton from "../UI/Buttons/GreyButton/GreyButton";
-import Modal from "../UI/Modal/Modal";
-import HorizontalSlider from "../UI/Slider/HorizontalSlider/HorizontalSlider";
-import ModalComment from "../UI/Reviews/ModalComment";
+import { galeryImages, posts } from "../../../utils/consts";
+import LocatePanel from "../../UI/LocatePahel/LocatePanel";
+import Comment from "../../UI/Comment/Comment";
+import GreyButton from "../../UI/Buttons/GreyButton/GreyButton";
+import Modal from "../../UI/Modal/Modal";
+import HorizontalSlider from "../../UI/Slider/HorizontalSlider/HorizontalSlider";
+import ModalComment from "../../UI/Reviews/ModalComment";
 
 const Post = () => {
   const postId = useParams().postId;

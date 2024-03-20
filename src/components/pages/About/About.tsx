@@ -27,6 +27,7 @@ const About = () => {
       transition: { delay: custom * 0.4, duration: 0.5 },
     }),
   };
+
   return (
     <div>
       <LocatePanel />

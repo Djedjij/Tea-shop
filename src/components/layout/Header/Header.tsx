@@ -7,17 +7,17 @@ const Header = () => {
     <header>
       <div className={styles.bigWrapper}>
         <div className={styles.wrapper}>
-          <div className={styles.logo}>
+          <Link to="/" className={styles.logo}>
             <img
               className={styles.logo_image}
-              src="/images/logo/logo.png"
+              src="/images/logo/logo.svg"
               alt="logo"
             />
             <div className={styles.logo_full}>
               <h2 className={styles.logo_text}>Magic Tea</h2>
               <h4 className={styles.logo_slogan}>Tea & teaware co.</h4>
             </div>
-          </div>
+          </Link>
           <nav className={styles.navbar}>
             <ul className={styles.navbar_ul}>
               {mainRoutes.map((navButton) => (
