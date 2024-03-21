@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import styles from "./Shop.categories.module.scss";
 import { mainPageCategories } from "../../../../../utils/consts";
 import { useAppDispatch } from "../../../../../hooks/hooks";
-import { showFilteredByCategoryTeas } from "../../../../../store/redusers/teasSlice";
+import {} from "../../../../../store/redusers/teasSlice";
+import { fetchFilteredByCategoryTeas } from "../../../../../store/redusers/fetchTeas";
 const ShopCategories = () => {
   const dispatch = useAppDispatch();
   const [activeCategory, setActiveCategory] = useState("");
   const handleCategoryClick = (name: string) => {
-    dispatch(showFilteredByCategoryTeas(name));
+    console.log(name);
+
+    dispatch(fetchFilteredByCategoryTeas({ title: name }));
     setActiveCategory(name);
   };
+
   return (
     <div className={styles.wrapper}>
       <h3>Категории</h3>

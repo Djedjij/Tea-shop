@@ -1,3 +1,11 @@
+export interface IReview {
+  id: number;
+  userEmail: string;
+  rating: number;
+  comment: string;
+  timestamp: string;
+}
+
 export interface ITea {
   productId: number;
   name: string;
@@ -6,7 +14,7 @@ export interface ITea {
   description: string;
   effect: string;
   category: string;
-  reviewInfoDto: null;
+  reviews: IReview[];
   imagesLinks: string[];
 }
 

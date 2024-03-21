@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { UserState } from "../../models/IUser";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { IUser, UserState } from "../../models/IUser";
 import { auth, login } from "../fetchUser";
 
 const initialState: UserState = {
@@ -9,7 +9,7 @@ const initialState: UserState = {
   refreshToken: "",
   accessToken: "",
   isLoading: false,
-  isLogin: false,
+  isLogin: localStorage.getItem("token") ? true : false,
 };
 
 const userSlice = createSlice({
@@ -19,6 +19,13 @@ const userSlice = createSlice({
     logout: (state) => {
       localStorage.removeItem("token");
       state.isLogin = false;
+    },
+    setUser: (state, action: PayloadAction<IUser>) => {
+      state.user = action.payload;
+    },
+    checkLogin: (state) => {
+      localStorage.getItem("token");
+      state.isLogin = true;
     },
   },
   extraReducers: (builder) => {
@@ -61,5 +68,5 @@ const userSlice = createSlice({
       });
   },
 });
-export const { logout } = userSlice.actions;
+export const { logout, setUser, checkLogin } = userSlice.actions;
 export default userSlice.reducer;

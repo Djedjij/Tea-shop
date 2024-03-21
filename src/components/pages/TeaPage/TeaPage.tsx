@@ -38,6 +38,7 @@ const TeaPage = () => {
   const addInShopCard = async (id: number, weight: number) => {
     postTea({ weight, id });
   };
+  console.log(tea);
 
   if (tea) {
     return (

@@ -40,6 +40,7 @@ const LoginInput: React.FC<LoginInputProps> = (props) => {
     validatePassword(password);
     if (!emailError || !passwordError) {
       dispatch(login({ password, email }));
+      localStorage.setItem("user", JSON.stringify({ email }));
       setEmail("");
       setPassword("");
     }

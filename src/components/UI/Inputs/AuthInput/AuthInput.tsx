@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "./AuthInput.module.scss";
-import { auth } from "../../../../store/fetchUser";
+import { auth, login } from "../../../../store/fetchUser";
 import { useAppDispatch } from "../../../../hooks/hooks";
+import { setUser } from "../../../../store/redusers/userSlice";
 
 interface AuthInputProps {
   changeForm: () => void;
@@ -47,6 +48,7 @@ const AuthInput: React.FC<AuthInputProps> = (props) => {
       setAddressError(`Поле "Адрес" не может быть пустым`);
     }
   };
+
   const goAuth = async (event: any) => {
     event.preventDefault();
     validateEmail(email);
@@ -55,6 +57,9 @@ const AuthInput: React.FC<AuthInputProps> = (props) => {
     validatePassword(password);
     if (!emailError && !passwordError) {
       dispatch(auth({ name, password, email, address }));
+      dispatch(login({ email, password }));
+      dispatch(setUser({ name, password, email, address }));
+      localStorage.setItem("user", JSON.stringify({ name, email, address }));
       setName("");
       setAddress("");
       setPassword("");
@@ -82,7 +87,6 @@ const AuthInput: React.FC<AuthInputProps> = (props) => {
           placeholder="Email*"
           value={email}
           onFocus={() => setEmailError("")}
-          // onBlur={() => validateEmail("")}
           onChange={(e) => setEmail(e.target.value)}
         />
         {emailError ? <p className={styles.error}>{emailError}</p> : ""}

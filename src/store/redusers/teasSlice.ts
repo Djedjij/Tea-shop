@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ITea, TeasState } from "../../models/ITea";
-import { fetchFilteredByPriceTeas, fetchTeas } from "./fetchTeas";
+import {
+  fetchFilteredByCategoryTeas,
+  fetchFilteredTeas,
+  fetchTeas,
+} from "./fetchTeas";
 
 const initialState: TeasState = {
   teas: [],
@@ -42,16 +46,6 @@ const teasSlice = createSlice({
       state.filteredTeas = [];
       state.isFiltered = false;
     },
-    showFilteredByCategoryTeas: (state, action: PayloadAction<string>) => {
-      const filteredTeas = state.teas.filter(
-        (tea) => tea.category === action.payload
-      );
-      let newState = { ...state, filteredTeas };
-      if (filteredTeas.length === 0) {
-        newState.isFiltered = true;
-      }
-      return newState;
-    },
 
     resetFilters: (state) => {
       state.filteredTeas = [];
@@ -76,15 +70,34 @@ const teasSlice = createSlice({
           state.error = "Неизвестная ошибка";
         }
       })
-      .addCase(fetchFilteredByPriceTeas.fulfilled, (state, action) => {
+      .addCase(fetchFilteredTeas.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = "";
         state.filteredTeas = action.payload;
+        state.isFiltered = true;
       })
-      .addCase(fetchFilteredByPriceTeas.pending, (state) => {
+      .addCase(fetchFilteredTeas.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(fetchFilteredByPriceTeas.rejected, (state, action) => {
+      .addCase(fetchFilteredTeas.rejected, (state, action) => {
+        state.isLoading = false;
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "Неизвестная ошибка";
+        }
+      })
+      .addCase(fetchFilteredByCategoryTeas.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = "";
+        state.filteredTeas = action.payload;
+        state.isFiltered = true;
+        console.log(state.filteredTeas);
+      })
+      .addCase(fetchFilteredByCategoryTeas.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchFilteredByCategoryTeas.rejected, (state, action) => {
         state.isLoading = false;
         if (typeof action.payload === "string") {
           state.error = action.payload;
@@ -101,7 +114,6 @@ export const {
   setTotalItems,
   setLowCostTeas,
   setHighCostTeas,
-  showFilteredByCategoryTeas,
   resetFilters,
 } = teasSlice.actions;
 

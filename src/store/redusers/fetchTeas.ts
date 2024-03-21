@@ -14,21 +14,33 @@ export const fetchTeas = createAsyncThunk(
   }
 );
 
-export const fetchFilteredByPriceTeas = createAsyncThunk(
-  "teas/fetchFilteredByPrice",
-  async ({ min_price, max_price, p, count }: Params, thunkAPI) => {
+export const fetchFilteredTeas = createAsyncThunk(
+  "teas/fetchFiltered",
+  async ({ min_price, max_price, name, p, count }: Params, thunkAPI) => {
     try {
       const response = await $host.get(`core-service/products`, {
         params: {
           min_price,
           max_price,
+          name,
           p,
           count,
         },
       });
       console.log(response.data.content);
-
       return response.data.content;
+    } catch (e) {
+      return thunkAPI.rejectWithValue("Ошибка при загрузке");
+    }
+  }
+);
+
+export const fetchFilteredByCategoryTeas = createAsyncThunk(
+  "teas/fetchFilteredByCategory",
+  async ({ title }: Params, thunkAPI) => {
+    try {
+      const response = await $host.get(`core-service/categories/${title}`);
+      return response.data.productList;
     } catch (e) {
       return thunkAPI.rejectWithValue("Ошибка при загрузке");
     }

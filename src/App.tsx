@@ -18,7 +18,6 @@ function App() {
   useEffect(() => {
     window.scroll(0, 0);
   }, [pathName]);
-
   return (
     <div className="App">
       <BlackHeader />

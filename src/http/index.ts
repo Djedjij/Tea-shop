@@ -7,7 +7,7 @@ const $host = axios.create({
 
 export default $host;
 
-// $host.interceptors.request.use((config) => {
-//   config.headers.Authorization = `Bearer: ${localStorage.getItem("token")}`;
-//   return config;
-// });
+$host.interceptors.request.use((config) => {
+  config.headers.Authorization = `Bearer: ${localStorage.getItem("token")}`;
+  return config;
+});
