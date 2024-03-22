@@ -15,6 +15,7 @@ const initialState: TeasState = {
   totalItems: 100,
   filteredTeas: [],
   isFiltered: false,
+  filteredBy: null,
 };
 
 const teasSlice = createSlice({
@@ -50,6 +51,10 @@ const teasSlice = createSlice({
     resetFilters: (state) => {
       state.filteredTeas = [];
       state.isFiltered = false;
+      state.filteredBy = null;
+    },
+    setFilteredBy: (state, action: PayloadAction<string>) => {
+      state.filteredBy = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -90,9 +95,9 @@ const teasSlice = createSlice({
       .addCase(fetchFilteredByCategoryTeas.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = "";
-        state.filteredTeas = action.payload;
+        state.filteredTeas = action.payload.productList;
         state.isFiltered = true;
-        console.log(state.filteredTeas);
+        state.filteredBy = action.payload.name;
       })
       .addCase(fetchFilteredByCategoryTeas.pending, (state) => {
         state.isLoading = true;
@@ -115,6 +120,7 @@ export const {
   setLowCostTeas,
   setHighCostTeas,
   resetFilters,
+  setFilteredBy,
 } = teasSlice.actions;
 
 export default teasSlice.reducer;

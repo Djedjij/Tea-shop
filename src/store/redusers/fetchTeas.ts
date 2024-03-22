@@ -27,7 +27,6 @@ export const fetchFilteredTeas = createAsyncThunk(
           count,
         },
       });
-      console.log(response.data.content);
       return response.data.content;
     } catch (e) {
       return thunkAPI.rejectWithValue("Ошибка при загрузке");
@@ -40,7 +39,7 @@ export const fetchFilteredByCategoryTeas = createAsyncThunk(
   async ({ title }: Params, thunkAPI) => {
     try {
       const response = await $host.get(`core-service/categories/${title}`);
-      return response.data.productList;
+      return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue("Ошибка при загрузке");
     }

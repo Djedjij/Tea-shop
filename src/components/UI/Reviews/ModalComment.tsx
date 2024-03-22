@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Reviews.module.scss";
 import GreenButton from "../Buttons/GreenButton/GreenButton";
+import { useAppSelector } from "../../../hooks/hooks";
 
 const ModalComment = () => {
   const [password, setPassword] = useState("");
@@ -8,7 +9,7 @@ const ModalComment = () => {
   const [comment, setComment] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
+  const isLogin = useAppSelector((state) => state.user.isLogin);
   const validateEmail = (email: string) => {
     if (!email) {
       setEmailError(`Поле "Email" не может быть пустым`);
@@ -44,58 +45,78 @@ const ModalComment = () => {
       <div className={styles.modalReviewContent}>
         <h2>Оставить комментарий</h2>
       </div>
-      <div className={styles.noLogin}>
-        <h5>Заполните личные данные или предварительно авторизуйтесь</h5>
-        <div className={styles.greenBtn}>
-          <GreenButton text="Войти" link="/account" />
-          <div className={styles.formData}>
-            <form className={styles.form} onSubmit={goLogin}>
-              <input
-                className={
-                  emailError ? styles.authInputError : styles.authInput
-                }
-                type="text"
-                placeholder="Email*"
-                value={email}
-                onFocus={() => setEmailError("")}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-              {emailError ? <p className={styles.error}>{emailError}</p> : ""}
-              <input
-                className={
-                  passwordError ? styles.authInputError : styles.authInput
-                }
-                type="password"
-                placeholder="Пароль*"
-                value={password}
-                autoComplete="true"
-                onFocus={() => setPasswordError("")}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {passwordError ? (
-                <p className={styles.error}>{passwordError}</p>
-              ) : (
-                ""
-              )}
-              <textarea
-                className={styles.textInput}
-                placeholder="Комментарий*"
-                value={comment}
-                onChange={(e) => {
-                  setComment(e.target.value);
-                }}
-              />
-              <input
-                className={styles.submitInput}
-                type="submit"
-                value="Оставить комментарий"
-              />
-            </form>
+      {isLogin ? (
+        <div className={styles.login}>
+          <form>
+            <textarea
+              className={styles.textInputLogin}
+              placeholder="Комментарий*"
+              value={comment}
+              onChange={(e) => {
+                setComment(e.target.value);
+              }}
+            />
+            <input
+              className={styles.submitInput}
+              type="submit"
+              value="Оставить комментарий"
+            />
+          </form>
+        </div>
+      ) : (
+        <div className={styles.noLogin}>
+          <h5>Заполните личные данные или предварительно авторизуйтесь</h5>
+          <div className={styles.greenBtn}>
+            <GreenButton text="Войти" link="/account" />
+            <div className={styles.formData}>
+              <form className={styles.form} onSubmit={goLogin}>
+                <input
+                  className={
+                    emailError ? styles.authInputError : styles.authInput
+                  }
+                  type="text"
+                  placeholder="Email*"
+                  value={email}
+                  onFocus={() => setEmailError("")}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+                {emailError ? <p className={styles.error}>{emailError}</p> : ""}
+                <input
+                  className={
+                    passwordError ? styles.authInputError : styles.authInput
+                  }
+                  type="password"
+                  placeholder="Пароль*"
+                  value={password}
+                  autoComplete="true"
+                  onFocus={() => setPasswordError("")}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                {passwordError ? (
+                  <p className={styles.error}>{passwordError}</p>
+                ) : (
+                  ""
+                )}
+                <textarea
+                  className={styles.textInput}
+                  placeholder="Комментарий*"
+                  value={comment}
+                  onChange={(e) => {
+                    setComment(e.target.value);
+                  }}
+                />
+                <input
+                  className={styles.submitInput}
+                  type="submit"
+                  value="Оставить комментарий"
+                />
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

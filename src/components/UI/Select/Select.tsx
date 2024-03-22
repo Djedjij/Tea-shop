@@ -2,6 +2,7 @@ import React, { ChangeEvent } from "react";
 import styles from "./Select.module.scss";
 import { useAppDispatch } from "../../../hooks/hooks";
 import {
+  setFilteredBy,
   setHighCostTeas,
   setLowCostTeas,
 } from "../../../store/redusers/teasSlice";
@@ -11,9 +12,11 @@ const Select = () => {
   const handleChangeTea = (e: ChangeEvent<HTMLSelectElement>) => {
     if (e.target.value === "setLowCost") {
       dispatch(setLowCostTeas());
+      dispatch(setFilteredBy("По цене: сначала дешевые"));
     }
     if (e.target.value === "setHighCost") {
       dispatch(setHighCostTeas());
+      dispatch(setFilteredBy("По цене: сначала дорогие"));
     }
   };
 

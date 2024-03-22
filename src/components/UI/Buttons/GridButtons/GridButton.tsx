@@ -26,8 +26,8 @@ const GridButtons: React.FC<GreenButtonsProps> = (props) => {
         <img
           src={
             isColumnActive
-              ? "/images/icons/icon-greenColumn.png"
-              : "/images/icons/icon-greyColumn.png"
+              ? "/images/icons/icon-greenColumn.svg"
+              : "/images/icons/icon-greyColumn.svg"
           }
           alt="grid"
         />
@@ -36,8 +36,8 @@ const GridButtons: React.FC<GreenButtonsProps> = (props) => {
         <img
           src={
             isRowActive
-              ? "/images/icons/icon-greenRow.png"
-              : "/images/icons/icon-greyRow.png"
+              ? "/images/icons/icon-greenRow.svg"
+              : "/images/icons/icon-greyRow.svg"
           }
           alt="grid"
         />

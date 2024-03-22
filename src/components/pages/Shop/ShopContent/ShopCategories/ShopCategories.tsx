@@ -1,17 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Shop.categories.module.scss";
 import { mainPageCategories } from "../../../../../utils/consts";
-import { useAppDispatch } from "../../../../../hooks/hooks";
-import {} from "../../../../../store/redusers/teasSlice";
+import { useAppDispatch, useAppSelector } from "../../../../../hooks/hooks";
 import { fetchFilteredByCategoryTeas } from "../../../../../store/redusers/fetchTeas";
 const ShopCategories = () => {
   const dispatch = useAppDispatch();
-  const [activeCategory, setActiveCategory] = useState("");
-  const handleCategoryClick = (name: string) => {
-    console.log(name);
 
+  const filteredBy = useAppSelector((state) => state.teas.filteredBy);
+  const handleCategoryClick = (name: string) => {
     dispatch(fetchFilteredByCategoryTeas({ title: name }));
-    setActiveCategory(name);
   };
 
   return (
@@ -21,7 +18,7 @@ const ShopCategories = () => {
         {mainPageCategories.map((category) => (
           <li
             className={
-              category.name === activeCategory
+              category.name === filteredBy
                 ? styles.categoryActive
                 : styles.category
             }

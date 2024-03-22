@@ -28,6 +28,7 @@
   opacity: 0;
   transform: translateY(300px);
   transition: 0.4s all ease;
+  border-radius: 12px;
 }
 .modalContent.activeContent {
   transform: translateY(0);

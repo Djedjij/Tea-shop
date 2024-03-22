@@ -27,4 +27,5 @@ export interface TeasState {
   itemsPerPage: number;
   totalItems: number;
   isFiltered: boolean;
+  filteredBy: string | null;
 }

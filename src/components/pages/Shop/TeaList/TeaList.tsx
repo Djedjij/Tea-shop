@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { setCurrentPage } from "../../../../store/redusers/teasSlice";
+import {
+  resetFilters,
+  setCurrentPage,
+} from "../../../../store/redusers/teasSlice";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/hooks";
 import VerticalTeaCard from "../../../UI/TeaCards/VerticalTeaCard/VerticalTeaCard";
 import HorizontalTeaCard from "../../../UI/TeaCards/HorizontalTeaCard/HorizontalTeaCard";
@@ -41,8 +44,9 @@ const TeaList: React.FC<TeaListProps> = ({ isVertical, renderTeaList }) => {
   const isFiltered = useAppSelector((state) => state.teas.isFiltered);
   const currentPage = useAppSelector((state) => state.teas.currentPage);
   const itemsPerPage = useAppSelector((state) => state.teas.itemsPerPage);
-
+  const filteredBy = useAppSelector((state) => state.teas.filteredBy);
   const [transition, setTransition] = useState<boolean>(false);
+
   const handleTransition = () => {
     renderTeaList();
     if (transition) {
@@ -52,6 +56,9 @@ const TeaList: React.FC<TeaListProps> = ({ isVertical, renderTeaList }) => {
     }
   };
 
+  const resetFilter = () => {
+    dispatch(resetFilters());
+  };
   useEffect(() => {
     handleTransition();
     // eslint-disable-next-line
@@ -103,6 +110,16 @@ const TeaList: React.FC<TeaListProps> = ({ isVertical, renderTeaList }) => {
 
     return (
       <div>
+        {filteredBy && (
+          <div className={styles.categoryTitle}>
+            <p>{filteredBy}</p>
+            <img
+              onClick={() => resetFilter()}
+              src="/images/icons/icon-crossWhite.svg"
+              alt=""
+            />
+          </div>
+        )}
         <CSSTransition
           in={transition}
           timeout={300}

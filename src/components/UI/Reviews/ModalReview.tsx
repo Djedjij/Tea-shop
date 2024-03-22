@@ -14,8 +14,6 @@ const ModalReview = () => {
   const [passwordError, setPasswordError] = useState("");
   const isLogin = useAppSelector((state) => state.user.isLogin);
 
-  const postComment = () => {};
-
   const validateEmail = (email: string) => {
     if (!email) {
       setEmailError(`Поле "Email" не может быть пустым`);

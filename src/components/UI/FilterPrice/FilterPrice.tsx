@@ -3,6 +3,7 @@ import styles from "./FilterPrice.module.scss";
 import GreyButton from "../Buttons/GreyButton/GreyButton";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { fetchFilteredTeas } from "../../../store/redusers/fetchTeas";
+import { setFilteredBy } from "../../../store/redusers/teasSlice";
 
 const FilterPrice = () => {
   const dispatch = useAppDispatch();
@@ -11,6 +12,17 @@ const FilterPrice = () => {
   const [slider2Value, setSlider2Value] = useState<number>(0);
   const [minPrice, setMinPrice] = useState<number>(0);
   const [maxPrice, setMaxPrice] = useState<number>(0);
+
+  const filterByPrice = () => {
+    dispatch(
+      fetchFilteredTeas({
+        min_price: slider1Value.toString(),
+        max_price: slider2Value.toString(),
+      })
+    );
+    dispatch(setFilteredBy(`Цена: от ${slider1Value}р до ${slider2Value}р`));
+  };
+
   useEffect(() => {
     if (teas && teas.length > 0) {
       setMinPrice(
@@ -73,24 +85,13 @@ const FilterPrice = () => {
         />
       </div>
       <div className={styles.price}>
-        {" "}
-        <h4>Цена:</h4>{" "}
+        <h4>Цена:</h4>
         <p>
           {slider1Value}р - {slider2Value}р
         </p>
       </div>
       <div className={styles.button}>
-        <GreyButton
-          text="Отфильтровать"
-          onClick={() =>
-            dispatch(
-              fetchFilteredTeas({
-                min_price: slider1Value.toString(),
-                max_price: slider2Value.toString(),
-              })
-            )
-          }
-        />
+        <GreyButton text="Отфильтровать" onClick={() => filterByPrice()} />
       </div>
     </div>
   );

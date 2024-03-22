@@ -14,8 +14,33 @@
   display: flex;
   gap: 40px;
   flex-wrap: wrap;
+  margin-top: 40px;
 }
-
+.categoryTitle {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  background-color: App.$greyButtonColor;
+  width: max-content;
+  padding: 4px 8px 4px 8px;
+  border-radius: 12px;
+  color: white;
+  font-size: 12px;
+  font-family: App.$QuestrialFont;
+}
+.categoryTitle img {
+  width: 10px;
+  height: 10px;
+  border: none;
+  transition: background-color 0.3s ease;
+  padding: 4px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.categoryTitle img:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
 .paginate {
   width: 100%;
   display: flex;
