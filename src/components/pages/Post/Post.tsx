@@ -21,7 +21,7 @@ const Post = () => {
   };
   return (
     <div>
-      <LocatePanel />
+      <LocatePanel childLocate={post?.name} />
       <div className={styles.wrapper}>
         <div className={styles.post}>
           <img className={styles.postImg} src={post?.img} alt="" />

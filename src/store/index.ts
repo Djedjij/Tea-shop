@@ -5,6 +5,7 @@ import { shopCartAPI } from "../services/shopCartService";
 import errorReducer from "./redusers/errorSlice";
 import userReducer from "./redusers/userSlice";
 import { teaAPI } from "../services/teaService";
+
 const store = configureStore({
   reducer: {
     teas: teasReducer,

@@ -5,17 +5,20 @@ interface GreenButtonsProps {
   onHorizontalClick: () => void;
 }
 
-const GridButtons: React.FC<GreenButtonsProps> = (props) => {
+const GridButtons: React.FC<GreenButtonsProps> = ({
+  onVerticalClick,
+  onHorizontalClick,
+}) => {
   const [isRowActive, setIsRowActive] = useState<boolean>(false);
   const [isColumnActive, setIsColumnActive] = useState<boolean>(true);
 
   const handleRow = () => {
-    props.onHorizontalClick();
+    onHorizontalClick();
     setIsRowActive(true);
     setIsColumnActive(false);
   };
   const handleColumn = () => {
-    props.onVerticalClick();
+    onVerticalClick();
     setIsColumnActive(true);
     setIsRowActive(false);
   };

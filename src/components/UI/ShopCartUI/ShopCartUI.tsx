@@ -35,7 +35,7 @@ const ShoppingCardUI: React.FC = () => {
       >
         <h3>Корзина</h3>
         {!isEmpty && <p className={styles.empty}>Ваша корзина пуста</p>}
-        {!isEmpty && isError && <h1>Ошибка при загрузке корзины</h1>}
+        {!isEmpty && isError && <h3>Ошибка при загрузке корзины</h3>}
         {isEmpty && (
           <div>
             <div className={styles.teaList}>

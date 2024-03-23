@@ -67,8 +67,8 @@
   background-color: App.$greenButtonColor;
   height: 50px;
   width: 100%;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -77,16 +77,25 @@
 .chatHeader h5 {
   margin-left: 10px;
 }
+
 .crossButton {
   border: none;
   background: none;
-  width: 40px;
-  height: 40px;
+  width: 15px;
+  height: 15px;
   cursor: pointer;
+  margin-right: 10px;
 }
+
 .crossButton img {
   width: 100%;
   height: 100%;
+  transition: background-color 0.3s ease;
+  border-radius: 50%;
+  padding: 1px;
+}
+.crossButton img:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 //chat-body
 .chat {

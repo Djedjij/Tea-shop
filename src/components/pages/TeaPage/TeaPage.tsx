@@ -11,8 +11,12 @@ import { CSSTransition } from "react-transition-group";
 import Modal from "../../UI/Modal/Modal";
 import { shopCartAPI } from "../../../services/shopCartService";
 import GreyButtonDisabled from "../../UI/Buttons/GreyButton/GreyButtonDisabled";
+import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
+import VerticalTeaCard from "../../UI/TeaCards/VerticalTeaCard/VerticalTeaCard";
+import { fetchFilteredByCategoryTeas } from "../../../store/redusers/fetchTeas";
 
 const TeaPage = () => {
+  const dispatch = useAppDispatch();
   const { teaId } = useParams();
   const { data: tea } = teaAPI.useFetchTeaQuery(String(teaId));
   const [postTea] = shopCartAPI.usePostTeaMutation();
@@ -24,7 +28,8 @@ const TeaPage = () => {
   const handleSliderClick = () => {
     setActiveModal(true);
   };
-
+  const teas = useAppSelector((state) => state.teas.teas);
+  const similarTeas = teas.slice(0, 4);
   useEffect(() => {
     setInShopCart(
       shopCart?.itemsMap.find(
@@ -35,15 +40,17 @@ const TeaPage = () => {
     );
   }, [shopCart?.itemsMap, tea?.productId]);
 
+  const filterTeas = (name: string) => {
+    dispatch(fetchFilteredByCategoryTeas({ title: name }));
+  };
   const addInShopCard = async (id: number, weight: number) => {
     postTea({ weight, id });
   };
-  console.log(tea);
 
   if (tea) {
     return (
       <div>
-        <LocatePanel />
+        <LocatePanel childLocate={tea.name} />
         <div className={styles.wrapper}>
           <div className={styles.teaWrapper}>
             <Carousel
@@ -55,7 +62,10 @@ const TeaPage = () => {
             <div className={styles.description}>
               <h3>{tea.name}</h3>
               <h5>
-                Категория: <Link to=""> {tea.category}</Link>
+                Категория:{" "}
+                <Link to="/shop" onClick={() => filterTeas(tea.category)}>
+                  {tea.category}
+                </Link>
               </h5>
               <p>Цена за 100г - {tea.price}р.</p>
               <p>{tea.effect}</p>
@@ -116,6 +126,18 @@ const TeaPage = () => {
           </div>
           <div className={styles.similar}>
             <h2>Попробуйте также</h2>
+            <div className={styles.similarTeas}>
+              {similarTeas.map((tea) => (
+                <VerticalTeaCard
+                  key={tea.productId}
+                  id={tea.productId}
+                  name={tea.name}
+                  img={tea.imagesLinks[0]}
+                  price={tea.price}
+                  weight={100}
+                />
+              ))}
+            </div>
           </div>
         </div>
         <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
