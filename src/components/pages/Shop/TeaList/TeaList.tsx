@@ -131,7 +131,11 @@ const TeaList: React.FC<TeaListProps> = ({ isVertical, renderTeaList }) => {
           }}
         >
           <div className={styles.loaderWrapper}>
-            {loading && <Loader />}
+            {loading && (
+              <div className={styles.loader}>
+                <Loader />
+              </div>
+            )}
             <div
               className={`${styles.wrapper} ${loading ? styles.loading : ""}`}
             >
