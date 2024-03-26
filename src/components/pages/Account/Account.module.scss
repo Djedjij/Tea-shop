@@ -27,3 +27,47 @@
   align-items: center;
   justify-content: center;
 }
+.accountBody {
+  display: flex;
+  justify-content: space-between;
+}
+.accountPanel {
+  padding: 20px;
+}
+.accountPanelLink {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  list-style-type: none;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  color: App.$blackButtonColor;
+}
+.accountPanel li {
+  cursor: pointer;
+}
+.accountPanelLink:hover {
+  color: App.$greyButtonColor;
+}
+
+.accountPanelLink img {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.accountPanelLine {
+  border-top: 1px App.$greyButtonColor;
+  margin-top: 15px;
+}
+.accountPageHeader {
+  @include nameh3;
+}
+// personal-info
+.personalInfo {
+  width: 75%;
+}
+.infoBlock img {
+  max-width: 25px;
+  max-height: 25px;
+}

@@ -65,8 +65,8 @@ const PanelButton = () => {
           {countTeas ? <div className={styles.count}>{countTeas}</div> : ""}
           <img
             className={styles.panelButtonCardImg}
-            src="/images/icons/shopping-card.svg"
-            alt="shopping-card"
+            src="/images/icons/shopCart.svg"
+            alt=""
           />
         </Link>
       </div>

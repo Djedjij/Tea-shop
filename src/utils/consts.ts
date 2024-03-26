@@ -1,4 +1,9 @@
+import { FunctionComponent } from "react";
 import { IPost } from "../models/IPost";
+import PersonalInfo from "../components/pages/Account/AccountChilds/PersonalInfo";
+import PurchaseHistory from "../components/pages/Account/AccountChilds/PurchaseHistory";
+import FavoriteTeas from "../components/pages/Account/AccountChilds/FavoriteTeas";
+import ViewedTeas from "../components/pages/Account/AccountChilds/ViewedTeas";
 
 interface MainPageCategories {
   name: string;
@@ -17,6 +22,11 @@ interface InstagramImages {
   img: string;
 }
 
+interface IAccountPage {
+  name: string;
+  component: FunctionComponent;
+  img: string;
+}
 export interface Iphones {
   icon?: string;
   text: string;
@@ -271,5 +281,28 @@ export const posts: IPost[] = [
     date: "14 Янв",
     comments: [],
     img: "/images/post-images/post4.jpg",
+  },
+];
+
+export const accountPages: IAccountPage[] = [
+  {
+    name: "Личные данные",
+    component: PersonalInfo,
+    img: "/images/icons/userBlack.svg",
+  },
+  {
+    name: "Просмотренные товары",
+    component: ViewedTeas,
+    img: "/images/icons/eye.svg",
+  },
+  {
+    name: "История покупок",
+    component: PurchaseHistory,
+    img: "/images/icons/historyList.svg",
+  },
+  {
+    name: "Избранные",
+    component: FavoriteTeas,
+    img: "/images/icons/hearth.svg",
   },
 ];
