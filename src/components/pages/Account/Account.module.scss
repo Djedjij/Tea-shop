@@ -46,6 +46,9 @@
 .accountPanel li {
   cursor: pointer;
 }
+.liActive {
+  font-weight: 700;
+}
 .accountPanelLink:hover {
   color: App.$greyButtonColor;
 }
@@ -62,12 +65,36 @@
 }
 .accountPageHeader {
   @include nameh3;
+  margin-bottom: 20px;
 }
-// personal-info
-.personalInfo {
+.accountBodyContent {
   width: 75%;
+  margin-bottom: 50px;
+}
+////////////////////////////////////// personal-info
+
+.infoBlockItems {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  position: relative;
+}
+.infoBlockText {
+  margin-left: 15px;
 }
 .infoBlock img {
   max-width: 25px;
   max-height: 25px;
+}
+.infoBlockTag {
+  opacity: 0.6;
+  font-size: 14px;
+}
+.imgPen {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  cursor: pointer;
 }

@@ -21,25 +21,27 @@ function App() {
 
   return (
     <div className="App">
-      <BlackHeader />
-      <DropHeader />
-      <Header />
-      <Routes>
-        {routes.map((route) => (
-          <Route
-            key={route.path}
-            path={route.path}
-            element={<route.Component />}
-          />
-        ))}
-        <Route path="/shop/:teaId" element={<TeaPage />} />
-        <Route path="/blog/:postId" element={<Post />} />
-      </Routes>
-      <PanelButtons />
-      <ModalError />
+      <div className="body">
+        <BlackHeader />
+        <DropHeader />
+        <Header />
+        <Routes>
+          {routes.map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={<route.Component />}
+            />
+          ))}
+          <Route path="/shop/:teaId" element={<TeaPage />} />
+          <Route path="/blog/:postId" element={<Post />} />
+        </Routes>
+        <PanelButtons />
+        <ModalError />
+        <ButtonUp />
+        <DialogWindow />
+      </div>
       <Footer />
-      <ButtonUp />
-      <DialogWindow />
     </div>
   );
 }

@@ -5,7 +5,14 @@
 *:focus {
   outline: none;
 }
-
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.body {
+  flex: 1;
+}
 $greyButtonColor: #c2b698;
 $greenButtonColor: #bcdf00;
 $blackButtonColor: #232a34;
