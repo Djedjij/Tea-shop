@@ -4,16 +4,17 @@ import GreyButton from "../../Buttons/GreyButton/GreyButton";
 import { CSSTransition } from "react-transition-group";
 import { shopCartAPI } from "../../../../services/shopCartService";
 import { Link } from "react-router-dom";
+import { ITea } from "../../../../models/ITea";
+import LikeButton from "../../Buttons/LikeButton/LikeButton";
 interface HorizontalTeaCardProps {
-  id: number;
-  name: string;
-  img: string;
-  price: number;
-  desc: string;
+  tea: ITea;
   weight: number;
 }
 
-const HorizontalTeaCard: React.FC<HorizontalTeaCardProps> = (props) => {
+const HorizontalTeaCard: React.FC<HorizontalTeaCardProps> = ({
+  tea,
+  weight,
+}) => {
   const [textVisible, setTextVisible] = useState<boolean>(false);
 
   const [postTea] = shopCartAPI.usePostTeaMutation();
@@ -43,9 +44,13 @@ const HorizontalTeaCard: React.FC<HorizontalTeaCardProps> = (props) => {
         textVisible ? styles.enabled : styles.disabled
       } `}
     >
-      <img src={props.img} alt={props.name} />
+      <img
+        className={styles.horizontalCardImg}
+        src={tea.imagesLinks[0]}
+        alt={tea.name}
+      />
       <div className={styles.description}>
-        <Link to={`/shop/${props.id}`}>{props.name}</Link>
+        <Link to={`/shop/${tea.productId}`}>{tea.name}</Link>
         <CSSTransition
           in={textVisible}
           timeout={300}
@@ -58,21 +63,22 @@ const HorizontalTeaCard: React.FC<HorizontalTeaCardProps> = (props) => {
         >
           {textVisible ? (
             <p>
-              {props.desc}{" "}
+              {tea.description}{" "}
               <button onClick={handleVisible} className={styles.visibleBtn}>
                 Свернуть описание
               </button>
             </p>
           ) : (
-            zipText(props.desc)
+            zipText(tea.description)
           )}
         </CSSTransition>
-        <p>{props.price}.00 p</p>
-        <div className={styles.button}>
+        <p>{tea.price}.00 p</p>
+        <div className={styles.buttons}>
           <GreyButton
             text="В корзину"
-            onClick={() => addInShopCard(props.id, props.weight)}
+            onClick={() => addInShopCard(tea.productId, weight)}
           />
+          <LikeButton tea={tea} />
         </div>
       </div>
     </div>

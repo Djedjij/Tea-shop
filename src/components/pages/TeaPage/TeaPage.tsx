@@ -128,14 +128,7 @@ const TeaPage = () => {
             <h2>Попробуйте также</h2>
             <div className={styles.similarTeas}>
               {similarTeas.map((tea) => (
-                <VerticalTeaCard
-                  key={tea.productId}
-                  id={tea.productId}
-                  name={tea.name}
-                  img={tea.imagesLinks[0]}
-                  price={tea.price}
-                  weight={100}
-                />
+                <VerticalTeaCard tea={tea} weight={100} />
               ))}
             </div>
           </div>

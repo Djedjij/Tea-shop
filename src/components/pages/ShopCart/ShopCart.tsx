@@ -7,7 +7,7 @@ import styles from "./ShopCart.module.scss";
 import GreenButton from "../../UI/Buttons/GreenButton/GreenButton";
 import { shopCartAPI } from "../../../services/shopCartService";
 import Loader from "../../UI/Loader/Loader";
-import ErrorMessage from "../../Error/ErrorMessage";
+import ErrorMessage from "../../Error/Message";
 
 const ShopCart = () => {
   const [isEmpty, setIsEmpty] = useState(false);

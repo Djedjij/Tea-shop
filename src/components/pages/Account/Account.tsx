@@ -12,10 +12,11 @@ import { Link } from "react-router-dom";
 const Account = () => {
   const [hasAccount, setHasAccount] = useState<boolean>(false);
   const [accountPage, setAccountPage] = useState("Личные данные");
-
+  const [changePage, setChangePage] = useState<boolean>(false);
   const changeForm = () => {
     setHasAccount(!hasAccount);
   };
+  console.log(changePage);
 
   const isLogin = useAppSelector((state) => state.user.isLogin);
   // const user = localStorage.getItem("user")
@@ -56,7 +57,10 @@ const Account = () => {
                         className={
                           accountPage === page.name ? `${styles.liActive}` : ""
                         }
-                        onClick={() => setAccountPage(page.name)}
+                        onClick={() => {
+                          setAccountPage(page.name);
+                          setChangePage(!changePage);
+                        }}
                       >
                         {page.name}
                       </li>
@@ -68,9 +72,27 @@ const Account = () => {
                     <li>Выход</li>
                   </div>
                 </ul>
-                {accountPages.map((page) =>
-                  accountPage === page.name ? <page.component /> : ""
-                )}
+                <CSSTransition
+                  in={changePage}
+                  timeout={300}
+                  classNames={{
+                    enter: styles.inputEnter,
+                    enterActive: styles.inputEnterActive,
+                    exit: styles.inputExit,
+                    exitActive: styles.inputExitActive,
+                  }}
+                  unmountOnEnter
+                >
+                  <>
+                    {accountPages.map((page) =>
+                      accountPage === page.name ? (
+                        <page.Component key={page.name} />
+                      ) : (
+                        ""
+                      )
+                    )}
+                  </>
+                </CSSTransition>
               </div>
             ) : (
               <div>

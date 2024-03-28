@@ -24,7 +24,7 @@ interface InstagramImages {
 
 interface IAccountPage {
   name: string;
-  component: FunctionComponent;
+  Component: FunctionComponent;
   img: string;
 }
 export interface Iphones {
@@ -287,22 +287,22 @@ export const posts: IPost[] = [
 export const accountPages: IAccountPage[] = [
   {
     name: "Личные данные",
-    component: PersonalInfo,
+    Component: PersonalInfo,
     img: "/images/icons/userBlack.svg",
   },
   {
     name: "Просмотренные товары",
-    component: ViewedTeas,
+    Component: ViewedTeas,
     img: "/images/icons/eye.svg",
   },
   {
     name: "История покупок",
-    component: PurchaseHistory,
+    Component: PurchaseHistory,
     img: "/images/icons/historyList.svg",
   },
   {
     name: "Избранные",
-    component: FavoriteTeas,
-    img: "/images/icons/hearth.svg",
+    Component: FavoriteTeas,
+    img: "/images/icons/heart.svg",
   },
 ];

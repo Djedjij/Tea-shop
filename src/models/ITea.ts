@@ -19,8 +19,10 @@ export interface ITea {
 }
 
 export interface TeasState {
-  filteredTeas: any;
   teas: ITea[];
+  filteredTeas: ITea[];
+  viewedTeas: ITea[];
+  favoriteTeas: ITea[];
   isLoading: boolean;
   error: string;
   currentPage: number;

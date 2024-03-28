@@ -12,7 +12,7 @@
   max-width: 200px;
   text-align: center;
 }
-.verticalCard img {
+.verticalCardImg {
   max-height: 200px;
   border-radius: 50%;
 }
@@ -36,4 +36,9 @@
   display: flex;
   flex-direction: column-reverse;
   padding-bottom: 20px;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

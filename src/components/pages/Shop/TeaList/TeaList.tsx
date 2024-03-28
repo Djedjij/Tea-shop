@@ -145,22 +145,9 @@ const TeaList: React.FC<TeaListProps> = ({ isVertical, renderTeaList }) => {
                 teasForCurrentPage.map((tea: ITea) => (
                   <div key={tea.name} className={styles.teaCard}>
                     {isVertical ? (
-                      <VerticalTeaCard
-                        id={tea.productId}
-                        name={tea.name}
-                        price={tea.price}
-                        img={tea.imagesLinks[0]}
-                        weight={100}
-                      />
+                      <VerticalTeaCard weight={100} tea={tea} />
                     ) : (
-                      <HorizontalTeaCard
-                        id={tea.productId}
-                        name={tea.name}
-                        price={tea.price}
-                        img={tea.imagesLinks[0]}
-                        desc={tea.description}
-                        weight={100}
-                      />
+                      <HorizontalTeaCard weight={100} tea={tea} />
                     )}
                   </div>
                 ))

@@ -5,7 +5,7 @@ import Select from "../../../UI/Select/Select";
 import { CSSTransition } from "react-transition-group";
 import TeaList from "../TeaList/TeaList";
 import { useAppSelector } from "../../../../hooks/hooks";
-import ErrorMessage from "../../../Error/ErrorMessage";
+import ErrorMessage from "../../../Error/Message";
 import SearchInput from "../../../UI/Inputs/SearchInput/SearchInput";
 
 const ShopTea: React.FC = () => {

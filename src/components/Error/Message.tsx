@@ -4,13 +4,13 @@ interface IErrorProps {
   message: string;
   showImg: boolean;
 }
-const ErrorMessage: React.FC<IErrorProps> = ({ message, showImg }) => {
+const Message: React.FC<IErrorProps> = ({ message, showImg }) => {
   return (
     <div className={styles.wrapper}>
-      {showImg && <img src="/images/error.png" alt="Ошибка" />}
+      {showImg && <img src="/images/error.png" alt="" />}
       <p className={styles.message}>{message}</p>
     </div>
   );
 };
 
-export default ErrorMessage;
+export default Message;
