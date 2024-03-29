@@ -27,3 +27,15 @@
   filter: none;
   z-index: 2;
 }
+
+.imageLoader {
+  position: absolute;
+  top: 0;
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+}

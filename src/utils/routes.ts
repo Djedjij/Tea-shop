@@ -38,7 +38,7 @@ export const contactsRoute: IMainRoute = {
 };
 
 export const accountRoute: IMainRoute = {
-  name: "Счет",
+  name: "Кабинет",
   path: "/account",
 };
 
@@ -75,7 +75,7 @@ export const routes: IRoute[] = [
   },
   {
     path: "/account",
-    name: "Аккаунт",
+    name: "Кабинет",
     Component: Account,
   },
   {

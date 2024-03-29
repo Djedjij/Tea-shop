@@ -11,6 +11,7 @@
   max-height: 350px;
   max-width: 200px;
   text-align: center;
+  position: relative;
 }
 .verticalCardImg {
   max-height: 200px;
@@ -32,7 +33,7 @@
   margin-bottom: 10px;
 }
 .price {
-  height: 80%;
+  height: max-content;
   display: flex;
   flex-direction: column-reverse;
   padding-bottom: 20px;

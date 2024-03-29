@@ -6,7 +6,7 @@ import DeleteButton from "../../UI/Buttons/DeleteButton/DeleteButton";
 import styles from "./ShopCart.module.scss";
 import GreenButton from "../../UI/Buttons/GreenButton/GreenButton";
 import { shopCartAPI } from "../../../services/shopCartService";
-import Loader from "../../UI/Loader/Loader";
+import Loader from "../../UI/Loaders/Loader";
 import ErrorMessage from "../../Error/Message";
 
 const ShopCart = () => {

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import DeleteButton from "../Buttons/DeleteButton/DeleteButton";
 import CounterInput from "../Inputs/CounterInput";
 import { shopCartAPI } from "../../../services/shopCartService";
-import Loader from "../Loader/Loader";
+import Loader from "../Loaders/Loader";
 
 const ShoppingCardUI: React.FC = () => {
   const [isEmpty, setIsEmpty] = useState(false);

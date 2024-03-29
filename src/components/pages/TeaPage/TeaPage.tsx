@@ -14,6 +14,7 @@ import GreyButtonDisabled from "../../UI/Buttons/GreyButton/GreyButtonDisabled";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import VerticalTeaCard from "../../UI/TeaCards/VerticalTeaCard/VerticalTeaCard";
 import { fetchFilteredByCategoryTeas } from "../../../store/redusers/fetchTeas";
+import { setViewedTeas } from "../../../store/redusers/teasSlice";
 
 const TeaPage = () => {
   const dispatch = useAppDispatch();
@@ -40,6 +41,9 @@ const TeaPage = () => {
     );
   }, [shopCart?.itemsMap, tea?.productId]);
 
+  useEffect(() => {
+    if (tea) dispatch(setViewedTeas(tea));
+  });
   const filterTeas = (name: string) => {
     dispatch(fetchFilteredByCategoryTeas({ title: name }));
   };

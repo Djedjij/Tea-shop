@@ -9,11 +9,13 @@ import LikeButton from "../../Buttons/LikeButton/LikeButton";
 interface HorizontalTeaCardProps {
   tea: ITea;
   weight: number;
+  isFavoriteTea?: true;
 }
 
 const HorizontalTeaCard: React.FC<HorizontalTeaCardProps> = ({
   tea,
   weight,
+  isFavoriteTea,
 }) => {
   const [textVisible, setTextVisible] = useState<boolean>(false);
 
@@ -30,7 +32,7 @@ const HorizontalTeaCard: React.FC<HorizontalTeaCardProps> = ({
     return (
       <p>
         {text.split(" ").splice(0, 30).join(" ")}
-        {"..."}
+
         <button onClick={handleVisible} className={styles.visibleBtn}>
           Подробнее
         </button>
@@ -63,7 +65,7 @@ const HorizontalTeaCard: React.FC<HorizontalTeaCardProps> = ({
         >
           {textVisible ? (
             <p>
-              {tea.description}{" "}
+              {tea.description}
               <button onClick={handleVisible} className={styles.visibleBtn}>
                 Свернуть описание
               </button>
@@ -78,7 +80,7 @@ const HorizontalTeaCard: React.FC<HorizontalTeaCardProps> = ({
             text="В корзину"
             onClick={() => addInShopCard(tea.productId, weight)}
           />
-          <LikeButton tea={tea} />
+          <LikeButton tea={tea} isFavoriteTea={isFavoriteTea} />
         </div>
       </div>
     </div>

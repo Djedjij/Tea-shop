@@ -13,7 +13,7 @@ import { setUuid } from "../../../../store/redusers/shopCardSlice";
 import styles from "./TeaList.module.scss";
 import { ITea } from "../../../../models/ITea";
 import TeaListEmpty from "./TeaListEmpty";
-import Loader from "../../../UI/Loader/Loader";
+import Loader from "../../../UI/Loaders/Loader";
 
 interface TeaListProps {
   isVertical: boolean;
@@ -22,6 +22,7 @@ interface TeaListProps {
 
 const TeaList: React.FC<TeaListProps> = ({ isVertical, renderTeaList }) => {
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(fetchTeas());
   }, [dispatch]);

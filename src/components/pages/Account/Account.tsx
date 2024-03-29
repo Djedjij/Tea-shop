@@ -5,7 +5,7 @@ import AuthInput from "../../UI/Inputs/AuthInput/AuthInput";
 import LoginInput from "../../UI/Inputs/AuthInput/LoginInput";
 import { CSSTransition } from "react-transition-group";
 import { useAppSelector } from "../../../hooks/hooks";
-import Loader from "../../UI/Loader/Loader";
+import Loader from "../../UI/Loaders/Loader";
 import { accountPages } from "../../../utils/consts";
 import { Link } from "react-router-dom";
 
@@ -16,7 +16,6 @@ const Account = () => {
   const changeForm = () => {
     setHasAccount(!hasAccount);
   };
-  console.log(changePage);
 
   const isLogin = useAppSelector((state) => state.user.isLogin);
   // const user = localStorage.getItem("user")

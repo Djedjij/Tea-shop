@@ -10,11 +10,14 @@ import {
 
 interface ILikeButtonProps {
   tea: ITea;
+  isFavoriteTea?: boolean;
 }
 
-const LikeButton: React.FC<ILikeButtonProps> = ({ tea }) => {
+const LikeButton: React.FC<ILikeButtonProps> = ({ tea, isFavoriteTea }) => {
   const dispatch = useAppDispatch();
-  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+  const [isFavorite, setIsFavorite] = useState<boolean>(
+    isFavoriteTea ? true : false
+  );
   const addInFavorite = () => {
     if (!isFavorite) {
       setIsFavorite(true);

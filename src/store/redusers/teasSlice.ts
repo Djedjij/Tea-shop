@@ -58,16 +58,21 @@ const teasSlice = createSlice({
       state.filteredBy = action.payload;
     },
     setViewedTeas: (state, action: PayloadAction<ITea>) => {
-      state.viewedTeas = [...state.viewedTeas, action.payload];
+      if (
+        state.viewedTeas.findIndex(
+          (tea) => tea.productId === action.payload.productId
+        ) === -1
+      ) {
+        state.viewedTeas = [...state.viewedTeas, action.payload];
+      }
     },
     setFavoriteTea: (state, action: PayloadAction<ITea>) => {
       state.favoriteTeas = [...state.favoriteTeas, action.payload];
     },
     removeFavoriteTea: (state, action: PayloadAction<number>) => {
-      const index = state.favoriteTeas.findIndex(
-        (tea) => tea.productId === action.payload
+      state.favoriteTeas = state.favoriteTeas.filter(
+        (tea) => tea.productId !== action.payload
       );
-      state.favoriteTeas = state.favoriteTeas.splice(index, 1);
     },
   },
   extraReducers: (builder) => {

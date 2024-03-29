@@ -8,7 +8,11 @@ const FavoriteTeas = () => {
     <div className={styles.accountBodyContent}>
       <h3 className={styles.accountPageHeader}>Избранные</h3>
       {favoriteTeas.length ? (
-        favoriteTeas.map((tea) => <HorizontalTeaCard tea={tea} weight={100} />)
+        favoriteTeas.map((tea) => (
+          <div key={tea.productId} className={styles.favoriteTea}>
+            <HorizontalTeaCard tea={tea} weight={100} isFavoriteTea={true} />
+          </div>
+        ))
       ) : (
         <p>Избранных товаров пока нет</p>
       )}
