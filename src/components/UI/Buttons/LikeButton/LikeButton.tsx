@@ -29,10 +29,13 @@ const LikeButton: React.FC<ILikeButtonProps> = ({ tea, isFavoriteTea }) => {
   };
 
   useEffect(() => {
+    if (isFavoriteTea) {
+      return;
+    }
     if (isFavorite) {
       dispatch(setModalError('Товар добавлен в "Избранные"'));
     }
-  }, [isFavorite, dispatch]);
+  });
   return (
     <div className={styles.likeButton}>
       {isFavorite ? (

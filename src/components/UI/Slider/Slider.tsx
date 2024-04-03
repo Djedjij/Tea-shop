@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Slider.module.scss";
+import ImageLoader from "../Loaders/ImageLoader";
 
 interface ISliderProps {
   images: string[];
@@ -26,14 +27,10 @@ const Slider: React.FC<ISliderProps> = ({
           style={{ transform: `translateY(${-offset}px)` }}
         >
           {images.map((img: string) => (
-            <img
-              style={{
-                minHeight: `${pageHeight}px`,
-                maxHeight: `${pageWidth}px`,
-              }}
+            <ImageLoader
+              minHeightImg={pageHeight}
+              minWidthImg={pageWidth}
               src={img}
-              alt=""
-              key={img}
               onClick={() => onClick && onClick()}
             />
           ))}

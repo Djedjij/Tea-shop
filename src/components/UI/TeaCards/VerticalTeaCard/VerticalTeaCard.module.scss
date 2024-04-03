@@ -15,6 +15,8 @@
 }
 .verticalCardImg {
   max-height: 200px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
 }
 .verticalCard a {
@@ -36,10 +38,7 @@
   height: max-content;
   display: flex;
   flex-direction: column-reverse;
-  padding-bottom: 20px;
-}
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  bottom: 0;
+  position: absolute;
+  margin-bottom: 40px;
 }

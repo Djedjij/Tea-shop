@@ -4,17 +4,11 @@ import PersonalInfo from "../components/pages/Account/AccountChilds/PersonalInfo
 import PurchaseHistory from "../components/pages/Account/AccountChilds/PurchaseHistory";
 import FavoriteTeas from "../components/pages/Account/AccountChilds/FavoriteTeas";
 import ViewedTeas from "../components/pages/Account/AccountChilds/ViewedTeas";
+import { ITea } from "../models/ITea";
 
 interface MainPageCategories {
   name: string;
   img: string;
-}
-
-interface PopularTea {
-  name: string;
-  img: string;
-  price: number;
-  desc?: string;
 }
 
 interface InstagramImages {
@@ -122,30 +116,50 @@ export const galeryImages = [
     img: "/images/inst-images/post3.jpg",
   },
 ];
-export const popularTea: PopularTea[] = [
+export const popularTea: ITea[] = [
   {
     name: "Генмайча",
-    img: "/images/main-images/main-categories/green-tea.jpg",
+    imagesLinks: ["/images/main-images/main-categories/green-tea.jpg"],
     price: 9,
-    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, laborum nostrum quos voluptate reiciendis quas architecto quasi itaque beatae,harum aliquam nulla quis facilis, excepturi nemo cupiditate quo quod unde.",
+    productId: 1,
+    description: "",
+    stockQuantity: 10,
+    effect: "",
+    reviews: [],
+    category: "Зеленый чай",
   },
   {
     name: "Сун Чжэнь",
-    img: "/images/main-images/main-categories/white-tea.jpg",
+    imagesLinks: ["/images/main-images/main-categories/white-tea.jpg"],
     price: 11,
-    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, laborum nostrum quos voluptate reiciendis quas architecto quasi itaque beatae,harum aliquam nulla quis facilis, excepturi nemo cupiditate quo quod unde.",
+    productId: 1,
+    description: "",
+    stockQuantity: 10,
+    effect: "",
+    reviews: [],
+    category: "Белый чай",
   },
   {
     name: "Би Ло Чун",
-    img: "images/main-images/main-categories/ylyn-tea.jpg",
+    imagesLinks: ["images/main-images/main-categories/ylyn-tea.jpg"],
     price: 8,
-    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, laborum nostrum quos voluptate reiciendis quas architecto quasi itaque beatae,harum aliquam nulla quis facilis, excepturi nemo cupiditate quo quod unde.",
+    productId: 1,
+    description: "",
+    stockQuantity: 10,
+    effect: "",
+    reviews: [],
+    category: "Улун",
   },
   {
     name: "Си Ху Лун Цзин",
-    img: "images/main-images/main-categories/pyer-tea.jpg",
+    imagesLinks: ["images/main-images/main-categories/pyer-tea.jpg"],
     price: 15,
-    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, laborum nostrum quos voluptate reiciendis quas architecto quasi itaque beatae,harum aliquam nulla quis facilis, excepturi nemo cupiditate quo quod unde.",
+    productId: 1,
+    description: "",
+    stockQuantity: 10,
+    effect: "",
+    reviews: [],
+    category: "Улун",
   },
 ];
 

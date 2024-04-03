@@ -105,3 +105,21 @@
 .favoriteTea {
   margin-bottom: 20px;
 }
+
+.textEnter {
+  opacity: 0;
+}
+
+.textEnterActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.textExit {
+  opacity: 0;
+}
+
+.textExitActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}

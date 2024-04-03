@@ -6,6 +6,7 @@ import DeleteButton from "../Buttons/DeleteButton/DeleteButton";
 import CounterInput from "../Inputs/CounterInput";
 import { shopCartAPI } from "../../../services/shopCartService";
 import Loader from "../Loaders/Loader";
+import ImageLoader from "../Loaders/ImageLoader";
 
 const ShoppingCardUI: React.FC = () => {
   const [isEmpty, setIsEmpty] = useState(false);
@@ -42,7 +43,9 @@ const ShoppingCardUI: React.FC = () => {
               {shopCart?.itemsMap.map((tea) => (
                 <div key={tea.id} className={styles.tea}>
                   <div className={styles.teaContent}>
-                    <img src={tea.imagesLink} alt={tea.name} />
+                    <div className={styles.teaImg}>
+                      <ImageLoader src={tea.imagesLink} />
+                    </div>
                     <div className={styles.teaText}>
                       <Link
                         className={styles.teaTextLink}
@@ -65,7 +68,9 @@ const ShoppingCardUI: React.FC = () => {
                 <Link to={"/shopCart"}>
                   <GreyButton text="Корзина" />
                 </Link>
-                <GreyButton text="Оплатить" />
+                <Link to={"/shopCart"}>
+                  <GreyButton text="Оплатить" />
+                </Link>
               </div>
             </div>
           </div>

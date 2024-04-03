@@ -6,6 +6,7 @@ import { shopCartAPI } from "../../../../services/shopCartService";
 import { Link } from "react-router-dom";
 import { ITea } from "../../../../models/ITea";
 import LikeButton from "../../Buttons/LikeButton/LikeButton";
+import ImageLoader from "../../Loaders/ImageLoader";
 interface HorizontalTeaCardProps {
   tea: ITea;
   weight: number;
@@ -34,7 +35,7 @@ const HorizontalTeaCard: React.FC<HorizontalTeaCardProps> = ({
         {text.split(" ").splice(0, 30).join(" ")}
 
         <button onClick={handleVisible} className={styles.visibleBtn}>
-          Подробнее
+          ...Подробнее
         </button>
       </p>
     );
@@ -46,11 +47,9 @@ const HorizontalTeaCard: React.FC<HorizontalTeaCardProps> = ({
         textVisible ? styles.enabled : styles.disabled
       } `}
     >
-      <img
-        className={styles.horizontalCardImg}
-        src={tea.imagesLinks[0]}
-        alt={tea.name}
-      />
+      <div className={styles.horizontalCardImg}>
+        <ImageLoader src={tea.imagesLinks[0]} />
+      </div>
       <div className={styles.description}>
         <Link to={`/shop/${tea.productId}`}>{tea.name}</Link>
         <CSSTransition

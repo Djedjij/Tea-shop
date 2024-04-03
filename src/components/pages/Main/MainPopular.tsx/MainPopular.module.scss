@@ -25,3 +25,20 @@
   justify-content: space-between;
   margin-bottom: 30px;
 }
+.teaCard {
+  width: 20%;
+  height: max-content;
+  background-color: App.$greyBackgroundColor;
+  padding: 20px;
+  padding-bottom: 50px;
+}
+.teaCard img {
+  width: 200px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+.teaCardLink {
+  text-decoration: none;
+  @include nameh3;
+  width: max-content;
+}

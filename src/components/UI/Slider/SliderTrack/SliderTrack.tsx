@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./SliderTrack.module.scss";
+import ImageLoader from "../../Loaders/ImageLoader";
 
 interface ISliderTrackProps {
   images: string[];
@@ -27,19 +28,17 @@ const SliderTrack: React.FC<ISliderTrackProps> = ({
           className={styles.border}
         ></span>
         {images.map((img: string, index: number) => (
-          <img
+          <div
             className={styles.sliderTrackImg}
             key={img}
             style={{
-              maxHeight: `${heightOneElement - 4}px`,
-              maxWidth: `${heightOneElement - 4}px`,
-              marginTop: "2px",
-              marginBottom: "2px",
+              height: `${heightOneElement - 4}px`,
+              width: `${heightOneElement - 4}px`,
             }}
             onClick={() => handleBorderTranslate(index)}
-            src={img}
-            alt=""
-          />
+          >
+            <ImageLoader src={img} />
+          </div>
         ))}
       </div>
     </div>

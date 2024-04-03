@@ -56,6 +56,7 @@ const teasSlice = createSlice({
     },
     setFilteredBy: (state, action: PayloadAction<string>) => {
       state.filteredBy = action.payload;
+      state.currentPage = 1;
     },
     setViewedTeas: (state, action: PayloadAction<ITea>) => {
       if (
@@ -81,6 +82,7 @@ const teasSlice = createSlice({
         state.isLoading = false;
         state.error = "";
         state.teas = action.payload;
+        state.currentPage = 1;
       })
       .addCase(fetchTeas.pending, (state) => {
         state.isLoading = true;
@@ -98,6 +100,7 @@ const teasSlice = createSlice({
         state.error = "";
         state.filteredTeas = action.payload;
         state.isFiltered = true;
+        state.currentPage = 1;
       })
       .addCase(fetchFilteredTeas.pending, (state) => {
         state.isLoading = true;
@@ -116,6 +119,7 @@ const teasSlice = createSlice({
         state.filteredTeas = action.payload.productList;
         state.isFiltered = true;
         state.filteredBy = action.payload.name;
+        state.currentPage = 1;
       })
       .addCase(fetchFilteredByCategoryTeas.pending, (state) => {
         state.isLoading = true;
