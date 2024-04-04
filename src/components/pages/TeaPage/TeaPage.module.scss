@@ -15,6 +15,15 @@
 .teaWrapper img {
   max-width: 300px;
 }
+.price {
+  display: flex;
+  flex-direction: row;
+}
+
+.priceNum {
+  font-weight: 700;
+  margin-left: 10px;
+}
 .description {
   margin-left: 30px;
 }
@@ -40,7 +49,6 @@
   font-family: App.$OpenSansFont;
   font-size: 15px;
   color: App.$priceColor;
-  width: 90%;
 }
 .descriptionEnter {
   opacity: 0;

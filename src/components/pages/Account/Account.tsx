@@ -4,12 +4,14 @@ import LocatePanel from "../../UI/LocatePahel/LocatePanel";
 import AuthInput from "../../UI/Inputs/AuthInput/AuthInput";
 import LoginInput from "../../UI/Inputs/AuthInput/LoginInput";
 import { CSSTransition } from "react-transition-group";
-import { useAppSelector } from "../../../hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import Loader from "../../UI/Loaders/Loader";
 import { accountPages } from "../../../utils/consts";
 import { Link } from "react-router-dom";
+import { logout } from "../../../store/redusers/userSlice";
 
 const Account = () => {
+  const dispatch = useAppDispatch();
   const [hasAccount, setHasAccount] = useState<boolean>(false);
   const [accountPage, setAccountPage] = useState("Личные данные");
   const [changePage, setChangePage] = useState<boolean>(false);
@@ -66,7 +68,10 @@ const Account = () => {
                     </div>
                   ))}
                   <hr className={styles.accountPanelLine} />
-                  <div className={styles.accountPanelLink}>
+                  <div
+                    onClick={() => dispatch(logout())}
+                    className={styles.accountPanelLink}
+                  >
                     <img src="/images/icons/exit.svg" alt="" />
                     <li>Выход</li>
                   </div>

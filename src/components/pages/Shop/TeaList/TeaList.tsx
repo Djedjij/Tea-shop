@@ -9,7 +9,7 @@ import HorizontalTeaCard from "../../../UI/TeaCards/HorizontalTeaCard/Horizontal
 import { CSSTransition } from "react-transition-group";
 import { fetchTeas } from "../../../../store/redusers/fetchTeas";
 import { fetchUuid } from "../../../../store/redusers/fetchShopCart";
-import { setUuid } from "../../../../store/redusers/shopCardSlice";
+import { setUuid } from "../../../../store/redusers/shopCartSlice";
 import styles from "./TeaList.module.scss";
 import { ITea } from "../../../../models/ITea";
 import TeaListEmpty from "./TeaListEmpty";
@@ -22,7 +22,6 @@ interface TeaListProps {
 
 const TeaList: React.FC<TeaListProps> = ({ isVertical, renderTeaList }) => {
   const dispatch = useAppDispatch();
-
   useEffect(() => {
     dispatch(fetchTeas());
   }, [dispatch]);

@@ -4,12 +4,12 @@ import { IReview } from "../models/ITea";
 export const reviewAPI = createApi({
   reducerPath: "review",
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.REACT_APP_API_URL + "reviews-service/reviews",
+    baseUrl: process.env.REACT_APP_API_URL + "review-service/reviews",
   }),
   tagTypes: ["Reviews"],
   endpoints: (build) => ({
-    fetchReviews: build.query<IReview, number>({
-      query: (id) => ({
+    fetchReviews: build.query<IReview[], number>({
+      query: (id: number) => ({
         url: `${id}`,
       }),
       providesTags: (result) => ["Reviews"],
@@ -24,6 +24,7 @@ export const reviewAPI = createApi({
           userEmail: review.userEmail,
           rating: review.rating,
           comment: review.comment,
+          timestamp: review.timestamp,
         },
       }),
       invalidatesTags: ["Reviews"],

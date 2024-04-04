@@ -28,6 +28,7 @@ const Slider: React.FC<ISliderProps> = ({
         >
           {images.map((img: string) => (
             <ImageLoader
+              key={img}
               minHeightImg={pageHeight}
               minWidthImg={pageWidth}
               src={img}

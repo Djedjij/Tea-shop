@@ -15,13 +15,10 @@ const useOnScreen = (
         rootMargin,
       }
     );
-
     const currentElement = ref?.current;
-
     if (currentElement) {
       observer.observe(currentElement);
     }
-
     return () => {
       if (currentElement) {
         observer.unobserve(currentElement);

@@ -15,6 +15,7 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import VerticalTeaCard from "../../UI/TeaCards/VerticalTeaCard/VerticalTeaCard";
 import { fetchFilteredByCategoryTeas } from "../../../store/redusers/fetchTeas";
 import { setViewedTeas } from "../../../store/redusers/teasSlice";
+import { reviewAPI } from "../../../services/reviewServise";
 
 const TeaPage = () => {
   const dispatch = useAppDispatch();
@@ -24,13 +25,15 @@ const TeaPage = () => {
   const { data: shopCart } = shopCartAPI.useFetchShopCartQuery();
   const [isDescription, setIsDercription] = useState<boolean>(true);
   const [activeModal, setActiveModal] = useState<boolean>(false);
-
   const [inShopCart, setInShopCart] = useState(false);
+  const teas = useAppSelector((state) => state.teas.teas);
+  const similarTeas = teas.slice(0, 4);
+  const { data: reviews } = reviewAPI.useFetchReviewsQuery(Number(teaId));
+
   const handleSliderClick = () => {
     setActiveModal(true);
   };
-  const teas = useAppSelector((state) => state.teas.teas);
-  const similarTeas = teas.slice(0, 4);
+
   useEffect(() => {
     setInShopCart(
       shopCart?.itemsMap.find(
@@ -44,14 +47,16 @@ const TeaPage = () => {
   useEffect(() => {
     if (tea) dispatch(setViewedTeas(tea));
   });
+
   const filterTeas = (name: string) => {
     dispatch(fetchFilteredByCategoryTeas({ title: name }));
   };
   const addInShopCard = async (id: number, weight: number) => {
     postTea({ weight, id });
   };
+  console.log(reviews);
 
-  if (tea) {
+  if (tea && reviews) {
     return (
       <div>
         <LocatePanel childLocate={tea.name} />
@@ -66,12 +71,15 @@ const TeaPage = () => {
             <div className={styles.description}>
               <h3>{tea.name}</h3>
               <h5>
-                Категория:{" "}
+                Категория:
                 <Link to="/shop" onClick={() => filterTeas(tea.category)}>
                   {tea.category}
                 </Link>
               </h5>
-              <p>Цена за 100г - {tea.price}р.</p>
+              <div className={styles.price}>
+                <p>Цена за 100г - </p>
+                <p className={styles.priceNum}>{tea.price}р</p>
+              </div>
               <p>{tea.effect}</p>
               <div className={styles.shopButton}>
                 {inShopCart ? (
@@ -82,7 +90,6 @@ const TeaPage = () => {
                     onClick={() => addInShopCard(tea.productId, 100)}
                   />
                 )}
-
                 <Rating />
               </div>
             </div>
@@ -102,7 +109,7 @@ const TeaPage = () => {
               }
               onClick={() => setIsDercription(false)}
             >
-              Отзывы (0)
+              Отзывы ({Number(reviews.length)})
             </button>
           </div>
           <div>
@@ -124,15 +131,15 @@ const TeaPage = () => {
                   ))}
                 </div>
               ) : (
-                <Reviews />
+                <Reviews reviews={reviews} productId={tea?.productId} />
               )}
             </CSSTransition>
           </div>
           <div className={styles.similar}>
             <h2>Попробуйте также</h2>
             <div className={styles.similarTeas}>
-              {similarTeas.map((tea) => (
-                <VerticalTeaCard tea={tea} weight={100} />
+              {similarTeas.map((tea, index) => (
+                <VerticalTeaCard tea={tea} weight={100} key={index} />
               ))}
             </div>
           </div>

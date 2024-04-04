@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Reviews.module.scss";
 import GreenButton from "../Buttons/GreenButton/GreenButton";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { login } from "../../../store/fetchUser";
 import RatingReview from "../Rating/RatingReview";
+import { reviewAPI } from "../../../services/reviewServise";
+import { IReview } from "../../../models/ITea";
+import { setModalError } from "../../../store/redusers/errorSlice";
+import { createMonthDate } from "../../../utils/functions";
 
-const ModalReview = () => {
+interface IModalReviewProps {
+  productId: number;
+}
+
+const ModalReview: React.FC<IModalReviewProps> = ({ productId }) => {
   const dispatch = useAppDispatch();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -13,6 +21,38 @@ const ModalReview = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const isLogin = useAppSelector((state) => state.user.isLogin);
+  const stateEmail = useAppSelector((state) => state.user.user.email);
+  const [postReview] = reviewAPI.usePostReviewMutation();
+  const [userEmail, setUserEmail] = useState("");
+
+  useEffect(() => {
+    if (stateEmail) {
+      setUserEmail(stateEmail);
+    } else if (localStorage.getItem("user")) {
+      const user = localStorage.getItem("user");
+      if (user) {
+        setUserEmail(JSON.parse(user).email);
+      }
+    }
+  }, [stateEmail]);
+
+  const reviewObject: IReview = {
+    id: productId,
+    userEmail: userEmail,
+    rating: 5,
+    comment: review,
+    timestamp: createMonthDate(),
+  };
+
+  const sendReview = (e: any) => {
+    e.preventDefault();
+    if (review) {
+      postReview(reviewObject);
+      console.log(reviewObject);
+
+      setReview("");
+    } else dispatch(setModalError("Отзыв не можен быть пустым"));
+  };
 
   const validateEmail = (email: string) => {
     if (!email) {
@@ -45,6 +85,7 @@ const ModalReview = () => {
       setPassword("");
     }
   };
+
   return (
     <div className={styles.modalReview}>
       <div className={styles.modalReviewContent}>
@@ -52,7 +93,7 @@ const ModalReview = () => {
       </div>
       {isLogin ? (
         <div className={styles.login}>
-          <form>
+          <form onSubmit={(e) => sendReview(e)}>
             <textarea
               className={styles.textInputLogin}
               placeholder="Отзыв*"

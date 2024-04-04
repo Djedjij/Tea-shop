@@ -23,7 +23,7 @@
   justify-content: space-between;
 }
 .teaImg {
-  max-width: 70px;
+  width: 70px;
 }
 .tea a {
   @include priceStyle;
@@ -36,6 +36,7 @@
 }
 .teaText {
   margin-left: 10px;
+  width: 100%;
 }
 
 .teaText form input {
