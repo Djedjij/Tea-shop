@@ -1,0 +1,53 @@
+@use "../../../../App.scss" as App;
+@import "../../../../App.scss";
+
+.wrapper {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper h3 {
+  @include nameh3;
+  margin-top: 20px;
+}
+.textInput {
+  margin-top: 20px;
+  width: 20vw;
+  border: 1px solid App.$greyButtonColor;
+  padding: 10px;
+}
+
+.radio {
+  margin-right: 20px;
+}
+.wrapper h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.submitInput {
+  margin-top: 30px;
+  border: 2px solid App.$greyButtonColor;
+  border-color: App.$greyButtonColor;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: App.$OpenSansFont;
+  text-decoration: none;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+  height: max-content;
+  width: max-content;
+  background-color: App.$greyButtonColor;
+  letter-spacing: 0.1em;
+  color: white;
+}
+.submitInput:hover {
+  background-color: white;
+  border: 2px solid App.$greenButtonColor;
+  color: App.$greenButtonColor;
+}

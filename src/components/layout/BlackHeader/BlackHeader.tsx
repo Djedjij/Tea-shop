@@ -5,12 +5,12 @@ import Modal from "../../UI/Modal/Modal";
 import DropDown from "../../UI/DropdownList/DropDown";
 import { cities, phones } from "../../../utils/consts";
 import { CSSTransition } from "react-transition-group";
-interface ICityProps {
+export interface ICityProps {
   setCity: (city: string) => void;
   setActiveModal: (activeModal: boolean) => void;
 }
 
-const Cities: React.FC<ICityProps> = ({ setCity, setActiveModal }) => {
+export const Cities: React.FC<ICityProps> = ({ setCity, setActiveModal }) => {
   const [cityList, setSityList] = useState(cities);
   const [searchCity, setSeacrchCity] = useState("");
   const filterCities = (searchText: string, listOfCities: string[]) => {
