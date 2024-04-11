@@ -5,6 +5,7 @@ import errorReducer from "./redusers/errorSlice";
 import userReducer from "./redusers/userSlice";
 import { teaAPI } from "../services/teaService";
 import { reviewAPI } from "../services/reviewServise";
+import { orderAPI } from "../services/orderServise";
 
 const store = configureStore({
   reducer: {
@@ -14,12 +15,14 @@ const store = configureStore({
     [shopCartAPI.reducerPath]: shopCartAPI.reducer,
     [teaAPI.reducerPath]: teaAPI.reducer,
     [reviewAPI.reducerPath]: reviewAPI.reducer,
+    [orderAPI.reducerPath]: orderAPI.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       shopCartAPI.middleware,
       teaAPI.middleware,
-      reviewAPI.middleware
+      reviewAPI.middleware,
+      orderAPI.middleware
     ),
 });
 

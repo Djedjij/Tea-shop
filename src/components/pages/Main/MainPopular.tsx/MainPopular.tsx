@@ -20,7 +20,7 @@ const MainPopular = () => {
         {mainPageCategories.map(
           (tea, index) =>
             index <= 3 && (
-              <div className={styles.teaCard}>
+              <div key={index} className={styles.teaCard}>
                 <img src={tea.img} alt="" />
                 <Link
                   className={styles.teaCardLink}

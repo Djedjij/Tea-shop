@@ -20,7 +20,6 @@ export const auth = createAsyncThunk(
     }
   }
 );
-
 export const login = createAsyncThunk(
   "user/login",
   async (formData: ILogin, thunkAPI) => {
@@ -30,6 +29,8 @@ export const login = createAsyncThunk(
       });
       if (response.data.accessToken) {
         localStorage.setItem("token", response.data.accessToken);
+        // const user = jwtDecode(response.data.accessToken);
+        // console.log(user);
       }
       return response.data;
     } catch (e) {

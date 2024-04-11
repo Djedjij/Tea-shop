@@ -7,7 +7,6 @@ export const fetchUuid = createAsyncThunk(
     try {
       const response = await $host.get("cart-service/cart/generate_uuid");
       localStorage.setItem("uuid", response.data.uuid);
-      console.log(localStorage.getItem("uuid"));
 
       return response.data.uuid;
     } catch (e) {

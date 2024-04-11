@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import CounterInput from "../../UI/Inputs/CounterInput";
 import DeleteButton from "../../UI/Buttons/DeleteButton/DeleteButton";
 import styles from "./ShopCart.module.scss";
-import GreenButton from "../../UI/Buttons/GreenButton/GreenButton";
 import { shopCartAPI } from "../../../services/shopCartService";
 import Loader from "../../UI/Loaders/Loader";
 import ErrorMessage from "../../Error/Message";
+import { orderAPI } from "../../../services/orderServise";
+import GreyButton from "../../UI/Buttons/GreyButton/GreyButton";
 
 const ShopCart = () => {
   const [isEmpty, setIsEmpty] = useState(false);
@@ -19,6 +20,7 @@ const ShopCart = () => {
   } = shopCartAPI.useFetchShopCartQuery();
   const [deleteTea] = shopCartAPI.useDeleteTeaMutation();
   const [clearShopCart] = shopCartAPI.useClearShopCartMutation();
+  const [postOrder] = orderAPI.usePostOrderMutation();
   let isDisabled = isLoading || isFetching;
   useEffect(() => {
     setIsEmpty(!!shopCart?.itemsMap.length);
@@ -108,11 +110,7 @@ const ShopCart = () => {
                     <h5>0.00р</h5>
                   </div>
                   <div className={styles.pay}>
-                    <GreenButton
-                      link="/"
-                      text="Оплатить"
-                      disabled={isLoading || isFetching}
-                    />
+                    <GreyButton text="Оплатить" onClick={() => postOrder()} />
                     <p>
                       * Способ и время доставки можно выбрать при оформлении
                       заказа. Дата доставки заказа рассчитывается по

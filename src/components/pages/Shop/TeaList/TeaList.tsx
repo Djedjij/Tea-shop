@@ -8,8 +8,7 @@ import VerticalTeaCard from "../../../UI/TeaCards/VerticalTeaCard/VerticalTeaCar
 import HorizontalTeaCard from "../../../UI/TeaCards/HorizontalTeaCard/HorizontalTeaCard";
 import { CSSTransition } from "react-transition-group";
 import { fetchTeas } from "../../../../store/redusers/fetchTeas";
-import { fetchUuid } from "../../../../store/redusers/fetchShopCart";
-import { setUuid } from "../../../../store/redusers/shopCartSlice";
+
 import styles from "./TeaList.module.scss";
 import { ITea } from "../../../../models/ITea";
 import TeaListEmpty from "./TeaListEmpty";
@@ -25,18 +24,6 @@ const TeaList: React.FC<TeaListProps> = ({ isVertical, renderTeaList }) => {
   useEffect(() => {
     dispatch(fetchTeas());
   }, [dispatch]);
-
-  const fetchUuidData = async () => {
-    let uuid = localStorage.getItem("uuid");
-    if (uuid) {
-      dispatch(setUuid(uuid));
-    } else {
-      await dispatch(fetchUuid());
-    }
-  };
-  useEffect(() => {
-    fetchUuidData();
-  });
 
   const teas = useAppSelector((state) => state.teas.teas);
   const loading = useAppSelector((state) => state.teas.isLoading);

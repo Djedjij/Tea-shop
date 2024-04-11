@@ -20,3 +20,10 @@ export const createMonthDate = () => {
 
   return `${day} ${month}`;
 };
+
+export const parseJSON = (json: string) => {
+  const string = localStorage.getItem(json);
+  if (string !== null) {
+    return JSON.parse(string);
+  }
+};

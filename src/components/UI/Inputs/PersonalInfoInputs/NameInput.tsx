@@ -31,7 +31,7 @@ const NameInput: React.FC<IInpitProps> = ({ setValue, setActiveModal }) => {
           type="radio"
           id="man"
           name="person"
-          checked
+          defaultChecked
         />
         <label className={styles.radio} htmlFor="man">
           Мужской

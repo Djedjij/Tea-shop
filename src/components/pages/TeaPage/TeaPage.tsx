@@ -16,11 +16,12 @@ import VerticalTeaCard from "../../UI/TeaCards/VerticalTeaCard/VerticalTeaCard";
 import { fetchFilteredByCategoryTeas } from "../../../store/redusers/fetchTeas";
 import { setViewedTeas } from "../../../store/redusers/teasSlice";
 import { reviewAPI } from "../../../services/reviewServise";
+import Loader from "../../UI/Loaders/Loader";
 
 const TeaPage = () => {
   const dispatch = useAppDispatch();
   const { teaId } = useParams();
-  const { data: tea } = teaAPI.useFetchTeaQuery(String(teaId));
+  const { data: tea, isLoading } = teaAPI.useFetchTeaQuery(String(teaId));
   const [postTea] = shopCartAPI.usePostTeaMutation();
   const { data: shopCart } = shopCartAPI.useFetchShopCartQuery();
   const [isDescription, setIsDercription] = useState<boolean>(true);
@@ -54,7 +55,10 @@ const TeaPage = () => {
   const addInShopCard = async (id: number, weight: number) => {
     postTea({ weight, id });
   };
-  console.log(reviews);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   if (tea && reviews) {
     return (
